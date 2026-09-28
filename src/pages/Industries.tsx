@@ -252,10 +252,8 @@ export default function Industries() {
                 key={col.title}
                 className="rounded-xl sm:rounded-2xl border border-white/12 bg-white/[0.06] p-5 sm:p-5.5 shadow-lg backdrop-blur-md transition-all duration-300 hover:border-violet-400/50 hover:bg-white/[0.1]"
               >
-                <div className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/20 text-[#c4b5fd] font-mono font-bold text-xs">
-                  0{idx + 1}
-                </div>
-                <h3 className="mt-4 font-display text-base font-bold text-white">
+                <div className="flex h-2.5 w-2.5 rounded-full bg-violet-400/80 mb-3" />
+                <h3 className="font-display text-base font-bold text-white">
                   {col.title}
                 </h3>
                 <p className="mt-2.5 text-xs leading-relaxed text-[#d8cefa]">

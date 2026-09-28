@@ -328,13 +328,12 @@ export default function Methodology() {
                 <button
                   key={p.num}
                   onClick={() => setActivePhaseIndex(idx)}
-                  className={`inline-flex items-center gap-3 rounded-2xl px-5 sm:px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
+                  className={`inline-flex items-center rounded-2xl px-5 sm:px-7 py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer ${
                     isCurrent
                       ? "bg-violet-600 text-white border border-violet-300 shadow-[0_0_25px_rgba(168,85,247,0.5)] scale-105"
                       : "bg-white/[0.05] text-slate-300 border border-white/10 hover:bg-white/[0.1] hover:text-white"
                   }`}
                 >
-                  <span className="font-mono opacity-60 text-xs">{p.num}</span>
                   <span>{p.phase}</span>
                 </button>
               );
@@ -347,13 +346,10 @@ export default function Methodology() {
               {/* Left Column: Phase Identity & Description */}
               <div className="lg:col-span-6 flex flex-col justify-between h-full">
                 <div>
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono text-3xl sm:text-4xl font-black text-violet-400">
-                      {activePhase.num}
-                    </span>
-                    <div className="h-6 w-px bg-white/20" />
-                    <span className="font-mono text-xs uppercase tracking-widest text-[#c4b5fd] font-semibold">
-                      Phase {activePhase.num} of 03
+                  <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-950/50 px-3.5 py-1 text-xs font-semibold text-[#c4b5fd]">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#c084fc] animate-pulse" />
+                    <span className="font-mono text-xs uppercase tracking-widest text-[#c4b5fd]">
+                      Methodology Lifecycle
                     </span>
                   </div>
 
@@ -578,7 +574,7 @@ export default function Methodology() {
               >
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-xs uppercase tracking-widest text-[#c4b5fd] font-semibold">
-                    {milestone.step}
+                    Auditable Output
                   </span>
                   <span className="rounded-md border border-violet-400/30 bg-violet-950/60 px-2 py-0.5 font-mono text-[10px] font-bold text-violet-300">
                     {milestone.badge}

@@ -118,14 +118,12 @@ export function Kicker({
   children,
   tone = "dark",
 }: {
-  n: string;
+  n?: string;
   children: ReactNode;
   tone?: "dark" | "light";
 }) {
   return (
-    <div className="flex items-center gap-3 font-mono text-[11px] tracking-[0.28em] text-purple-bright">
-      <span className={tone === "light" ? "text-purple-deep" : "text-faint"}>{n}</span>
-      <span className={`h-px w-8 ${tone === "light" ? "bg-[color:var(--color-paper-line)]" : "bg-line-strong"}`} />
+    <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.28em] text-purple-bright">
       <span className={`uppercase ${tone === "light" ? "text-[color:var(--color-paper-muted)]" : "text-muted"}`}>{children}</span>
     </div>
   );
@@ -191,13 +189,12 @@ export function Btn({
 
 /* Shared section heading */
 export function SectionHead({
-  n,
   kicker,
   title,
   aside,
   tone = "dark",
 }: {
-  n: string;
+  n?: string;
   kicker: string;
   title: string;
   aside?: ReactNode;
@@ -206,7 +203,7 @@ export function SectionHead({
   return (
     <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
       <div>
-        <Kicker n={n} tone={tone}>
+        <Kicker tone={tone}>
           {kicker}
         </Kicker>
         <h2 className="mt-6 max-w-2xl display-lg">

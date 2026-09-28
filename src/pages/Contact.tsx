@@ -296,8 +296,8 @@ export default function Contact() {
                 {/* Engagement Advisory Roadmap Cards */}
                 <div className="mt-8 space-y-4 max-w-lg">
                   <div className="flex items-start gap-3.5 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 transition-colors hover:border-violet-300 hover:bg-violet-50/30">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 border border-violet-200 font-mono text-xs font-bold">
-                      01
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 border border-violet-200">
+                      <Check size={16} weight="bold" />
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-slate-900">Scoping &amp; Needs Discovery</h4>
@@ -308,8 +308,8 @@ export default function Contact() {
                   </div>
 
                   <div className="flex items-start gap-3.5 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 transition-colors hover:border-violet-300 hover:bg-violet-50/30">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 border border-violet-200 font-mono text-xs font-bold">
-                      02
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 border border-violet-200">
+                      <Check size={16} weight="bold" />
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-slate-900">Architectural Proposal</h4>
@@ -320,8 +320,8 @@ export default function Contact() {
                   </div>
 
                   <div className="flex items-start gap-3.5 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 transition-colors hover:border-violet-300 hover:bg-violet-50/30">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 border border-violet-200 font-mono text-xs font-bold">
-                      03
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 border border-violet-200">
+                      <Check size={16} weight="bold" />
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-slate-900">Direct Advisory Onboarding</h4>

@@ -226,9 +226,6 @@ function ProcessPipeline() {
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-purple-600/10 text-[#6d28d9] transition-transform group-hover:scale-110 dark:bg-violet-500/20 dark:text-[#a78bfa]">
                   <Icon size={22} weight="bold" />
                 </span>
-                <span className="font-mono text-2xl font-bold text-[#b5a9cc] dark:text-violet-500/50">
-                  {s.step}
-                </span>
               </div>
 
               <div className="mt-4">
@@ -455,9 +452,6 @@ function BrmDwmFaqSection() {
               className="flex w-full items-center justify-between p-5 text-left transition-colors hover:text-[#6d28d9] dark:hover:text-[#c4b5fd]"
             >
               <div className="flex items-center gap-3">
-                <span className="font-mono text-xs font-bold text-[#6d28d9] dark:text-[#a78bfa]">
-                  0{i + 1}
-                </span>
                 <span className="font-display text-[15px] font-bold text-[#150c2e] dark:text-white">
                   {faq.q}
                 </span>
@@ -601,7 +595,6 @@ export default function BrmDwm() {
                     <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#f6eefb] text-[#6d28d9] dark:bg-violet-500/20 dark:text-[#a78bfa]">
                       <Icon size={22} weight="bold" />
                     </span>
-                    <span className="font-mono text-sm font-bold text-[#b5a9cc]">{c.num}</span>
                   </div>
                   <h3 className="mt-5 font-display text-lg font-bold text-[#150c2e] dark:text-white">
                     {c.title}
@@ -689,10 +682,7 @@ export default function BrmDwm() {
                 key={pillar.n}
                 className="group rounded-2xl border border-[#e4dfef] bg-white p-7 shadow-[0_4px_20px_rgba(91,42,184,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-[#6d28d9] hover:shadow-[0_16px_36px_rgba(91,42,184,0.1)] dark:border-white/10 dark:bg-[#14182b]"
               >
-                <span className="font-mono text-sm font-bold text-[#6d28d9] dark:text-[#a78bfa]">
-                  {pillar.n}
-                </span>
-                <h3 className="mt-3 font-display text-base font-bold text-[#150c2e] dark:text-white">
+                <h3 className="font-display text-base font-bold text-[#150c2e] dark:text-white">
                   {pillar.title}
                 </h3>
                 <p className="mt-2 text-xs leading-relaxed text-[#575f75] dark:text-slate-300">

@@ -133,9 +133,6 @@ export default function ServicesDropdown({
                   <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-violet-600/10 text-violet-600 dark:bg-violet-500/20 dark:text-violet-300 transition-colors group-hover:bg-violet-600 group-hover:text-white">
                     {SERVICE_ICONS[service.id] || <ShieldCheck size={16} weight="duotone" />}
                   </div>
-                  <span className="font-mono text-[10px] font-bold text-slate-400 dark:text-slate-500">
-                    #{service.n}
-                  </span>
                 </div>
 
                 <h3 className="mt-2 font-display text-[13px] font-bold text-slate-900 group-hover:text-violet-700 dark:text-white dark:group-hover:text-violet-300 transition-colors leading-tight">

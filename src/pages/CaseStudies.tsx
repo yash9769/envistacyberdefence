@@ -71,10 +71,7 @@ export default function CaseStudies() {
               <li key={f.n}>
                 <Reveal delay={(i % 2) * 70} className="h-full">
                   <article className="h-full rounded-2xl border border-slate-200/90 bg-[#faf8fe] p-6 transition-all hover:border-[#6d28d9] hover:shadow-lg dark:border-white/10 dark:bg-[#14182b] sm:p-8 lg:p-9">
-                    <div className="flex items-baseline justify-between">
-                      <span className="font-mono text-sm font-bold text-[#6d28d9] dark:text-[#a78bfa]">
-                        {f.n}
-                      </span>
+                    <div className="flex items-baseline justify-start">
                       <span className="rounded bg-violet-100/70 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-[#6d28d9] dark:bg-violet-950/60 dark:text-[#c4b5fd]">
                         Typical {f.scope}
                       </span>

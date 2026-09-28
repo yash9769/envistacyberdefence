@@ -417,7 +417,7 @@ export default function About() {
       >
         <div className={WRAP}>
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <Kicker n="01" tone="light">Who We Are</Kicker>
+            <Kicker tone="light">Who We Are</Kicker>
             <h2 className="mt-3 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0d1020] dark:text-white">
               Who We Are and What We Offer
             </h2>
@@ -502,7 +502,7 @@ export default function About() {
       >
         <div className={WRAP}>
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <Kicker n="04" tone="light">What We Offer</Kicker>
+            <Kicker tone="light">What We Offer</Kicker>
             <h2 className="mt-3 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0d1020] dark:text-white">
               End-to-End Cyber Security Capabilities
             </h2>
@@ -542,10 +542,7 @@ export default function About() {
                 <div className="group relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-violet-900/50 bg-gradient-to-b from-[#1e1342] via-[#170e36] to-[#12082b] p-6 text-white shadow-xl transition-all duration-300 hover:border-[#B4FF00]/80 hover:shadow-[0_14px_36px_rgba(180,255,0,0.22)] hover:-translate-y-1 cursor-pointer">
                   <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   <div>
-                    <span className="font-mono text-xs font-bold text-violet-300 group-hover:text-[#B4FF00] transition-colors">
-                      0{idx + 1}
-                    </span>
-                    <h3 className="mt-2.5 font-display text-lg font-bold text-white group-hover:text-[#B4FF00] transition-colors">
+                    <h3 className="font-display text-lg font-bold text-white group-hover:text-[#B4FF00] transition-colors">
                       {srv.title}
                     </h3>
                     <p className="mt-2.5 text-xs sm:text-[13.5px] leading-relaxed text-[#d8cefa]">

@@ -95,9 +95,6 @@ function WhatWeDo() {
                           >
                             <Icon size={20} weight="bold" />
                           </span>
-                          <span className="font-mono text-[11px] font-bold text-violet-400/60 uppercase tracking-wider">
-                            0{i + 1}
-                          </span>
                         </div>
                         <h3 className="mt-4 font-display text-base font-bold tracking-tight text-white group-hover:text-violet-200 transition-colors">
                           {s.title}
@@ -171,10 +168,7 @@ function OurApproach() {
                   >
                     <Icon size={24} weight="bold" />
                   </span>
-                  <div className="mt-5 font-mono text-[11px] font-bold text-[#6d28d9]">
-                    {s.n}
-                  </div>
-                  <div className="mt-1 font-display text-lg font-bold text-[#0d1020]">
+                  <div className="mt-4 font-display text-lg font-bold text-[#0d1020]">
                     {s.t}
                   </div>
                   <p className="mt-1.5 max-w-[14rem] text-[13px] leading-relaxed text-[#575f75]">

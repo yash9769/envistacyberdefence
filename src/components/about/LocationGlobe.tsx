@@ -932,9 +932,6 @@ export default function LocationGlobe() {
                 >
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                     <div className="flex items-start gap-4">
-                      <span className="font-mono text-base font-bold text-violet-400 group-hover:text-white transition-colors">
-                        {sub.num}
-                      </span>
                       <div>
                         <h4 className="font-display text-base font-bold text-white group-hover:text-violet-200 transition-colors">
                           {sub.title}

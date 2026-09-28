@@ -451,7 +451,7 @@ export default function Capabilities() {
               <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-50 px-3 py-0.5 text-xs font-semibold text-[#6d28d9] dark:bg-white/10 dark:text-[#c4b5fd]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#6d28d9] dark:bg-[#a78bfa]" />
                 <span className="font-mono text-[10.5px] uppercase tracking-wider">
-                  {activeServiceId === "all" ? "Our Capabilities" : `Pillar #${activeService.n} / ${activeService.promise}`}
+                  {activeServiceId === "all" ? "Our Capabilities" : `${activeService.title} / ${activeService.promise}`}
                 </span>
               </div>
 
@@ -531,9 +531,6 @@ export default function Capabilities() {
 
                   <div>
                     <div className="flex items-center justify-between gap-1.5">
-                      <span className="font-mono text-[11px] font-bold text-violet-300 group-hover:text-[#B4FF00] transition-colors">
-                        0{idx + 1}
-                      </span>
                       <span className="rounded-full border border-violet-400/30 bg-violet-500/15 px-2 py-0.5 font-mono text-[9.5px] font-semibold text-violet-200">
                         {sub.badge}
                       </span>
@@ -598,9 +595,6 @@ export default function Capabilities() {
                       <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-500/20 text-[#c4b5fd] group-hover:bg-[#B4FF00] group-hover:text-[#0c061e] transition-colors shadow-xs">
                         {SERVICE_ICONS[c.id] || <ShieldCheck size={18} weight="duotone" />}
                       </div>
-                      <span className="font-mono text-[10.5px] font-bold text-violet-300 group-hover:text-[#B4FF00]">
-                        #{c.n}
-                      </span>
                     </div>
 
                     <h3 className="mt-2.5 font-display text-[15.5px] sm:text-[16.5px] font-bold text-white group-hover:text-[#B4FF00] transition-colors">

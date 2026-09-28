@@ -160,9 +160,6 @@ export default function PlatformCapabilitiesDropdown({
                   <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#6d28d9]/10 text-[#6d28d9] transition-colors group-hover:bg-[#6d28d9] group-hover:text-white dark:bg-violet-500/20 dark:text-[#c4b5fd]">
                     {getIcon(cap.id)}
                   </span>
-                  <span className="font-mono text-[10px] font-bold text-slate-400 group-hover:text-[#6d28d9] dark:group-hover:text-[#a78bfa]">
-                    #{cap.n}
-                  </span>
                 </div>
 
                 <h4 className="mt-3.5 font-display text-[14.5px] font-bold text-[#0d1020] transition-colors group-hover:text-[#6d28d9] dark:text-white dark:group-hover:text-[#c4b5fd]">
