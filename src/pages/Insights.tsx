@@ -75,7 +75,7 @@ export default function Insights() {
             <div className="max-w-4xl">
               <span className="font-mono text-xs uppercase tracking-[0.25em] text-violet-300">Guiding Principle</span>
               <p className="mt-6 font-display text-2xl font-bold leading-snug tracking-[-0.01em] text-white md:text-3xl lg:text-4xl">
-                <RevealText text="“The perimeter dissolved into identity, APIs and multi-cloud. Defending it now requires seeing the entire surface — continuously, intelligently, at once.”" stagger={25} />
+                <RevealText text="“The perimeter dissolved into identity, APIs and multi-cloud. Defending it now requires seeing the entire surface: continuously, intelligently, at once.”" stagger={25} />
               </p>
               <div className="mt-8 flex items-center gap-4">
                 <div className="h-10 w-10 rounded-full bg-gradient-to-tr from-violet-600 to-indigo-400 flex items-center justify-center font-bold text-white text-sm">ECD</div>

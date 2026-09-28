@@ -21,9 +21,9 @@ export const HERO_STATS: { v: string; label: string }[] = [
   { v: "5+", label: "Industries Secured" },
 ];
 
-/* The four cards around the hero's central shield — the cybersecurity
+/* The four cards around the hero's central shield: the cybersecurity
    lifecycle Envista covers, not a service navigation menu. */
-/* The four cards around the hero shield — the complete visual story, in
+/* The four cards around the hero shield: the complete visual story, in
    this exact order and no more: Discover -> Test -> Protect -> Resilience. */
 export const HERO_SERVICES: { eyebrow: string; title: string; icon: "discover" | "test" | "protect" | "resilience" }[] = [
   { eyebrow: "Discover", title: "Identify and understand your risks.", icon: "discover" },
@@ -53,7 +53,7 @@ export const CAPABILITIES: Capability[] = [
     promise: "Test Your Defences",
     icon: "offensive",
     line: "Emulate the adversary. Expose the path they'd take.",
-    body: "Goal-based penetration testing, red teaming and adversary emulation that chain real-world techniques across applications, networks and infrastructure — proving exploitability, not just cataloguing findings.",
+    body: "Goal-based penetration testing, red teaming and adversary emulation that chain real-world techniques across applications, networks and infrastructure, proving exploitability, not just cataloguing findings.",
     tags: ["Red Teaming", "Penetration Testing", "Cloud Security", "Breach Simulation"],
     items: [
       "Red Teaming Services",
@@ -89,7 +89,7 @@ export const CAPABILITIES: Capability[] = [
     promise: "Governance & Risk",
     icon: "grc",
     line: "Turn control frameworks into operating reality.",
-    body: "Risk quantification, control design and audit readiness that bind security to business risk — so governance is measurable, defensible and continuously evidenced rather than filed and forgotten.",
+    body: "Risk quantification, control design and audit readiness that bind security to business risk, so governance is measurable, defensible and continuously evidenced rather than filed and forgotten.",
     tags: ["Audit Services", "Virtual CISO", "ISO 27001", "SOC Certification"],
     items: [
       "Cybersecurity Audit Services",
@@ -126,7 +126,7 @@ export const CAPABILITIES: Capability[] = [
     promise: "Build Cyber Awareness",
     icon: "training",
     line: "Harden the human attack surface.",
-    body: "Role-based training, hands-on labs and mutual-recognition-aligned programs that build measurable capability — turning staff from an entry point into the first line of defence.",
+    body: "Role-based training, hands-on labs and mutual-recognition-aligned programs that build measurable capability, turning staff from an entry point into the first line of defence.",
     tags: ["Data Analytics Training", "Data Privacy", "Cyber Awareness"],
     items: [
       "Expert-led training in Data Analytics",
@@ -140,7 +140,7 @@ export const CAPABILITIES: Capability[] = [
     promise: "Secure Your AI Systems",
     icon: "ai",
     line: "Assurance for models in production.",
-    body: "Independent evaluation of AI systems across security, data integrity and safety — probing model behaviour, data lineage and misuse pathways before and after deployment.",
+    body: "Independent evaluation of AI systems across security, data integrity and safety, probing model behaviour, data lineage and misuse pathways before and after deployment.",
     tags: ["Model Audits", "Risk Assessment", "Ethical AI", "Model Deployment"],
     items: [
       "AI system audits and risk assessments ensuring ethical",
@@ -177,12 +177,12 @@ export const DIFFERENTIATORS: { t: string; d: string; icon: "endToEnd" | "bridge
   {
     t: "The bridge between risk and compliance",
     icon: "bridge",
-    d: "We help you understand not just the rules, but the intent behind them — transforming compliance from a burden into a competitive advantage that builds lasting trust.",
+    d: "We help you understand not just the rules, but the intent behind them, transforming compliance from a burden into a competitive advantage that builds lasting trust.",
   },
   {
     t: "Intelligence that stays ahead",
     icon: "foresight",
-    d: "Cybersecurity isn't reactive — it's a mindset. We bring foresight, expertise and precision to anticipate threats before they materialise.",
+    d: "Cybersecurity isn't reactive; it's a mindset. We bring foresight, expertise and precision to anticipate threats before they materialise.",
   },
 ];
 
@@ -256,7 +256,7 @@ export const INDUSTRIES: { name: string; promise: string; d: string; slug: strin
 ];
 
 export const METHOD = [
-  { n: "01", t: "Discover", d: "Inventory assets, identities, data paths and third-party exposure — building a live picture of the full attack surface." },
+  { n: "01", t: "Discover", d: "Inventory assets, identities, data paths and third-party exposure, building a live picture of the full attack surface." },
   { n: "02", t: "Assess", d: "Emulate real adversary techniques and validate controls against the frameworks you are accountable to." },
   { n: "03", t: "Fortify", d: "Prioritize by exploitability and business impact, then remediate and harden where blast radius is greatest." },
   { n: "04", t: "Sustain", d: "Continuously monitor, re-test and train so posture holds as the estate and threat landscape shift." },
@@ -267,7 +267,7 @@ export const COMPLIANCE = ["DPDP Act", "ISO 27001", "SOC 2", "SEBI CSCRF", "GDPR
 /* Outcomes listed beside the closing call to action. */
 export const OUTCOMES = ["Identify", "Protect", "Comply", "Respond", "Stay ahead"];
 
-/* Homepage-only content below — kept separate from the datasets above (used
+/* Homepage-only content below: kept separate from the datasets above (used
    by their own dedicated pages) so this pass doesn't ripple into pages the
    reference doesn't cover. */
 
@@ -392,11 +392,11 @@ export const INSIGHTS: { tag: string; t: string; d: string; date: string }[] = [
 ];
 
 export const FAQS: [string, string][] = [
-  ["What does Envista Cyber Defence do?", "We protect organizations, individuals and governments from evolving cyber threats and data breaches — unifying offensive and defensive security, governance and compliance, data protection, training and AI assurance under one operating model."],
+  ["What does Envista Cyber Defence do?", "We protect organizations, individuals and governments from evolving cyber threats and data breaches, unifying offensive and defensive security, governance and compliance, data protection, training and AI assurance under one operating model."],
   ["Who do you work with?", "Enterprises, SMBs and government entities that need defensible, compliance-first security across a modern, distributed digital estate."],
-  ["How is an engagement structured?", "Every engagement runs the same closed loop — discover the attack surface, assess exposure against real adversary behaviour, fortify by blast radius, and sustain posture over time."],
-  ["Do you cover data protection and privacy?", "Yes. Our DPDP consulting operationalizes the Digital Personal Data Protection framework — mapping data flows, engineering consent and embedding accountability across systems and processors."],
-  ["Can you audit our AI systems?", "Our AI Audits independently evaluate models for security, data integrity and safe behaviour — red-teaming model outputs and tracing data lineage before and after production."],
+  ["How is an engagement structured?", "Every engagement runs the same closed loop: discover the attack surface, assess exposure against real adversary behaviour, fortify by blast radius, and sustain posture over time."],
+  ["Do you cover data protection and privacy?", "Yes. Our DPDP consulting operationalizes the Digital Personal Data Protection framework, mapping data flows, engineering consent and embedding accountability across systems and processors."],
+  ["Can you audit our AI systems?", "Our AI Audits independently evaluate models for security, data integrity and safe behaviour, red-teaming model outputs and tracing data lineage before and after production."],
 ];
 
 export type ServiceMenuItem = {
@@ -520,7 +520,7 @@ export const PLATFORM_CAPABILITIES: PlatformCapability[] = [
     shortTitle: "Brand Monitoring",
     badge: "ANTI-IMPERSONATION & TAKEDOWN",
     tagline: "Detect and Neutralize Weaponized Brand Assets, Phishing & Executive Clones.",
-    envistaVoice: "Your brand identity is your organization's most trusted commercial capital—and cybercriminals weaponize that trust. Envista Brand Monitoring continuously sweeps the surface, deep, and dark web to dismantle lookalike domains, fake executive profiles, rogue mobile apps, and phishing portals before they reach your customers or partners.",
+    envistaVoice: "Your brand identity is your organization's most trusted commercial capital, and cybercriminals weaponize that trust. Envista Brand Monitoring continuously sweeps the surface, deep, and dark web to dismantle lookalike domains, fake executive profiles, rogue mobile apps, and phishing portals before they reach your customers or partners.",
     features: [
       {
         title: "Typosquatting & Lookalike Domain Detection",
@@ -742,7 +742,7 @@ export const PLATFORM_CAPABILITIES: PlatformCapability[] = [
     shortTitle: "Supply Chain Risk",
     badge: "THIRD-PARTY ECOSYSTEM DEFENSE",
     tagline: "Continuous Vendor Cyber Hygiene Scoring & Third-Party Exposure Tracking.",
-    envistaVoice: "Your perimeter security is only as strong as the least secure vendor in your supply chain. Envista Supply Chain Risk Monitoring assesses and tracks the external cyber posture of your suppliers, third-party software partners, and service providers—detecting shared vulnerabilities before they cascade into your network.",
+    envistaVoice: "Your perimeter security is only as strong as the least secure vendor in your supply chain. Envista Supply Chain Risk Monitoring assesses and tracks the external cyber posture of your suppliers, third-party software partners, and service providers, detecting shared vulnerabilities before they cascade into your network.",
     features: [
       {
         title: "Non-Intrusive Vendor Posture Scoring",

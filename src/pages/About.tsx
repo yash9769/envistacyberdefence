@@ -101,12 +101,12 @@ interface TeamMember {
 }
 
 const LEADERSHIP_DATA: TeamMember[] = [
-  // 1. THE VISIONARY
+  // 1. FOUNDER
   {
     name: "AMITKUMAR MORE",
     role: "Founder & Chief Executive Officer",
     category: "directors",
-    categoryLabel: "The Visionary",
+    categoryLabel: "Founder",
     image: amitUrl,
     linkedin: "https://www.linkedin.com/in/amitkumarmore/",
     bio: "Amitkumar leads Envista Cyber Defence with over a decade of executive leadership in cybersecurity, threat intelligence, and digital defense governance. He has spearheaded critical security transformations across enterprise infrastructures, empowering organizations across India and globally to maintain proactive cyber resilience.",
@@ -240,7 +240,7 @@ export default function About() {
           <div className="mt-5 sm:mt-6 max-w-4xl">
             <h1 className="font-display text-2xl font-extrabold tracking-[-0.02em] text-white sm:text-4xl lg:text-[48px] leading-[1.15]">
               <RevealText
-                text="Envista Cyber Defence — Security Beyond The Surface"
+                text="Envista Cyber Defence: Security Beyond The Surface"
                 stagger={30}
               />
             </h1>
@@ -608,7 +608,7 @@ export default function About() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
               {[
                 { id: "all", label: "All Leadership" },
-                { id: "directors", label: "The Visionary" },
+                { id: "directors", label: "Founder" },
                 { id: "foundational", label: "Foundational Team" },
                 { id: "advisory", label: "Advisory Board" },
               ].map((tab) => {
@@ -631,7 +631,7 @@ export default function About() {
           </div>
 
           {/* ------------------------------------------------------------- */}
-          {/* TIER 1: THE VISIONARY                                         */}
+          {/* TIER 1: FOUNDER                                               */}
           {/* ------------------------------------------------------------- */}
           {(leadershipTab === "all" || leadershipTab === "directors") && (
             <div className="mb-16">
@@ -641,7 +641,7 @@ export default function About() {
                   <div className="flex items-center gap-2.5 rounded-full border border-violet-400/40 bg-violet-950/60 px-5 py-1.5 shadow-[0_0_15px_rgba(168,85,247,0.35)] backdrop-blur-md shrink-0">
                     <span className="h-2 w-2 rounded-full bg-violet-400 animate-pulse shadow-[0_0_8px_#a855f7]" />
                     <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-violet-200">
-                      The Visionary
+                      Founder
                     </h3>
                   </div>
                   <div className="h-px flex-1 bg-gradient-to-l from-transparent via-violet-500/30 to-violet-400/60" />
@@ -655,7 +655,7 @@ export default function About() {
                     <div className="group relative flex h-full flex-col items-center rounded-2xl border border-white/15 bg-white/[0.05] p-7 text-center shadow-xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/60 hover:bg-white/[0.08] hover:shadow-[0_16px_36px_rgba(124,58,237,0.3)]">
                       {/* Category Pill */}
                       <span className="mb-4 rounded-full border border-violet-400/40 bg-violet-950/60 px-3 py-0.5 text-[10.5px] font-mono font-semibold uppercase tracking-wider text-[#d8b4fe]">
-                        The Visionary
+                        Founder
                       </span>
 
                       {/* Photo */}
@@ -931,7 +931,7 @@ export default function About() {
                 <RevealText text="Aligned to the frameworks that matter." />
               </h2>
               <p className="mt-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 transition-colors leading-relaxed">
-                We operate inside the global statutory standards our enterprise clients answer to — turning compliance from a checkbox into continuously evidenced security advantage.
+                We operate inside the global statutory standards our enterprise clients answer to, turning compliance from a checkbox into continuously evidenced security advantage.
               </p>
             </div>
             <div className="shrink-0">

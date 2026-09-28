@@ -177,8 +177,8 @@ const COMPARISON_POINTS = [
   },
   {
     dimension: "Threat Posture",
-    traditional: "Reactive — acts only after a breach or compromise occurs",
-    envista: "Proactive — continuous adversary emulation preventing breaches before weaponization",
+    traditional: "Reactive: acts only after a breach or compromise occurs",
+    envista: "Proactive: continuous adversary emulation preventing breaches before weaponization",
   },
   {
     dimension: "Regulatory Coverage",
@@ -316,7 +316,7 @@ export default function Methodology() {
               A Defensible Three-Phase Lifecycle
             </h2>
             <p className="mt-4 text-sm sm:text-base text-[#d8cefa] leading-relaxed">
-              Every engagement executes this precise, auditable sequence — ensuring your protection is measurable, evidenced, and defensible, never ad hoc.
+              Every engagement executes this precise, auditable sequence, ensuring your protection is measurable, evidenced, and defensible, never ad hoc.
             </p>
           </div>
 
@@ -610,7 +610,7 @@ export default function Methodology() {
                   24/7 Security Operations
                 </span>
                 <h2 className="mt-4 font-display text-3xl sm:text-4xl font-extrabold text-white">
-                  When You Need Us Most — We Are There.
+                  When You Need Us Most: We Are There.
                 </h2>
                 <p className="mt-3 text-sm sm:text-base text-[#d8cefa] leading-relaxed max-w-2xl">
                   ENVISTA provides round-the-clock defense so your organization is never left exposed. Our vetted cyber directors and incident response leads are on standby 24/7 to triage threats, contain breaches, and preserve operational continuity.

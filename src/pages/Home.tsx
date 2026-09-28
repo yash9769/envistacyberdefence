@@ -89,7 +89,7 @@ function TrustedIndustries() {
 }
 
 /* ---------------------------------------------------------------- */
-/* What we do — six service cards                                    */
+/* What we do: six service cards                                    */
 /* ---------------------------------------------------------------- */
 function WhatWeDo() {
   return (
@@ -165,7 +165,7 @@ function WhatWeDo() {
 }
 
 /* ---------------------------------------------------------------- */
-/* Our approach — four-step horizontal progression                   */
+/* Our approach: four-step horizontal progression                   */
 /* ---------------------------------------------------------------- */
 function OurApproach() {
   return (
@@ -235,9 +235,9 @@ function OurApproach() {
 }
 
 /* ---------------------------------------------------------------- */
-/* Real impact — dark navy/purple statistics band                    */
+/* Real impact: dark navy/purple statistics band                    */
 /* ---------------------------------------------------------------- */
-/* Inset rounded card, not a full-bleed band — in the reference this section
+/* Inset rounded card, not a full-bleed band: in the reference this section
    floats on the white page with margins on both sides and softly curved
    contour lines sweeping through its right half. */
 function RealImpact() {
@@ -410,7 +410,7 @@ export default function Home() {
   );
 }
 
-/* Final CTA — reused (as CtaBand) at the foot of every inner page. */
+/* Final CTA: reused (as CtaBand) at the foot of every inner page. */
 export function CtaBand() {
   return (
     <section className="relative overflow-hidden border-t border-slate-200 bg-slate-50">

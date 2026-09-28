@@ -227,7 +227,7 @@ export default function Layout() {
           <Link
             to="/"
             className="flex items-center shrink-0 transition-transform duration-200 hover:opacity-95"
-            aria-label="Envista Cyber Defence — Home"
+            aria-label="Envista Cyber Defence - Home"
           >
             <Logo className="h-6.5 sm:h-7 lg:h-[29px] w-auto object-contain" />
           </Link>

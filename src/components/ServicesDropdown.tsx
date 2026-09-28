@@ -119,7 +119,7 @@ export default function ServicesDropdown({
           </Link>
         </div>
 
-        {/* 6 Core Services Grid — 6 columns on desktop so all 6 are visible in ONE row without cutting off */}
+        {/* 6 Core Services Grid: 6 columns on desktop so all 6 are visible in ONE row without cutting off */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5">
           {CAPABILITIES.map((service) => (
             <Link

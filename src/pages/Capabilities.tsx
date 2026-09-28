@@ -48,7 +48,7 @@ const SERVICES_DEEP_DIVE: Record<string, ServiceDetail> = {
     promise: "Adversary Emulation & Goal-Based Penetration Testing",
     icon: "offensive",
     summary:
-      "Goal-based penetration testing, red teaming, and adversary emulation that chain real-world exploitation techniques across applications, networks, APIs, and cloud infrastructure — proving actual business exploitability.",
+      "Goal-based penetration testing, red teaming, and adversary emulation that chain real-world exploitation techniques across applications, networks, APIs, and cloud infrastructure, proving actual business exploitability.",
     metrics: [
       { value: "0-Day", label: "Exploit Chains" },
       { value: "100%", label: "PoC Evidence" },
@@ -176,7 +176,7 @@ const SERVICES_DEEP_DIVE: Record<string, ServiceDetail> = {
     promise: "Governance, Statutory Compliance & Virtual CISO Leadership",
     icon: "grc",
     summary:
-      "Risk quantification, control engineering, and continuous audit readiness that bind technical cybersecurity to enterprise business governance — ensuring compliance is demonstrable, defensible, and continuously evidenced.",
+      "Risk quantification, control engineering, and continuous audit readiness that bind technical cybersecurity to enterprise business governance, ensuring compliance is demonstrable, defensible, and continuously evidenced.",
     metrics: [
       { value: "100%", label: "Audit Pass Rate" },
       { value: "ISO 27001", label: "2022 Ready" },
@@ -353,7 +353,7 @@ const SERVICES_DEEP_DIVE: Record<string, ServiceDetail> = {
     promise: "Independent Security, Privacy & Safety for AI & LLM Systems",
     icon: "ai",
     summary:
-      "Rigorous independent evaluation of artificial intelligence and large language model (LLM) deployments across security, data integrity, prompt injection resistance, and privacy — ensuring resilient, safe, and statutory-compliant AI.",
+      "Rigorous independent evaluation of artificial intelligence and large language model (LLM) deployments across security, data integrity, prompt injection resistance, and privacy, ensuring resilient, safe, and statutory-compliant AI.",
     metrics: [
       { value: "LLM Top 10", label: "OWASP Hardened" },
       { value: "0-Leak", label: "Data Privacy" },
@@ -643,7 +643,7 @@ export default function Capabilities() {
       </section>
 
       {/* ------------------------------------------------------------ */}
-      {/* SECTION 2 — HIGH-IMPACT CLOSING CTA BAND                     */}
+      {/* SECTION 2: HIGH-IMPACT CLOSING CTA BAND                     */}
       {/* ------------------------------------------------------------ */}
       <CtaBand />
     </div>

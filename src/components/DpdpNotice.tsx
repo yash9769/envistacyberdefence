@@ -9,9 +9,9 @@ import { CaretDown } from "@phosphor-icons/react";
    relied on in production; DPDP requires a genuine grievance officer
    contact. */
 const GRIEVANCE_OFFICER = {
-  name: "[Grievance Officer Name — TODO: replace]",
-  email: "[grievance-officer@envistacyberdefence.com — TODO: replace]",
-  address: "[Registered office address — TODO: replace]",
+  name: "[Grievance Officer Name - TODO: replace]",
+  email: "[grievance-officer@envistacyberdefence.com - TODO: replace]",
+  address: "[Registered office address - TODO: replace]",
 };
 
 const RETENTION_PERIOD = "12 months from the date of submission";

@@ -3,7 +3,7 @@ import { CtaBand } from "./Home";
 
 const WRAP = "mx-auto w-full max-w-[1360px] px-4 sm:px-6 lg:px-8";
 
-/* Engagement formats — what a piece of work with Envista actually looks like. */
+/* Engagement formats: what a piece of work with Envista actually looks like. */
 const FORMATS: { n: string; t: string; scope: string; d: string }[] = [
   {
     n: "01",

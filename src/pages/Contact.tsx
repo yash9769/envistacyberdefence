@@ -282,7 +282,7 @@ export default function Contact() {
 
                 {/* Massive Bold Headline */}
                 <h1 className="mt-5 font-display text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-[50px] lg:leading-[1.12]">
-                  Let&rsquo;s talk security &mdash;{" "}
+                  Let&rsquo;s talk security:{" "}
                   <span className="block mt-1 bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
                     Envista is here to help.
                   </span>

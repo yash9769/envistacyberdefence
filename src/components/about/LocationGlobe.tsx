@@ -386,7 +386,7 @@ export default function LocationGlobe() {
         </h2>
 
         <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base leading-relaxed text-[#d8cefa]">
-          Operating across premier technology, banking, and governance capitals in India and Dubai — safeguarding enterprise digital infrastructure with sovereign, adversary-grade cybersecurity.
+          Operating across premier technology, banking, and governance capitals in India and Dubai, safeguarding enterprise digital infrastructure with sovereign, adversary-grade cybersecurity.
         </p>
       </div>
 
