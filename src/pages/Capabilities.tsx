@@ -457,7 +457,7 @@ export default function Capabilities() {
 
               <h1 className="mt-1.5 font-display text-2xl sm:text-3xl lg:text-[32px] font-extrabold tracking-tight text-[#150c2e] dark:text-white leading-tight">
                 {activeServiceId === "all" ? (
-                  <RevealText text="End-to-End Cyber Defence Capabilities" />
+                  <RevealText text="End-to-End Cyber Security Capabilities" />
                 ) : (
                   <>
                     What We Deliver Under{" "}

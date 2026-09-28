@@ -504,7 +504,7 @@ export default function About() {
           <div className="text-center max-w-2xl mx-auto mb-14">
             <Kicker n="04" tone="light">What We Offer</Kicker>
             <h2 className="mt-3 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0d1020] dark:text-white">
-              End-to-End Cyber Defence Capabilities
+              End-to-End Cyber Security Capabilities
             </h2>
             <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">
               High-fidelity offensive testing, continuous vigilance, and regulatory assurance under one roof.
