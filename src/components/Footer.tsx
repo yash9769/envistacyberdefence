@@ -55,6 +55,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
     links: [
       { label: "Privacy Policy", href: "/faq" },
       { label: "Terms of Service", href: "/faq" },
+      { label: "Cookie Preferences", href: "#" },
       { label: "Cookie Policy", href: "/faq" },
       { label: "Responsible Disclosure", href: "/faq" },
     ],
@@ -122,12 +123,25 @@ export default function Footer() {
                 <ul className="space-y-2.5">
                   {col.links.map((link) => (
                     <li key={link.label}>
-                      <Link
-                        to={link.href}
-                        className="text-[13px] text-slate-400 transition-colors duration-150 hover:text-white"
-                      >
-                        {link.label}
-                      </Link>
+                      {link.label === "Cookie Preferences" ? (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.dispatchEvent(new Event("open-cookie-settings"));
+                          }}
+                          className="text-[13px] text-slate-400 transition-colors duration-150 hover:text-white cursor-pointer text-left"
+                        >
+                          {link.label}
+                        </button>
+                      ) : (
+                        <Link
+                          to={link.href}
+                          className="text-[13px] text-slate-400 transition-colors duration-150 hover:text-white"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
