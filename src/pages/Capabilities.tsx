@@ -447,7 +447,7 @@ export default function Capabilities() {
         <div className={`${WRAP} w-full flex flex-col justify-center`}>
           {/* Top Header Bar: Title, Subtitle & Interactive Switcher Bar */}
           <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between mb-4 lg:mb-5">
-            <div className="max-w-2xl">
+            <div className="max-w-3xl lg:max-w-4xl">
               <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-violet-50 px-3 py-0.5 text-xs font-semibold text-[#6d28d9] dark:bg-white/10 dark:text-[#c4b5fd]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#6d28d9] dark:bg-[#a78bfa]" />
                 <span className="font-mono text-[10.5px] uppercase tracking-wider">
@@ -461,7 +461,9 @@ export default function Capabilities() {
                 ) : (
                   <>
                     What We Deliver Under{" "}
-                    <span className="text-[#6d28d9] dark:text-[#c4b5fd]">{activeService.title}</span>
+                    <span className="text-[#6d28d9] dark:text-[#c4b5fd] inline-block whitespace-nowrap">
+                      {activeService.title}
+                    </span>
                   </>
                 )}
               </h1>
