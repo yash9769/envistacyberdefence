@@ -46,25 +46,25 @@ const OFFICE_DATA: OfficeLocation[] = [
         num: "01",
         title: "Andheri (East) Head Office",
         address:
-          "Unit No. B-406 to 410, 4th floor, Navkar Chambers, Marol Naka Metro Station, Andheri (East), Maharashtra – 400059",
+          "Unit No. B-406 to 410, 4th floor, Navkar Chambers, Marol Naka Metro Station, Andheri (East), Maharashtra - 400059",
       },
       {
         num: "02",
         title: "Mazgaon Practice",
         address:
-          "Shop No. 11A, 345, New Sai Niketan CHS Ltd, Dr Mascarenhas Road, Mazgaon, Mumbai – 400010",
+          "Shop No. 11A, 345, New Sai Niketan CHS Ltd, Dr Mascarenhas Road, Mazgaon, Mumbai - 400010",
       },
       {
         num: "03",
         title: "Masjid Bunder Practice",
         address:
-          "Unit No. 402, 4th floor, Nav Vyapar Bhavan, 49 P.D'mello Road, MB, Maharashtra – 400009",
+          "Unit No. 402, 4th floor, Nav Vyapar Bhavan, 49 P.D'mello Road, MB, Maharashtra - 400009",
       },
       {
         num: "04",
         title: "Kalyan Practice",
         address:
-          "Unit No. 11-12, Regency Avenue, Murbad Road, Kalyan (West), Maharashtra – 421301",
+          "Unit No. 11-12, Regency Avenue, Murbad Road, Kalyan (West), Maharashtra - 421301",
       },
     ],
   },
@@ -116,7 +116,7 @@ const OFFICE_DATA: OfficeLocation[] = [
         num: "01",
         title: "Delhi DLF Centre Head Office",
         address:
-          "Unit No. 306, DLF Centre, Savitri Cinema Complex, Greater Kailash II, Delhi – 110048",
+          "Unit No. 306, DLF Centre, Savitri Cinema Complex, Greater Kailash II, Delhi - 110048",
       },
     ],
   },
@@ -136,7 +136,7 @@ const OFFICE_DATA: OfficeLocation[] = [
         num: "01",
         title: "Bengaluru AECS Layout Office",
         address:
-          "3rd Floor, Aria, No. 541 AECS Layout Main Road, Above Costa Coffee, Bangalore – 560 037",
+          "3rd Floor, Aria, No. 541 AECS Layout Main Road, Above Costa Coffee, Bangalore - 560 037",
       },
     ],
   },
@@ -156,31 +156,31 @@ const OFFICE_DATA: OfficeLocation[] = [
         num: "01",
         title: "Ahmedabad Corporate Practice",
         address:
-          "Level 10, 1016–21, Swati Clover, Shilaj Circle, Sardar Patel Ring Road, Thaltej, Ahmedabad, Gujarat – 380054",
+          "Level 10, 1016-21, Swati Clover, Shilaj Circle, Sardar Patel Ring Road, Thaltej, Ahmedabad, Gujarat - 380054",
       },
       {
         num: "02",
         title: "Vadodara Lila Chambers",
         address:
-          "4th floor, Lila Chambers, Notus Pride, Vadodara, Gujarat – 390023",
+          "4th floor, Lila Chambers, Notus Pride, Vadodara, Gujarat - 390023",
       },
       {
         num: "03",
         title: "Rajkot Office",
         address:
-          "B 303, Kings Heights, Vidya Kunj Society, Main Road, Near Amin Marg, Rajkot, Gujarat – 360001",
+          "B 303, Kings Heights, Vidya Kunj Society, Main Road, Near Amin Marg, Rajkot, Gujarat - 360001",
       },
       {
         num: "04",
         title: "Surat Practice",
         address:
-          "504, 5th Floor, Shubh Square, Opp Venus Hospital, Lal Darwaja, Gotalawadi Road, Surat, Gujarat – 395003",
+          "504, 5th Floor, Shubh Square, Opp Venus Hospital, Lal Darwaja, Gotalawadi Road, Surat, Gujarat - 395003",
       },
       {
         num: "05",
         title: "Vapi Office",
         address:
-          "Unit No. 101, Saga Casa, Daulat Nagar, Vapi, Gujarat – 396215",
+          "Unit No. 101, Saga Casa, Daulat Nagar, Vapi, Gujarat - 396215",
       },
     ],
   },
@@ -200,7 +200,7 @@ const OFFICE_DATA: OfficeLocation[] = [
         num: "01",
         title: "Hyderabad Cyber Towers Practice",
         address:
-          "Level 5, Cyber Towers, HITEC City, Madhapur, Hyderabad, Telangana – 500081",
+          "Level 5, Cyber Towers, HITEC City, Madhapur, Hyderabad, Telangana - 500081",
       },
     ],
   },
@@ -220,7 +220,7 @@ const OFFICE_DATA: OfficeLocation[] = [
         num: "01",
         title: "T. Nagar Corporate Hub",
         address:
-          "No: 43/65, South West Boag Road, T-Nagar, Chennai – 600017",
+          "No: 43/65, South West Boag Road, T-Nagar, Chennai - 600017",
       },
     ],
   },
@@ -240,7 +240,7 @@ const OFFICE_DATA: OfficeLocation[] = [
         num: "01",
         title: "Kolkata Camac Street Hub",
         address:
-          "Unit No. 402, 4th floor, Vardhan Complex, 25A Camac Street, Kolkata, West Bengal – 700016",
+          "Unit No. 402, 4th floor, Vardhan Complex, 25A Camac Street, Kolkata, West Bengal - 700016",
       },
     ],
   },

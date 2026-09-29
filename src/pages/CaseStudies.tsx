@@ -8,25 +8,25 @@ const FORMATS: { n: string; t: string; scope: string; d: string }[] = [
   {
     n: "01",
     t: "Adversary Emulation & Crown-Jewel Exercise",
-    scope: "4–6 weeks",
+    scope: "4-6 weeks",
     d: "A goal-based engagement against a defined crown-jewel objective, chaining real techniques across application, identity and cloud until the path is proven or closed.",
   },
   {
     n: "02",
     t: "Detection Uplift & SOC Engineering",
-    scope: "6–10 weeks",
+    scope: "6-10 weeks",
     d: "Detection engineering against emulated activity: coverage mapped, rules written and tuned, and response runbooks rehearsed with the operating team.",
   },
   {
     n: "03",
     t: "DPDP Act Readiness & Privacy Mapping",
-    scope: "8–12 weeks",
+    scope: "8-12 weeks",
     d: "Data-flow mapping, consent architecture and accountability controls implemented across systems and processors, ending in an evidenced readiness position.",
   },
   {
     n: "04",
     t: "Audit Readiness & Regulatory Assurance",
-    scope: "6–12 weeks",
+    scope: "6-12 weeks",
     d: "Control design and evidence pipelines built against the frameworks you answer to, so an audit draws on records the business already produces.",
   },
 ];

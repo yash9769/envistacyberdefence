@@ -207,25 +207,25 @@ const AUDITABLE_MILESTONES = [
     step: "Milestone 01",
     name: "Discovery Dossier & Threat Scope",
     desc: "Full attack surface catalog, external IP footprint, shadow IT mapping, and initial vulnerability vector analysis.",
-    badge: "Days 1–7",
+    badge: "Days 1-7",
   },
   {
     step: "Milestone 02",
     name: "Adversary Emulation & Exploitation Proofs",
     desc: "Authorized penetration testing with verified, evidence-backed proof-of-concept exploits showing exact attack paths.",
-    badge: "Days 8–18",
+    badge: "Days 8-18",
   },
   {
     step: "Milestone 03",
     name: "Executive Scorecard & Engineering Roadmap",
     desc: "C-suite strategic risk heatmaps, prioritized remediation tickets, and compliance gap analysis for engineering teams.",
-    badge: "Days 19–24",
+    badge: "Days 19-24",
   },
   {
     step: "Milestone 04",
     name: "Verification Re-Testing & Sovereign Attestation",
     desc: "Comprehensive re-validation of all patched vulnerabilities, accompanied by an official Sovereign Attestation Letter.",
-    badge: "Days 25–30",
+    badge: "Days 25-30",
   },
 ];
 

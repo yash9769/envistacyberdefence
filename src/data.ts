@@ -439,7 +439,7 @@ export const SERVICES_MEGA_MENU: ServiceMenuCategory[] = [
     ],
   },
   {
-    category: "Security Assessment Services – OT",
+    category: "Security Assessment Services (OT)",
     items: [
       { title: "OT / ICS Cyber Security Assessment", href: "/capabilities#vapt" },
     ],
