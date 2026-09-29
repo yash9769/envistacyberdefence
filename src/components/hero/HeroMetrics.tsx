@@ -1,42 +1,30 @@
 import { HERO_STATS } from "../../data";
 
-/* Four headline proof points with hairlines between items and a subtle dot matrix on the right */
+/* Four headline proof points with uniform spacing, consistent vertical hairlines, and balanced typography */
 export default function HeroMetrics() {
   return (
-    <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-8">
-      <dl className="grid grid-cols-2 gap-y-6 sm:grid-cols-4 sm:gap-y-0">
-        {HERO_STATS.map((s, i) => (
+    <div className="w-full pt-4 sm:pt-5 border-t border-white/15">
+      <dl className="grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/20 w-full">
+        {HERO_STATS.map((s, idx) => (
           <div
             key={s.label}
-            className={
-              i === 0
-                ? "pr-4 sm:pr-6"
-                : i === 2
-                  ? "pr-4 sm:border-l sm:border-slate-200 sm:pl-6 sm:pr-6"
-                  : "border-l border-slate-200 pl-4 sm:pl-6"
-            }
+            className={`flex flex-col justify-start py-3 sm:py-0 ${
+              idx === 0
+                ? "sm:pr-5 lg:pr-7"
+                : idx === HERO_STATS.length - 1
+                  ? "sm:pl-5 lg:pl-7"
+                  : "sm:px-5 lg:px-7"
+            }`}
           >
-            <dt
-              className="font-display text-[26px] font-bold leading-none tracking-[-0.02em] text-[#0d1020] lg:text-[30px]"
-            >
+            <dt className="font-display text-[30px] sm:text-[32px] lg:text-[36px] font-extrabold leading-none tracking-tight text-white">
               {s.v}
             </dt>
-            <dd className="mt-1.5 text-[12px] font-normal leading-snug text-[#575f75]">
+            <dd className="mt-2 text-[12px] sm:text-[12.5px] lg:text-[13px] font-medium leading-snug text-slate-300">
               {s.label}
             </dd>
           </div>
         ))}
       </dl>
-
-      {/* Subtle Dot Matrix to the right of metrics, matching reference */}
-      <div
-        aria-hidden="true"
-        className="hidden h-[44px] w-[64px] shrink-0 opacity-40 xl:block"
-        style={{
-          backgroundImage: "radial-gradient(#6d28d9 1.3px, transparent 1.3px)",
-          backgroundSize: "10px 10px",
-        }}
-      />
     </div>
   );
 }

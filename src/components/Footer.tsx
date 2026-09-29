@@ -97,18 +97,18 @@ export default function Footer() {
         {/* Main Grid: Columns & Socials matching reference image */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 lg:gap-8 pb-12">
           {/* Left Brand Identity: Authentic Envista Cyber Defence Logo (Dark Mode) */}
-          <div className="shrink-0 max-w-xs space-y-3">
+          <div className="shrink-0 max-w-sm space-y-4">
             <Link to="/" className="inline-block transition-opacity hover:opacity-90">
               <img
                 src={logoDarkUrl}
                 alt="Envista Cyber Defence"
                 width={1695}
                 height={516}
-                className="h-8 sm:h-9 w-auto select-none object-contain"
+                className="h-11 sm:h-12 lg:h-[50px] w-auto select-none object-contain"
                 draggable={false}
               />
             </Link>
-            <p className="text-xs leading-relaxed text-slate-400">
+            <p className="text-[13px] leading-relaxed text-slate-400 max-w-[320px]">
               Sovereign, adversary-grade cybersecurity architecture, defensive intelligence, and enterprise resilience across India and the GCC.
             </p>
           </div>

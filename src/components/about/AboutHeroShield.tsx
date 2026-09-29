@@ -1,8 +1,8 @@
-import React, { useMemo, useRef, useState, useEffect, Suspense, Component } from "react";
+import React, { useMemo, useRef, Suspense, Component } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment } from "@react-three/drei";
 import * as THREE from "three";
 import { SVGLoader } from "three/examples/jsm/loaders/SVGLoader.js";
+import svgRaw from "../../imports/envista-mark.svg?raw";
 import svgUrl from "../../imports/envista-mark.svg?url";
 
 class WebGLErrorBoundary extends Component<
@@ -30,7 +30,7 @@ class WebGLErrorBoundary extends Component<
             <img
               src={svgUrl}
               alt="Envista Shield"
-              className="h-44 w-44 object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.6)] animate-float"
+              className="h-44 w-44 object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.7)] animate-float"
             />
           </div>
         )
@@ -42,21 +42,25 @@ class WebGLErrorBoundary extends Component<
 
 // --- 3D METALLIC PURPLE SHIELD FOR ABOUT HERO ---
 function Shield3DAbout() {
-  const [shapes, setShapes] = useState<THREE.Shape[]>([]);
   const meshRef = useRef<THREE.Group>(null);
 
-  useEffect(() => {
-    const loader = new SVGLoader();
-    loader.load(svgUrl, (data) => {
+  // Synchronous, zero-latency in-memory SVG parsing — eliminates external fetch/data-URI bugs in production
+  const shapes = useMemo(() => {
+    try {
+      const loader = new SVGLoader();
+      const data = loader.parse(svgRaw);
       const allShapes: THREE.Shape[] = [];
       for (const path of data.paths) {
         allShapes.push(...SVGLoader.createShapes(path));
       }
-      setShapes(allShapes);
-    });
+      return allShapes;
+    } catch (e) {
+      console.error("Failed to parse 3D shield SVG shapes in About:", e);
+      return [];
+    }
   }, []);
 
-  useFrame((state, delta) => {
+  useFrame((_state, delta) => {
     if (meshRef.current) {
       // Continuous 360-degree revolving rotation matching CyberCrest reference
       // Gently pauses/lingers slightly on the front face and turns smoothly through the edges
@@ -123,12 +127,12 @@ function Shield3DAbout() {
             <extrudeGeometry args={[shape, extrudeSettings]} />
             <meshPhysicalMaterial
               map={brandTexture}
-              color="#ffffff"
+              color="#ffffff" // Neutral base so authentic brand gradient renders with full fidelity
               emissive="#240338"
-              emissiveIntensity={0.16}
-              metalness={0.92}
-              roughness={0.14}
-              clearcoat={1.0}
+              emissiveIntensity={0.18}
+              metalness={0.92} // High-luster machined alloy
+              roughness={0.14} // Glossy specular shine
+              clearcoat={1.0} // High-gloss studio lacquer
               clearcoatRoughness={0.06}
               reflectivity={1.0}
             />
@@ -139,7 +143,7 @@ function Shield3DAbout() {
   );
 }
 
-// --- LIGHTING WITH SWEEPING SPECULAR HIGHLIGHTS ---
+// --- LIGHTING WITH SWEEPING SPECULAR HIGHLIGHTS (RELIABLE ZERO-ASSET SETUP) ---
 function AboutLightingSystem() {
   const sweepRef = useRef<THREE.DirectionalLight>(null);
 
@@ -152,24 +156,23 @@ function AboutLightingSystem() {
 
   return (
     <>
-      <ambientLight intensity={1.2} />
+      <ambientLight intensity={1.4} />
       {/* Front primary key light */}
-      <directionalLight position={[2, 6, 9]} intensity={4.5} color="#ffffff" />
+      <directionalLight position={[2, 6, 9]} intensity={4.8} color="#ffffff" />
       {/* Dynamic sweeping specular shine */}
       <directionalLight
         ref={sweepRef}
         color="#ffffff"
-        intensity={5.8}
+        intensity={6.2}
         position={[6, 3, 8]}
       />
       {/* High-angle rim light for top beveled edges */}
-      <directionalLight position={[0, 8, -4]} intensity={4.0} color="#f5d0fe" />
+      <directionalLight position={[0, 8, -4]} intensity={4.2} color="#f5d0fe" />
       {/* Lateral rim lights highlighting the 3D thickness */}
-      <directionalLight position={[-9, 2, 2]} intensity={5.0} color="#d8b4fe" />
-      <directionalLight position={[9, 2, 2]} intensity={4.0} color="#c084fc" />
+      <directionalLight position={[-9, 2, 2]} intensity={5.2} color="#d8b4fe" />
+      <directionalLight position={[9, 2, 2]} intensity={4.2} color="#c084fc" />
       {/* Subtle bottom warm magenta fill */}
-      <directionalLight position={[0, -7, 4]} intensity={2.0} color="#e879f9" />
-      <Environment files="/hdri/potsdamer_platz_1k.hdr" />
+      <directionalLight position={[0, -7, 4]} intensity={2.4} color="#e879f9" />
     </>
   );
 }
@@ -182,7 +185,7 @@ export default function AboutHeroShield({ className = "" }: { className?: string
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 -top-10 flex items-center justify-center"
       >
-        <div className="h-[360px] w-[360px] sm:h-[420px] sm:w-[420px] rounded-full bg-gradient-to-tr from-purple-700/35 via-violet-500/25 to-fuchsia-600/20 blur-[90px]" />
+        <div className="h-[360px] w-[360px] sm:h-[420px] sm:w-[420px] rounded-full bg-gradient-to-tr from-purple-700/40 via-violet-500/30 to-fuchsia-600/25 blur-[90px]" />
       </div>
 
       {/* 3D WebGL Canvas */}
@@ -190,7 +193,7 @@ export default function AboutHeroShield({ className = "" }: { className?: string
         <WebGLErrorBoundary>
           <Canvas
             camera={{ position: [0, 0, 9.2], fov: 40 }}
-            gl={{ antialias: true, alpha: true }}
+            gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
             dpr={[1, 2]}
           >
             <Suspense fallback={null}>

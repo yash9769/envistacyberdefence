@@ -350,11 +350,11 @@ export const HOME_SERVICES: HomeService[] = [
   },
 ];
 
-export const APPROACH_STEPS: { n: string; t: string; d: string }[] = [
-  { n: "01", t: "Discover", d: "Understand your assets, risks and exposure." },
-  { n: "02", t: "Plan", d: "Design a tailored security strategy." },
-  { n: "03", t: "Implement", d: "Deploy with precision." },
-  { n: "04", t: "Optimize", d: "Continuously improve and stay ahead." },
+export const APPROACH_STEPS: { t: string; d: string }[] = [
+  { t: "Discover", d: "Understand your assets, risks and exposure." },
+  { t: "Plan", d: "Design a tailored security strategy." },
+  { t: "Implement", d: "Deploy with precision." },
+  { t: "Optimize", d: "Continuously improve and stay ahead." },
 ];
 
 export const IMPACT_STATS: { v: number; suffix: string; label: string }[] = [

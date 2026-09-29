@@ -303,7 +303,7 @@ export default function About() {
               <Reveal>
                 <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-white/10 px-3.5 py-1 text-xs font-semibold text-[#c4b5fd] shadow-xs backdrop-blur-md mb-5">
                   <span className="h-1.5 w-1.5 rounded-full bg-[#a78bfa]" />
-                  <span className="font-mono text-[10.5px] uppercase tracking-wider">02 / Key Facts</span>
+                  <span className="font-mono text-[10.5px] uppercase tracking-wider">Key Facts</span>
                 </div>
 
                 <h2 className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-[46px] leading-[1.14]">
@@ -590,7 +590,7 @@ export default function About() {
           <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
             <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-white/10 px-3.5 py-1 text-xs font-semibold text-[#c4b5fd] shadow-xs backdrop-blur-md mb-4">
               <span className="h-1.5 w-1.5 rounded-full bg-[#a78bfa]" />
-              <span className="font-mono text-[10.5px] uppercase tracking-wider">05 / Leadership</span>
+              <span className="font-mono text-[10.5px] uppercase tracking-wider">Leadership</span>
             </div>
             <h2 className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-[42px]">
               <RevealText text="Our Leadership Team" />

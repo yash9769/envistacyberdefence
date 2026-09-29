@@ -1,375 +1,253 @@
-import type { ReactNode } from "react";
-import { ChartBar, ClipboardText, MagnifyingGlass, ShieldCheck } from "@phosphor-icons/react";
-import markUrl from "../../imports/envista-mark.png";
+import React, { useMemo, useRef, Component, Suspense } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import * as THREE from "three";
+import { SVGLoader } from "three/examples/jsm/loaders/SVGLoader.js";
+import svgRaw from "../../imports/envista-mark.svg?raw";
+import svgUrl from "../../imports/envista-mark.svg?url";
+import orbitSvgRaw from "../../imports/cybercrest-orbit.svg?raw";
 
-type StageCardProps = {
-  eyebrow: string;
-  title: string;
-  icon: "discover" | "test" | "protect" | "resilience";
-  className?: string;
-};
+// --- GRACEFUL WEBGL ERROR BOUNDARY ---
+class WebGLErrorBoundary extends Component<
+  { children: React.ReactNode; fallback?: React.ReactNode },
+  { hasError: boolean }
+> {
+  constructor(props: { children: React.ReactNode; fallback?: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
 
-const STAGE_CONFIG = {
-  discover: {
-    icon: MagnifyingGlass,
-    eyebrow: "DISCOVER",
-    title: "Identify and understand your risks.",
-  },
-  test: {
-    icon: ClipboardText,
-    eyebrow: "TEST",
-    title: "Validate your security posture.",
-  },
-  protect: {
-    icon: ShieldCheck,
-    eyebrow: "PROTECT",
-    title: "Strengthen defences and reduce risk.",
-  },
-  resilience: {
-    icon: ChartBar,
-    eyebrow: "RESILIENCE",
-    title: "Build a stronger, future-ready organization.",
-  },
-} as const;
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
 
-/* Reusable Horizontal Stage Card matching the exact reference image */
-function StageCard({
-  stage,
-  className = "",
-}: {
-  stage: "discover" | "test" | "protect" | "resilience";
-  className?: string;
-}) {
-  const config = STAGE_CONFIG[stage];
-  const Icon = config.icon;
+  componentDidCatch(error: any) {
+    console.warn("WebGL Canvas fallback engaged in HeroVisual:", error);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        this.props.fallback || (
+          <div className="flex h-full w-full items-center justify-center p-8">
+            <img
+              src={svgUrl}
+              alt="Envista Shield"
+              className="h-44 w-44 object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.7)] animate-float"
+            />
+          </div>
+        )
+      );
+    }
+    return this.props.children;
+  }
+}
+
+// --- 3D PURPLE METALLIC SHIELD EMBLEM (USER'S BRAND MARK) ---
+function Shield3D() {
+  const meshRef = useRef<THREE.Group>(null);
+
+  // Synchronous, zero-latency in-memory SVG parsing — eliminates external fetch/data-URI bugs in production
+  const shapes = useMemo(() => {
+    try {
+      const loader = new SVGLoader();
+      const data = loader.parse(svgRaw);
+      const allShapes: THREE.Shape[] = [];
+      for (const path of data.paths) {
+        allShapes.push(...SVGLoader.createShapes(path));
+      }
+      return allShapes;
+    } catch (e) {
+      console.error("Failed to parse 3D shield SVG shapes:", e);
+      return [];
+    }
+  }, []);
+
+  useFrame((_state, delta) => {
+    if (meshRef.current) {
+      // Smooth continuous Y-axis rotation that lingers on the front face and turns through the edge
+      const rot = meshRef.current.rotation.y;
+      const speed = 0.78 - Math.pow(Math.cos(rot), 2) * 0.46;
+      meshRef.current.rotation.y += delta * speed;
+    }
+  });
+
+  // Machined 3D metal emblem: substantial breadth (~10.5% of width) matching CyberCrest reference
+  const extrudeSettings = useMemo(
+    () => ({
+      depth: 46,
+      bevelEnabled: true,
+      bevelThickness: 3.8,
+      bevelSize: 2.6,
+      bevelSegments: 5,
+    }),
+    []
+  );
+
+  // Authentic Envista brand gradient texture sampled directly from logo.png
+  const brandTexture = useMemo(() => {
+    const canvas = document.createElement("canvas");
+    canvas.width = 512;
+    canvas.height = 512;
+    const ctx = canvas.getContext("2d");
+    if (ctx) {
+      // Diagonal gradient matching the exact sampled color distribution in logo.png:
+      // Vibrant coral-pink at top-right, transitioning to luminous magenta at top crest,
+      // rich royal purple through the center/apex, and deep electric violet on the left.
+      const grad = ctx.createLinearGradient(512, 40, 40, 480);
+      grad.addColorStop(0.0, "#f8739f"); // Vivid coral-pink highlight at top-right
+      grad.addColorStop(0.18, "#e25e9e"); // Radiant rose-orchid
+      grad.addColorStop(0.36, "#b553a8"); // Crown luminous magenta-orchid
+      grad.addColorStop(0.58, "#9337b0"); // Mid electric violet
+      grad.addColorStop(0.78, "#7426b6"); // Signature brand purple
+      grad.addColorStop(1.0, "#5e26b6"); // Deep electric indigo-purple
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 512, 512);
+    }
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    tex.wrapS = THREE.ClampToEdgeWrapping;
+    tex.wrapT = THREE.ClampToEdgeWrapping;
+    return tex;
+  }, []);
+
+  if (shapes.length === 0) return null;
+
+  // Proportions matched to CyberCrest: shield occupies ~50% of orbit diameter
+  const scale = 0.0056;
 
   return (
+    <group ref={meshRef}>
+      {/* Centering the 440x508 SVG path exactly at (0, 0, 0) with Z-depth centered */}
+      <group position={[-220 * scale, 254 * scale, -(46 / 2) * scale]} scale={[scale, -scale, scale]}>
+        {shapes.map((shape, index) => (
+          <mesh key={index} castShadow receiveShadow>
+            <extrudeGeometry args={[shape, extrudeSettings]} />
+            <meshPhysicalMaterial
+              map={brandTexture}
+              color="#ffffff" // Neutral base so authentic brand gradient renders with full fidelity
+              emissive="#240338"
+              emissiveIntensity={0.18}
+              metalness={0.92} // High-luster machined alloy
+              roughness={0.14} // Glossy specular shine
+              clearcoat={1.0} // High-gloss studio lacquer
+              clearcoatRoughness={0.06}
+              reflectivity={1.0}
+            />
+          </mesh>
+        ))}
+      </group>
+    </group>
+  );
+}
+
+// --- STUDIO LIGHTING & HIGH-SPECULAR SWEEP (RELIABLE ZERO-ASSET SETUP) ---
+function LightingSystem() {
+  const sweepLightRef = useRef<THREE.DirectionalLight>(null);
+  const pinkSweepRef = useRef<THREE.PointLight>(null);
+
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+    if (sweepLightRef.current) {
+      // Dynamic sweeping specular highlight glinting across the face and beveled edges
+      sweepLightRef.current.position.set(Math.sin(t * 0.85) * 9, 3, Math.cos(t * 0.85) * 5 + 6);
+    }
+    if (pinkSweepRef.current) {
+      // Dynamic moving pink specular point light rimming the shield from behind
+      pinkSweepRef.current.position.set(Math.sin(t * 0.75) * 4.2, Math.cos(t * 0.95) * 2.8, -2.5);
+    }
+  });
+
+  return (
+    <>
+      <ambientLight intensity={1.4} />
+      {/* Front key light for consistent metallic depth */}
+      <directionalLight position={[3, 5, 8]} intensity={4.8} color="#ffffff" />
+      {/* Sweeping sharp white specular reflection */}
+      <directionalLight
+        ref={sweepLightRef}
+        color="#ffffff"
+        intensity={6.0}
+        position={[6, 3, 7]}
+      />
+      {/* Top-right rim light highlighting the sculpted top bevel */}
+      <directionalLight position={[5, 7, -3]} intensity={4.0} color="#f3e8ff" />
+      {/* Left edge rim light highlighting the 3D extrusion breadth as it rotates */}
+      <directionalLight position={[-8, 3, 2]} intensity={5.0} color="#d8b4fe" />
+
+      {/* SOPHISTICATED VIOLET-ORCHID & SUBTLE WARM VELVET RIM LIGHTS */}
+      <directionalLight position={[0, 2, -6]} intensity={5.0} color="#c084fc" />
+      <pointLight ref={pinkSweepRef} color="#e879f9" intensity={5.2} distance={15} />
+      <directionalLight position={[0, -6, 3]} intensity={2.6} color="#a855f7" />
+    </>
+  );
+}
+
+// --- MAIN HERO VISUAL COMPONENT ---
+export default function HeroVisual({ className = "" }: { className?: string }) {
+  return (
     <div
-      className={`group flex items-center gap-4 rounded-2xl border bg-white p-4 lg:gap-5 lg:p-5 transition-all duration-300 hover:shadow-lg ${className}`}
-      style={{
-        borderColor: "rgba(13,16,32,0.06)",
-        boxShadow: "0 12px 36px -12px rgba(40,25,90,0.08)",
-      }}
+      className={`relative mx-auto aspect-square w-full max-w-[520px] lg:max-w-[580px] xl:max-w-[620px] flex items-center justify-center ${className}`}
     >
-      <span
-        className="flex h-12 w-12 lg:h-14 lg:w-14 shrink-0 items-center justify-center rounded-xl transition-colors duration-200"
-        style={{
-          backgroundColor: "rgba(124,58,237,0.04)",
-          border: "1px solid rgba(124,58,237,0.12)",
-          color: "#6d28d9",
-          boxShadow: "0 4px 12px rgba(124,58,237,0.05)"
-        }}
+      {/* ========================================================================= */}
+      {/* BRAND PURPLE & DARK NAVY WITH DELICATE LITTLE WHITE SPECULAR GRADIENT       */}
+      {/* ========================================================================= */}
+      <div
         aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-visible select-none"
       >
-        <Icon size={26} weight="bold" />
-      </span>
-      <div className="min-w-0 flex-1 pt-0.5">
+        {/* 1. Brand Royal Purple Primary Aura */}
         <div
-          className="text-[13px] lg:text-[14px] font-bold uppercase tracking-[0.06em]"
-          style={{ color: "#0d1020" }}
-        >
-          {config.eyebrow}
-        </div>
+          className="absolute h-[340px] w-[340px] sm:h-[440px] sm:w-[440px] rounded-full opacity-45 blur-[85px]"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.45) 0%, rgba(109, 40, 217, 0.25) 45%, transparent 75%)",
+          }}
+        />
+
+        {/* 2. Deep Dark Navy Blue Atmospheric Soft Depth */}
         <div
-          className="mt-0.5 text-[13px] lg:text-[14px] font-normal leading-[1.3]"
-          style={{ color: "#575f75" }}
-        >
-          {config.title}
-        </div>
+          className="absolute h-[420px] w-[420px] sm:h-[520px] sm:w-[520px] rounded-full opacity-35 blur-[100px]"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(30, 27, 75, 0.5) 0%, rgba(15, 23, 42, 0.3) 55%, transparent 80%)",
+          }}
+        />
+
+        {/* 3. Delicate little white specular gradient directly behind the shield core */}
+        <div
+          className="absolute h-[160px] w-[160px] sm:h-[200px] sm:w-[200px] rounded-full opacity-20 blur-[45px]"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.08) 45%, transparent 70%)",
+          }}
+        />
       </div>
-    </div>
-  );
-}
 
-/* Center Envista Shield Mark and Label matching reference */
-function CenterShield() {
-  return (
-    <div className="relative z-10 flex flex-col items-center select-none">
-      <img
-        src={markUrl}
-        alt="Envista Shield"
-        className="h-[88px] w-auto drop-shadow-[0_12px_24px_rgba(124,58,237,0.22)] lg:h-[100px]"
-        draggable={false}
-      />
-      <div className="mt-3 text-center leading-tight">
-        <div
-          className="font-display text-[16px] font-extrabold uppercase tracking-[0.14em] lg:text-[18px]"
-          style={{ color: "#0d1020" }}
-        >
-          ENVISTA
-        </div>
-        <div
-          className="mt-0.5 text-[12px] font-semibold tracking-[0.04em] lg:text-[13px]"
-          style={{ color: "#575f75" }}
-        >
-          Cyber Defence
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* Concentric Orbit Rings with Satellite Dots matching reference */
-function OrbitSystem() {
-  // Mobile / Desktop specific translation values logic is tricky without JS or standard classes.
-  // Instead, let's use percentage based positioning for the satellite dots.
-  // Using top/left % makes it scale with the container.
-  
-  return (
-    <div
-      aria-hidden="true"
-      className="pointer-events-none absolute inset-0 flex items-center justify-center"
-    >
-      {/* Subtle glowing radial gradient in the center */}
-      <div
-        className="absolute h-[500px] w-[500px] lg:h-[620px] lg:w-[620px] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(124,58,237,0.06) 0%, rgba(124,58,237,0) 70%)",
-        }}
-      />
-      
-      {/* Outer Orbit */}
-      <div
-        className="absolute h-[460px] w-[460px] rounded-full border border-dashed lg:h-[560px] lg:w-[560px]"
-        style={{ borderColor: "rgba(124,58,237,0.15)", borderDasharray: "4 4" }}
-      />
-      {/* Middle Orbit */}
-      <div
-        className="absolute h-[340px] w-[340px] rounded-full border border-dashed lg:h-[400px] lg:w-[400px]"
-        style={{ borderColor: "rgba(124,58,237,0.15)", borderDasharray: "4 4" }}
-      />
-      {/* Inner Orbit */}
-      <div
-        className="absolute h-[200px] w-[200px] rounded-full border border-solid lg:h-[230px] lg:w-[230px]"
-        style={{ borderColor: "rgba(124,58,237,0.1)" }}
-      />
-
-      {/* Dotted Radial Field - make it much more subtle like reference */}
-      <div
-        className="absolute h-[480px] w-[480px] rounded-full lg:h-[580px] lg:w-[580px]"
-        style={{
-          backgroundImage: "radial-gradient(rgba(124,58,237,0.12) 1px, transparent 1px)",
-          backgroundSize: "24px 24px",
-          maskImage: "radial-gradient(circle, transparent 40%, black 75%, transparent 100%)",
-          WebkitMaskImage: "radial-gradient(circle, transparent 40%, black 75%, transparent 100%)",
-        }}
-      />
-
-      {/* Satellite Dots placed along the orbits using absolute top/left percentages from center */}
-      {/* Inner ring - Top left (~315 deg) */}
-      <span
-        className="absolute h-2 w-2 rounded-full shadow-[0_0_8px_rgba(79,70,229,0.6)] bg-indigo-600"
-        style={{ top: "35%", left: "35%" }}
-      />
-      {/* Inner ring - Bottom right (~135 deg) */}
-      <span
-        className="absolute h-2 w-2 rounded-full shadow-[0_0_8px_rgba(79,70,229,0.6)] bg-indigo-600"
-        style={{ top: "65%", left: "65%" }}
-      />
-      
-      {/* Middle ring - Top (12 o'clock) */}
-      <span
-        className="absolute h-2 w-2 rounded-full shadow-[0_0_8px_rgba(79,70,229,0.6)] bg-indigo-600"
-        style={{ top: "15%", left: "50%", transform: "translate(-50%, -50%)" }}
-      />
-      {/* Middle ring - Bottom (6 o'clock) */}
-      <span
-        className="absolute h-2.5 w-2.5 rounded-full shadow-[0_0_8px_rgba(79,70,229,0.6)] bg-indigo-600"
-        style={{ top: "85%", left: "50%", transform: "translate(-50%, -50%)" }}
-      />
-      {/* Middle ring - Right (3 o'clock) */}
-      <span
-        className="absolute h-2 w-2 rounded-full shadow-[0_0_8px_rgba(79,70,229,0.6)] bg-indigo-600"
-        style={{ top: "50%", left: "85%", transform: "translate(-50%, -50%)" }}
-      />
-      {/* Middle ring - Left (9 o'clock) */}
-      <span
-        className="absolute h-2.5 w-2.5 rounded-full shadow-[0_0_8px_rgba(79,70,229,0.6)] bg-indigo-600"
-        style={{ top: "50%", left: "15%", transform: "translate(-50%, -50%)" }}
-      />
-      
-      {/* Outer ring - Top right (~45 deg) */}
-      <span
-        className="absolute h-2.5 w-2.5 rounded-full shadow-[0_0_8px_rgba(79,70,229,0.6)] bg-indigo-600"
-        style={{ top: "15%", left: "85%" }}
-      />
-      {/* Outer ring - Bottom left (~225 deg) */}
-      <span
-        className="absolute h-2.5 w-2.5 rounded-full shadow-[0_0_8px_rgba(79,70,229,0.6)] bg-indigo-600"
-        style={{ top: "85%", left: "15%" }}
-      />
-    </div>
-  );
-}
-
-export default function HeroVisual() {
-  return (
-    <div className="relative w-full">
-      {/* Desktop & Tablet Orbit System (>= 768px) */}
-      {/* Increased height and max width to allow a much larger framework */}
-      <div className="relative mx-auto hidden h-[520px] w-full max-w-[800px] md:block lg:h-[600px] lg:max-w-[820px]">
-        {/* Concentric rings & satellite dots */}
-        <OrbitSystem />
-
-        {/* Center Shield */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <CenterShield />
-        </div>
-
-        {/* 1. DISCOVER Card (Top-Left) */}
-        {/* Adjusted top position and width for larger cards */}
-        <div className="absolute left-0 top-[60px] z-20 w-[280px] lg:w-[320px] lg:top-[90px]">
-          {/* Top-Left Handwritten Annotation & Arrow matching reference */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute bottom-[90%] right-[10%] mb-1 flex flex-col items-center lg:right-[15%]"
-            style={{
-              fontFamily: "var(--font-hand)",
-              color: "#3b2f6b",
-              transform: "rotate(-6deg)"
-            }}
+      {/* 3D WebGL Canvas rendering the 3D rotating metallic shield */}
+      <div className="absolute inset-0 z-[1]">
+        <WebGLErrorBoundary>
+          <Canvas
+            camera={{ position: [0, 0, 10], fov: 45 }}
+            gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
+            dpr={[1, 2]}
           >
-            <p className="text-[19px] font-medium leading-[1.15] tracking-tight lg:text-[21px] text-center whitespace-nowrap">
-              Find<br />weaknesses before<br />attackers do.
-            </p>
-            <svg
-              width="60"
-              height="50"
-              viewBox="0 0 60 50"
-              fill="none"
-              className="mt-1 ml-4"
-            >
-              {/* Hand-drawn arrow pointing from text to card */}
-              <path
-                d="M10 5 C 25 25, 40 35, 55 42"
-                stroke="#4a3b78"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-              <path
-                d="M55 42 L 45 40 M 55 42 L 50 32"
-                stroke="#4a3b78"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <StageCard stage="discover" />
-        </div>
-
-        {/* 2. TEST Card (Top-Right) */}
-        <div className="absolute right-0 top-[60px] z-20 w-[280px] lg:w-[320px] lg:top-[90px]">
-          <StageCard stage="test" />
-        </div>
-
-        {/* 3. PROTECT Card (Bottom-Left) */}
-        <div className="absolute bottom-[60px] left-0 z-20 w-[280px] lg:w-[320px] lg:bottom-[90px]">
-          <StageCard stage="protect" />
-        </div>
-
-        {/* 4. RESILIENCE Card (Bottom-Right) */}
-        <div className="absolute bottom-[60px] right-0 z-20 w-[280px] lg:w-[320px] lg:bottom-[90px]">
-          <StageCard stage="resilience" />
-          
-          {/* Bottom-Right Handwritten Annotation & Arrow matching reference */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute top-[80%] left-[55%] mt-3 flex flex-col items-center text-center lg:left-[65%]"
-            style={{
-              fontFamily: "var(--font-hand)",
-              color: "#3b2f6b",
-              transform: "rotate(-4deg)"
-            }}
-          >
-            <svg
-              width="60"
-              height="50"
-              viewBox="0 0 60 50"
-              fill="none"
-              className="mb-1 mr-4"
-            >
-              {/* Hand-drawn arrow pointing up-left toward card */}
-              <path
-                d="M50 45 C 35 25, 20 15, 5 8"
-                stroke="#4a3b78"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-              <path
-                d="M5 8 L 15 10 M 5 8 L 10 18"
-                stroke="#4a3b78"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <p className="text-[19px] font-medium leading-[1.15] tracking-tight lg:text-[21px] whitespace-nowrap">
-              From risk to resilience.<br />A stronger tomorrow.
-            </p>
-          </div>
-        </div>
+            <Suspense fallback={null}>
+              <LightingSystem />
+              <Shield3D />
+            </Suspense>
+          </Canvas>
+        </WebGLErrorBoundary>
       </div>
 
-      {/* Mobile System (< 768px): Vertical stacked cross with exact cards and center shield */}
-      <div className="flex w-full flex-col items-center gap-3.5 md:hidden">
-        {/* Mobile Top Annotation */}
-        <div
-          aria-hidden="true"
-          className="flex items-center gap-2 self-start pl-2"
-          style={{ fontFamily: "var(--font-hand)", color: "#3b2f6b" }}
-        >
-          <p className="text-[18px] font-semibold leading-tight">
-            Find weaknesses before
-            <br />
-            attackers do.
-          </p>
-          <svg width="36" height="26" viewBox="0 0 56 40" fill="none">
-            <path d="M4 2 C 16 12, 30 26, 44 32" stroke="#4a3b78" strokeWidth="2.2" strokeLinecap="round" />
-            <path d="M44 32 L 34 30 M 44 32 L 39 21" stroke="#4a3b78" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-
-        {/* 1. Discover */}
-        <div className="w-full max-w-[280px]">
-          <StageCard stage="discover" />
-        </div>
-
-        {/* 2 & Center & 3 in compact row */}
-        <div className="flex w-full items-center justify-center gap-2">
-          <div className="w-[125px] shrink-0">
-            <StageCard stage="test" className="p-2.5" />
-          </div>
-          <div className="shrink-0 scale-90">
-            <CenterShield />
-          </div>
-          <div className="w-[125px] shrink-0">
-            <StageCard stage="protect" className="p-2.5" />
-          </div>
-        </div>
-
-        {/* 4. Resilience */}
-        <div className="w-full max-w-[280px]">
-          <StageCard stage="resilience" />
-        </div>
-
-        {/* Mobile Bottom Annotation */}
-        <div
-          aria-hidden="true"
-          className="flex items-center gap-2 self-end pr-2 text-right"
-          style={{ fontFamily: "var(--font-hand)", color: "#3b2f6b" }}
-        >
-          <svg width="36" height="26" viewBox="0 0 56 40" fill="none">
-            <path d="M50 36 C 38 24, 24 14, 10 8" stroke="#4a3b78" strokeWidth="2.2" strokeLinecap="round" />
-            <path d="M10 8 L 20 10 M 10 8 L 14 19" stroke="#4a3b78" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <p className="text-[18px] font-semibold leading-tight">
-            From risk to resilience.
-            <br />
-            A stronger tomorrow.
-          </p>
-        </div>
-      </div>
+      {/* 
+        ENHANCED HIGH-VISIBILITY CYBERCREST ORBIT SYSTEM (INLINE DOM):
+        4 stages (DISCOVER, TEST, PROTECT, RESILIENCE) in bold high-contrast glowing neon typography,
+        revolving around the 3D metallic Envista shield.
+      */}
+      <div
+        className="pointer-events-none absolute inset-0 z-10 flex h-full w-full select-none items-center justify-center [&>svg]:h-full [&>svg]:w-full [&>svg]:object-contain drop-shadow-[0_0_24px_rgba(180,255,0,0.22)]"
+        dangerouslySetInnerHTML={{ __html: orbitSvgRaw }}
+      />
     </div>
   );
 }
