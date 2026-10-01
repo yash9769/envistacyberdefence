@@ -153,16 +153,19 @@ export default function PlatformCapabilitiesDropdown({
               key={cap.id}
               to={cap.id === "brand-monitoring" || cap.id === "dark-web-monitoring" ? "/solutions/brm-dwm" : `/capabilities#${cap.id}`}
               onClick={onClose}
-              className="group flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-[#fafafc] p-4.5 transition-all hover:-translate-y-0.5 hover:border-[#6d28d9] hover:bg-white hover:shadow-md dark:border-white/10 dark:bg-white/5 dark:hover:border-violet-500/50 dark:hover:bg-[#160f33]"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/80 bg-[#fafafc] p-4.5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#B4FF00] hover:shadow-[0_8px_24px_rgba(180,255,0,0.2)] dark:border-white/10 dark:bg-white/5 dark:hover:border-[#B4FF00] dark:hover:bg-lime-500/10"
             >
+              {/* Top Glowing Hairline */}
+              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#6d28d9]/10 text-[#6d28d9] transition-colors group-hover:bg-[#6d28d9] group-hover:text-white dark:bg-violet-500/20 dark:text-[#c4b5fd]">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-lime-500/10 text-lime-700 transition-colors group-hover:bg-[#B4FF00] group-hover:text-slate-950 dark:bg-lime-500/20 dark:text-[#B4FF00]">
                     {getIcon(cap.id)}
                   </span>
                 </div>
 
-                <h4 className="mt-3.5 font-display text-[14.5px] font-bold text-[#0d1020] transition-colors group-hover:text-[#6d28d9] dark:text-white dark:group-hover:text-[#c4b5fd]">
+                <h4 className="mt-3.5 font-display text-[14.5px] font-bold text-[#0d1020] transition-colors group-hover:text-lime-800 dark:text-white dark:group-hover:text-[#B4FF00]">
                   {cap.title}
                 </h4>
 
@@ -172,13 +175,13 @@ export default function PlatformCapabilitiesDropdown({
               </div>
 
               <div className="mt-4 pt-3 border-t border-slate-200/60 dark:border-white/10 flex items-center justify-between">
-                <span className="font-mono text-[9.5px] font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#a78bfa]">
+                <span className="font-mono text-[9.5px] font-bold uppercase tracking-wider text-lime-700 dark:text-[#B4FF00]">
                   {cap.badge}
                 </span>
                 <ArrowRight
                   size={12}
                   weight="bold"
-                  className="text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-[#6d28d9] dark:group-hover:text-[#c4b5fd]"
+                  className="text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-lime-700 dark:group-hover:text-[#B4FF00]"
                 />
               </div>
             </Link>

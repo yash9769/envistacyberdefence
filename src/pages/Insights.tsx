@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { Kicker, Reveal, RevealText } from "../components/ui";
 import { Tilt } from "../components/motion";
 import { INSIGHTS } from "../data";
@@ -15,7 +16,7 @@ export default function Insights() {
         
         <div className={WRAP}>
           <div className="inline-flex items-center gap-2 rounded-full border border-violet-400/30 bg-white/10 px-3.5 py-1.5 backdrop-blur-md">
-            <span className="h-2 w-2 rounded-full bg-violet-400 animate-pulse" />
+            <span className="h-2 w-2 rounded-full bg-[#B4FF00] animate-pulse" />
             <span className="font-mono text-xs font-semibold uppercase tracking-widest text-violet-200">Envista Research & Insights</span>
           </div>
           <h1 className="mt-5 max-w-3xl font-display text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.12]">
@@ -46,20 +47,26 @@ export default function Insights() {
             {INSIGHTS.map((p, i) => (
               <Reveal key={p.t} delay={i * 90}>
                 <Tilt max={5} className="h-full">
-                  <div className="group flex flex-col justify-between h-full rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-violet-300 hover:shadow-xl hover:shadow-violet-500/10 dark:border-white/10 dark:bg-[#131024] dark:hover:border-violet-400/60 dark:hover:shadow-[0_12px_36px_rgba(124,58,237,0.2)]">
+                  <Link
+                    to="/insights"
+                    className="group relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-[#B4FF00] hover:shadow-[0_18px_44px_rgba(180,255,0,0.25)] dark:border-white/10 dark:bg-[#131024] dark:hover:border-[#B4FF00] cursor-pointer"
+                  >
+                    {/* Glowing Top Hairline */}
+                    <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
                     <div>
                       <div className="flex items-center justify-between">
-                        <span className="inline-block rounded-md bg-violet-50 px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-[#6d28d9] dark:bg-violet-950/60 dark:text-[#c4b5fd]">{p.tag}</span>
+                        <span className="inline-block rounded-md bg-lime-50 px-2.5 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-lime-900 border border-lime-300/40 transition-colors group-hover:bg-[#B4FF00] group-hover:text-slate-950 dark:bg-lime-950/60 dark:text-[#B4FF00] dark:border-lime-400/30">{p.tag}</span>
                         <span className="font-mono text-[11px] text-slate-400 dark:text-slate-500">Q3 2026</span>
                       </div>
-                      <h3 className="mt-5 font-display text-xl font-bold leading-snug text-[#150c2e] dark:text-white transition-colors group-hover:text-[#6d28d9] dark:group-hover:text-[#c4b5fd]">{p.t}</h3>
+                      <h3 className="mt-5 font-display text-xl font-bold leading-snug text-[#150c2e] dark:text-white transition-colors group-hover:text-lime-700 dark:group-hover:text-[#B4FF00]">{p.t}</h3>
                       <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{p.d}</p>
                     </div>
                     <div className="mt-8 pt-4 border-t border-slate-100 dark:border-white/10 flex items-center justify-between">
-                      <span className="inline-block font-mono text-[11px] uppercase tracking-[0.16em] font-semibold text-violet-600 dark:text-[#c4b5fd] group-hover:translate-x-1 transition-transform">Read Insight →</span>
+                      <span className="inline-block font-mono text-[11px] uppercase tracking-[0.16em] font-semibold text-lime-700 dark:text-[#B4FF00] group-hover:translate-x-1 transition-transform">Read Insight →</span>
                       <span className="font-mono text-[10px] uppercase tracking-wider text-slate-400 dark:text-slate-500">5 min read</span>
                     </div>
-                  </div>
+                  </Link>
                 </Tilt>
               </Reveal>
             ))}

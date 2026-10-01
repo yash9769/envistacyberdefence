@@ -70,14 +70,24 @@ export default function CaseStudies() {
             {FORMATS.map((f, i) => (
               <li key={f.n}>
                 <Reveal delay={(i % 2) * 70} className="h-full">
-                  <article className="h-full rounded-2xl border border-slate-200/90 bg-[#faf8fe] p-6 transition-all hover:border-[#6d28d9] hover:shadow-lg dark:border-white/10 dark:bg-[#14182b] sm:p-8 lg:p-9">
-                    <div className="flex items-baseline justify-start">
-                      <span className="rounded bg-violet-100/70 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-[#6d28d9] dark:bg-violet-950/60 dark:text-[#c4b5fd]">
-                        Typical {f.scope}
-                      </span>
+                  <article className="group relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-slate-200/90 bg-[#faf8fe] p-6 transition-all duration-300 hover:-translate-y-1.5 hover:border-[#B4FF00] hover:shadow-[0_18px_44px_rgba(180,255,0,0.25)] dark:border-white/10 dark:bg-[#14182b] dark:hover:border-[#B4FF00] sm:p-8 lg:p-9 cursor-pointer">
+                    {/* Glowing Top Hairline */}
+                    <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                    <div>
+                      <div className="flex items-baseline justify-start">
+                        <span className="rounded bg-lime-100/80 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase tracking-wider text-lime-900 border border-lime-300/40 transition-colors group-hover:bg-[#B4FF00] group-hover:text-slate-950 dark:bg-lime-950/60 dark:text-[#B4FF00] dark:border-lime-400/30">
+                          Typical {f.scope}
+                        </span>
+                      </div>
+                      <h2 className="mt-5 font-display text-2xl font-bold text-[#150c2e] dark:text-white transition-colors group-hover:text-lime-800 dark:group-hover:text-[#B4FF00]">{f.t}</h2>
+                      <p className="mt-3 text-sm leading-relaxed text-[#575f75] dark:text-slate-300">{f.d}</p>
                     </div>
-                    <h2 className="mt-5 font-display text-2xl font-bold text-[#150c2e] dark:text-white">{f.t}</h2>
-                    <p className="mt-3 text-sm leading-relaxed text-[#575f75] dark:text-slate-300">{f.d}</p>
+
+                    <div className="mt-6 pt-4 border-t border-slate-200/60 dark:border-white/10 flex items-center justify-between text-xs font-bold text-lime-700 dark:text-[#B4FF00]">
+                      <span>Explore Scope</span>
+                      <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </div>
                   </article>
                 </Reveal>
               </li>

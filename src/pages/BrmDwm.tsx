@@ -314,20 +314,20 @@ function PlanComparisonMatrix() {
           {plans.map((p) => (
             <div
               key={p.name}
-              className={`flex flex-col justify-between p-4 rounded-xl transition-all ${
+              className={`flex flex-col justify-between p-5 rounded-2xl transition-all duration-300 ${
                 p.recommended
-                  ? "bg-[#6d28d9]/10 border-2 border-[#6d28d9] dark:bg-violet-950/40 dark:border-violet-400"
-                  : "border border-transparent"
+                  ? "bg-lime-950/20 border-2 border-[#B4FF00] shadow-[0_0_30px_rgba(180,255,0,0.2)]"
+                  : "border border-slate-200 dark:border-white/10 hover:border-[#B4FF00] hover:shadow-[0_12px_32px_rgba(180,255,0,0.2)] hover:-translate-y-1"
               }`}
             >
               <div>
                 {p.recommended && (
-                  <span className="inline-block rounded-full bg-[#6d28d9] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white mb-2">
+                  <span className="inline-block rounded-full bg-[#B4FF00] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-slate-950 mb-2 shadow-[0_0_15px_rgba(180,255,0,0.4)]">
                     Most Popular
                   </span>
                 )}
                 <h4 className="font-display text-xl font-bold text-[#150c2e] dark:text-white">{p.name}</h4>
-                <p className="mt-0.5 text-xs font-semibold text-[#6d28d9] dark:text-[#c4b5fd]">{p.tier}</p>
+                <p className="mt-0.5 text-xs font-semibold text-[#6d28d9] dark:text-[#B4FF00]">{p.tier}</p>
                 <p className="mt-1.5 text-[11.5px] leading-relaxed text-[#575f75] dark:text-slate-400">
                   {p.description}
                 </p>
@@ -589,19 +589,24 @@ export default function BrmDwm() {
               return (
                 <div
                   key={c.num}
-                  className="rounded-2xl border border-[#e4dfef] bg-white p-7 shadow-[0_4px_20px_rgba(91,42,184,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-[#6d28d9] hover:shadow-[0_16px_36px_rgba(91,42,184,0.1)] dark:border-white/10 dark:bg-[#14182b]"
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-[#e4dfef] bg-white p-7 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-[#B4FF00] hover:shadow-[0_18px_44px_rgba(180,255,0,0.25)] dark:border-white/10 dark:bg-[#14182b] dark:hover:border-[#B4FF00] cursor-pointer"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#f6eefb] text-[#6d28d9] dark:bg-violet-500/20 dark:text-[#a78bfa]">
-                      <Icon size={22} weight="bold" />
-                    </span>
+                  {/* Glowing Top Hairline */}
+                  <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                  <div>
+                    <div className="flex items-center justify-between">
+                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-lime-500/10 text-lime-700 transition-all duration-300 group-hover:scale-105 group-hover:bg-[#B4FF00] group-hover:text-slate-950 dark:bg-lime-500/20 dark:text-[#B4FF00]">
+                        <Icon size={22} weight="bold" />
+                      </span>
+                    </div>
+                    <h3 className="mt-5 font-display text-lg font-bold text-[#150c2e] dark:text-white transition-colors group-hover:text-lime-800 dark:group-hover:text-[#B4FF00]">
+                      {c.title}
+                    </h3>
+                    <p className="mt-2.5 text-[13px] leading-relaxed text-[#575f75] dark:text-slate-300">
+                      {c.desc}
+                    </p>
                   </div>
-                  <h3 className="mt-5 font-display text-lg font-bold text-[#150c2e] dark:text-white">
-                    {c.title}
-                  </h3>
-                  <p className="mt-2.5 text-[13px] leading-relaxed text-[#575f75] dark:text-slate-300">
-                    {c.desc}
-                  </p>
                 </div>
               );
             })}

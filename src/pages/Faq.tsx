@@ -43,11 +43,12 @@ export default function Faq() {
                 Have a specialized compliance mandate or require an urgent Red Team assessment under NDA? Our team is available 24/7.
               </p>
 
-              <div className="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-6 dark:border-white/10 dark:bg-[#14182b]">
-                <h4 className="font-display font-bold text-slate-900 dark:text-white text-sm">Need a custom NDA or RFP response?</h4>
-                <p className="mt-1 text-xs text-slate-600 dark:text-slate-300">Download our Standard Security Assurance Pack or contact our solutions desk.</p>
-                <a href="mailto:advisory@envistacyber.com" className="mt-4 inline-block font-mono text-xs font-bold uppercase tracking-wider text-violet-700 dark:text-[#c4b5fd] hover:underline">
-                  Contact Advisory Desk →
+              <div className="relative group overflow-hidden mt-8 rounded-2xl border border-lime-500/30 bg-gradient-to-b from-lime-950/20 via-slate-900/60 to-slate-950/80 p-6 shadow-[0_8px_28px_rgba(180,255,0,0.08)] hover:shadow-[0_16px_36px_rgba(180,255,0,0.22)] hover:border-[#B4FF00] transition-all duration-300">
+                <span className="pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
+                <h4 className="font-display font-bold text-white text-sm group-hover:text-[#B4FF00] transition-colors">Need a custom NDA or RFP response?</h4>
+                <p className="mt-1 text-xs text-slate-300">Download our Standard Security Assurance Pack or contact our solutions desk.</p>
+                <a href="mailto:advisory@envistacyber.com" className="mt-4 inline-flex items-center gap-1.5 font-mono text-xs font-bold uppercase tracking-wider text-[#B4FF00] hover:text-white transition-colors">
+                  Contact Advisory Desk <span>→</span>
                 </a>
               </div>
             </div>

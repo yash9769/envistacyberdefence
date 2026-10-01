@@ -152,31 +152,34 @@ export default function Industries() {
                 <li key={ind.slug}>
                   <Reveal delay={(i % 3) * 60} className="h-full">
                     <div
-                      className="group flex h-full flex-col justify-between rounded-xl sm:rounded-2xl border border-[#e4dfef] bg-white p-5 sm:p-5.5 shadow-[0_4px_20px_rgba(91,42,184,0.04)] transition-all duration-300 hover:-translate-y-1 hover:border-[#6d28d9] hover:shadow-[0_14px_32px_rgba(91,42,184,0.12)] dark:border-white/10 dark:bg-[#14182b] dark:hover:border-violet-500/50 dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)]"
+                      className="group relative flex h-full flex-col justify-between overflow-hidden rounded-xl sm:rounded-2xl border border-[#e4dfef] bg-white p-5 sm:p-5.5 shadow-[0_4px_20px_rgba(91,42,184,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#B4FF00] hover:shadow-[0_18px_44px_rgba(180,255,0,0.25)] dark:border-white/10 dark:bg-[#14182b] dark:hover:border-[#B4FF00] dark:shadow-[0_4px_20px_rgba(0,0,0,0.3)] cursor-pointer"
                     >
+                      {/* Top Glowing Hairline */}
+                      <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
                       <div>
                         {/* Top Icon Badge & Arrow */}
                         <div className="flex items-center justify-between">
                           <span
                             aria-hidden="true"
-                            className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-600/10 text-[#6d28d9] transition-transform duration-300 group-hover:scale-110 dark:bg-violet-500/20 dark:text-[#a78bfa]"
+                            className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-purple-600/10 text-[#6d28d9] transition-all duration-300 group-hover:scale-110 group-hover:bg-[#B4FF00] group-hover:text-slate-950 dark:bg-violet-500/20 dark:text-[#a78bfa]"
                           >
                             <Icon size={24} weight="bold" />
                           </span>
 
                           <span
                             aria-hidden="true"
-                            className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#e4dfef] text-[#8890a4] transition-all duration-200 group-hover:border-[#6d28d9] group-hover:bg-[#6d28d9] group-hover:text-white dark:border-white/15 dark:text-slate-400 dark:group-hover:border-violet-400 dark:group-hover:bg-violet-600 dark:group-hover:text-white"
+                            className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-[#e4dfef] text-[#8890a4] transition-all duration-200 group-hover:border-[#B4FF00] group-hover:bg-[#B4FF00] group-hover:text-slate-950 dark:border-white/15 dark:text-slate-400"
                           >
                             <ArrowRight size={14} weight="bold" />
                           </span>
                         </div>
 
                         {/* Title & Action Promise */}
-                        <h3 className="mt-5 font-display text-xl font-bold tracking-[-0.01em] text-[#150c2e] dark:text-white">
+                        <h3 className="mt-5 font-display text-xl font-bold tracking-[-0.01em] text-[#150c2e] dark:text-white transition-colors group-hover:text-lime-800 dark:group-hover:text-[#B4FF00]">
                           {ind.name}
                         </h3>
-                        <p className="mt-1.5 text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd]">
+                        <p className="mt-1.5 text-xs font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd] transition-colors group-hover:text-lime-700 dark:group-hover:text-[#B4FF00]">
                           {ind.promise}
                         </p>
 
@@ -192,7 +195,7 @@ export default function Industries() {
                           {complianceTags.map((tag) => (
                             <span
                               key={tag}
-                              className="rounded-md bg-[#f6eefb] px-2.5 py-1 font-mono text-[10.5px] font-semibold text-[#5a3470] dark:bg-violet-950/40 dark:text-[#c4b5fd]"
+                              className="rounded-md bg-[#f6eefb] px-2.5 py-1 font-mono text-[10.5px] font-semibold text-[#5a3470] dark:bg-violet-950/40 dark:text-[#c4b5fd] transition-colors group-hover:bg-lime-500/10 group-hover:text-lime-900 group-hover:border group-hover:border-lime-400/30 dark:group-hover:text-[#B4FF00]"
                             >
                               {tag}
                             </span>
@@ -201,7 +204,7 @@ export default function Industries() {
 
                         <Link
                           to="/contact"
-                          className="mt-4 inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-[#6d28d9] hover:text-[#5b2ab8] dark:text-[#a78bfa] dark:hover:text-[#c4b5fd]"
+                          className="mt-4 inline-flex items-center gap-1.5 text-[12.5px] font-semibold text-[#6d28d9] hover:text-[#5b2ab8] dark:text-[#a78bfa] dark:hover:text-[#c4b5fd] transition-colors group-hover:text-lime-700 dark:group-hover:text-[#B4FF00]"
                         >
                           Request Sector Assessment
                           <ArrowRight size={13} weight="bold" />

@@ -126,20 +126,23 @@ export default function ServicesDropdown({
               key={service.id}
               to={`/capabilities#${service.id}`}
               onClick={onClose}
-              className="group relative flex flex-col justify-between rounded-xl border border-slate-200/80 bg-slate-50/70 p-3 transition-all duration-200 hover:border-violet-500/50 hover:bg-violet-50/50 hover:shadow-sm dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-violet-400/40 dark:hover:bg-violet-950/20"
+              className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-slate-200/80 bg-slate-50/70 p-3 transition-all duration-200 hover:border-[#B4FF00] hover:shadow-[0_8px_24px_rgba(180,255,0,0.2)] dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-[#B4FF00] dark:hover:bg-lime-500/10"
             >
+              {/* Top Glowing Hairline */}
+              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+
               <div>
                 <div className="flex items-center justify-between">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-violet-600/10 text-violet-600 dark:bg-violet-500/20 dark:text-violet-300 transition-colors group-hover:bg-violet-600 group-hover:text-white">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-lime-500/10 text-lime-700 dark:bg-lime-500/20 dark:text-[#B4FF00] transition-colors group-hover:bg-[#B4FF00] group-hover:text-slate-950">
                     {SERVICE_ICONS[service.id] || <ShieldCheck size={16} weight="duotone" />}
                   </div>
                 </div>
 
-                <h3 className="mt-2 font-display text-[13px] font-bold text-slate-900 group-hover:text-violet-700 dark:text-white dark:group-hover:text-violet-300 transition-colors leading-tight">
+                <h3 className="mt-2 font-display text-[13px] font-bold text-slate-900 group-hover:text-lime-800 dark:text-white dark:group-hover:text-[#B4FF00] transition-colors leading-tight">
                   {service.title}
                 </h3>
 
-                <p className="mt-0.5 font-mono text-[9.5px] font-semibold text-violet-600 dark:text-violet-400 uppercase tracking-wide">
+                <p className="mt-0.5 font-mono text-[9.5px] font-semibold text-lime-700 dark:text-[#B4FF00] uppercase tracking-wide">
                   {service.promise}
                 </p>
 
@@ -148,7 +151,7 @@ export default function ServicesDropdown({
                   <ul className="space-y-1 text-[10.5px] text-slate-700 dark:text-slate-300">
                     {service.items.map((item) => (
                       <li key={item} className="flex items-start gap-1.5 leading-snug">
-                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-violet-600 dark:bg-[#a78bfa]" />
+                        <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[#B4FF00]" />
                         <span>{item}</span>
                       </li>
                     ))}
@@ -160,7 +163,7 @@ export default function ServicesDropdown({
                 <span className="font-mono text-[9px] font-semibold text-slate-400 dark:text-slate-500 uppercase">
                   {service.items.length} Offerings
                 </span>
-                <span className="inline-flex items-center gap-1 text-[10.5px] font-bold text-violet-600 dark:text-violet-400 group-hover:translate-x-0.5 transition-transform">
+                <span className="inline-flex items-center gap-1 text-[10.5px] font-bold text-lime-700 dark:text-[#B4FF00] group-hover:translate-x-0.5 transition-transform">
                   <span>Explore</span>
                   <ArrowRight size={10} weight="bold" />
                 </span>

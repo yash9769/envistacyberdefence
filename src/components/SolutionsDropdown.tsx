@@ -107,20 +107,23 @@ export default function SolutionsDropdown({
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}
-            className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-gradient-to-br from-violet-50/40 via-white to-slate-50/50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#6d28d9] hover:shadow-xl hover:shadow-violet-500/10 dark:border-white/10 dark:bg-gradient-to-br dark:from-white/5 dark:via-transparent dark:to-white/5 dark:hover:border-violet-500/50 dark:hover:bg-[#160f33]"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/80 bg-gradient-to-br from-lime-50/20 via-white to-slate-50/50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#B4FF00] hover:shadow-xl hover:shadow-[0_12px_32px_rgba(180,255,0,0.2)] dark:border-white/10 dark:bg-gradient-to-br dark:from-white/5 dark:via-transparent dark:to-white/5 dark:hover:border-[#B4FF00] dark:hover:bg-lime-500/10 cursor-pointer"
           >
+            {/* Top Glowing Hairline */}
+            <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
             <div>
               <div className="flex items-center justify-between">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-violet-600/10 text-[#6d28d9] transition-all duration-200 group-hover:scale-105 group-hover:bg-[#6d28d9] group-hover:text-white dark:bg-violet-500/20 dark:text-[#c4b5fd]">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-lime-500/10 text-lime-700 transition-all duration-200 group-hover:scale-105 group-hover:bg-[#B4FF00] group-hover:text-slate-950 dark:bg-lime-500/20 dark:text-[#B4FF00]">
                   <LockKey size={22} weight="bold" />
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-violet-100 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-[#6d28d9] dark:bg-violet-900/40 dark:text-violet-300">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-lime-100 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-lime-900 border border-lime-300/40 dark:bg-lime-950/60 dark:text-[#B4FF00] dark:border-lime-400/30">
                   <Sparkle size={12} weight="fill" />
                   DPDP 2023 Dedicated Suite
                 </span>
               </div>
 
-              <h4 className="mt-5 font-display text-[18px] font-bold text-[#0d1020] transition-colors group-hover:text-[#6d28d9] dark:text-white dark:group-hover:text-[#c4b5fd]">
+              <h4 className="mt-5 font-display text-[18px] font-bold text-[#0d1020] transition-colors group-hover:text-lime-800 dark:text-white dark:group-hover:text-[#B4FF00]">
                 DPDP Compliance &amp; Data Privacy Solutions
               </h4>
 
@@ -130,7 +133,7 @@ export default function SolutionsDropdown({
             </div>
 
             <div className="mt-6 pt-4 border-t border-slate-200/70 dark:border-white/10 flex items-center justify-between">
-              <span className="font-mono text-[12px] font-bold uppercase tracking-wider text-[#6d28d9] dark:text-[#c4b5fd] group-hover:underline inline-flex items-center gap-1.5">
+              <span className="font-mono text-[12px] font-bold uppercase tracking-wider text-lime-700 dark:text-[#B4FF00] group-hover:underline inline-flex items-center gap-1.5">
                 <span>Visit envistadpdp.com</span>
                 <ArrowSquareOut size={14} weight="bold" />
               </span>
@@ -144,20 +147,23 @@ export default function SolutionsDropdown({
           <Link
             to="/solutions/brm-dwm"
             onClick={onClose}
-            className="group relative flex flex-col justify-between rounded-2xl border border-slate-200/80 bg-gradient-to-br from-indigo-50/40 via-white to-slate-50/50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-indigo-600 hover:shadow-xl hover:shadow-indigo-500/10 dark:border-white/10 dark:bg-gradient-to-br dark:from-white/5 dark:via-transparent dark:to-white/5 dark:hover:border-indigo-500/50 dark:hover:bg-[#110f2c]"
+            className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-200/80 bg-gradient-to-br from-lime-50/20 via-white to-slate-50/50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#B4FF00] hover:shadow-xl hover:shadow-[0_12px_32px_rgba(180,255,0,0.2)] dark:border-white/10 dark:bg-gradient-to-br dark:from-white/5 dark:via-transparent dark:to-white/5 dark:hover:border-[#B4FF00] dark:hover:bg-lime-500/10 cursor-pointer"
           >
+            {/* Top Glowing Hairline */}
+            <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
             <div>
               <div className="flex items-center justify-between">
-                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-indigo-600/10 text-indigo-600 transition-all duration-200 group-hover:scale-105 group-hover:bg-indigo-600 group-hover:text-white dark:bg-indigo-500/20 dark:text-[#a5b4fc]">
+                <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-lime-500/10 text-lime-700 transition-all duration-200 group-hover:scale-105 group-hover:bg-[#B4FF00] group-hover:text-slate-950 dark:bg-lime-500/20 dark:text-[#B4FF00]">
                   <Globe size={22} weight="bold" />
                 </span>
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-indigo-100 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-indigo-700 dark:bg-indigo-900/40 dark:text-indigo-300">
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-lime-100 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-wider text-lime-900 border border-lime-300/40 dark:bg-lime-950/60 dark:text-[#B4FF00] dark:border-lime-400/30">
                   <Broadcast size={12} weight="bold" />
                   Outside-In Reconnaissance
                 </span>
               </div>
 
-              <h4 className="mt-5 font-display text-[18px] font-bold text-[#0d1020] transition-colors group-hover:text-indigo-600 dark:text-white dark:group-hover:text-[#a5b4fc]">
+              <h4 className="mt-5 font-display text-[18px] font-bold text-[#0d1020] transition-colors group-hover:text-lime-800 dark:text-white dark:group-hover:text-[#B4FF00]">
                 Brand Risk Monitoring (BRM) &amp; Dark Web Monitoring (DWM) Services
               </h4>
 
@@ -167,7 +173,7 @@ export default function SolutionsDropdown({
             </div>
 
             <div className="mt-6 pt-4 border-t border-slate-200/70 dark:border-white/10 flex items-center justify-between">
-              <span className="font-mono text-[12px] font-bold uppercase tracking-wider text-indigo-600 dark:text-[#a5b4fc] group-hover:underline inline-flex items-center gap-1.5">
+              <span className="font-mono text-[12px] font-bold uppercase tracking-wider text-lime-700 dark:text-[#B4FF00] group-hover:underline inline-flex items-center gap-1.5">
                 <span>Explore BRM &amp; DWM Solution</span>
                 <ArrowRight size={14} weight="bold" className="transition-transform group-hover:translate-x-1" />
               </span>

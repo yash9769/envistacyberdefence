@@ -3,7 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { SVGLoader } from "three/examples/jsm/loaders/SVGLoader.js";
 import svgRaw from "../../imports/envista-mark.svg?raw";
-import svgUrl from "../../imports/envista-mark.svg?url";
+import shieldPng from "../../imports/envista-mark.png";
 
 class WebGLErrorBoundary extends Component<
   { children: React.ReactNode; fallback?: React.ReactNode },
@@ -28,9 +28,9 @@ class WebGLErrorBoundary extends Component<
         this.props.fallback || (
           <div className="flex h-full w-full items-center justify-center p-8">
             <img
-              src={svgUrl}
+              src={shieldPng}
               alt="Envista Shield"
-              className="h-44 w-44 object-contain drop-shadow-[0_0_35px_rgba(168,85,247,0.7)] animate-float"
+              className="h-44 w-44 object-contain drop-shadow-[0_0_40px_rgba(168,85,247,0.85)] animate-float"
             />
           </div>
         )
@@ -111,7 +111,9 @@ function Shield3DAbout() {
     return tex;
   }, []);
 
-  if (shapes.length === 0) return null;
+  if (shapes.length === 0) {
+    throw new Error("Unable to parse 3D shield geometry in About");
+  }
 
   // Scale matched to prominent hero presence
   const scale = 0.0072;

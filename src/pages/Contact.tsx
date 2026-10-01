@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { Check, CaretDown } from "@phosphor-icons/react";
 import markUrl from "../imports/envista-mark.png";
 import DpdpNotice from "../components/DpdpNotice";
+import SecurityCaptcha from "../components/SecurityCaptcha";
 import { submitContactForm } from "../lib/api";
 
 const WRAP = "mx-auto w-full max-w-[1400px] px-4 sm:px-6 lg:px-10";
@@ -103,7 +104,8 @@ export default function Contact() {
   });
 
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [recaptchaChecked, setRecaptchaChecked] = useState(false);
+  const [captchaVerified, setCaptchaVerified] = useState(false);
+  const [captchaResetTrigger, setCaptchaResetTrigger] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [expandedLine, setExpandedLine] = useState<string | null>(null);
@@ -214,8 +216,8 @@ export default function Contact() {
       newErrors.services = "Please select at least one service.";
     }
 
-    if (!recaptchaChecked) {
-      newErrors.recaptcha = "Please verify that you are not a robot.";
+    if (!captchaVerified) {
+      newErrors.captcha = "Please enter the security verification code displayed above.";
     }
 
     if (!formData.consent) {
@@ -295,36 +297,39 @@ export default function Contact() {
 
                 {/* Engagement Advisory Roadmap Cards */}
                 <div className="mt-8 space-y-4 max-w-lg">
-                  <div className="flex items-start gap-3.5 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 transition-colors hover:border-violet-300 hover:bg-violet-50/30">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 border border-violet-200">
+                  <div className="group relative flex items-start gap-3.5 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#B4FF00] hover:shadow-[0_8px_24px_rgba(180,255,0,0.18)] cursor-pointer">
+                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-lime-500/10 text-lime-700 border border-lime-300/40 transition-colors group-hover:bg-[#B4FF00] group-hover:text-slate-950">
                       <Check size={16} weight="bold" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-slate-900">Scoping &amp; Needs Discovery</h4>
+                      <h4 className="text-sm font-bold text-slate-900 group-hover:text-lime-800 transition-colors">Scoping &amp; Needs Discovery</h4>
                       <p className="mt-0.5 text-xs text-slate-600 leading-relaxed">
                         Comprehensive evaluation to map your infrastructure, regulatory scope, and security objectives.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3.5 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 transition-colors hover:border-violet-300 hover:bg-violet-50/30">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 border border-violet-200">
+                  <div className="group relative flex items-start gap-3.5 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#B4FF00] hover:shadow-[0_8px_24px_rgba(180,255,0,0.18)] cursor-pointer">
+                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-lime-500/10 text-lime-700 border border-lime-300/40 transition-colors group-hover:bg-[#B4FF00] group-hover:text-slate-950">
                       <Check size={16} weight="bold" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-slate-900">Architectural Proposal</h4>
+                      <h4 className="text-sm font-bold text-slate-900 group-hover:text-lime-800 transition-colors">Architectural Proposal</h4>
                       <p className="mt-0.5 text-xs text-slate-600 leading-relaxed">
                         Tailored statement of work with milestone deliverables, methodologies, and clear timelines.
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3.5 rounded-2xl border border-slate-200 bg-slate-50/80 p-4 transition-colors hover:border-violet-300 hover:bg-violet-50/30">
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-violet-100 text-violet-700 border border-violet-200">
+                  <div className="group relative flex items-start gap-3.5 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50/80 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#B4FF00] hover:shadow-[0_8px_24px_rgba(180,255,0,0.18)] cursor-pointer">
+                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-lime-500/10 text-lime-700 border border-lime-300/40 transition-colors group-hover:bg-[#B4FF00] group-hover:text-slate-950">
                       <Check size={16} weight="bold" />
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-slate-900">Direct Advisory Onboarding</h4>
+                      <h4 className="text-sm font-bold text-slate-900 group-hover:text-lime-800 transition-colors">Direct Advisory Onboarding</h4>
                       <p className="mt-0.5 text-xs text-slate-600 leading-relaxed">
                         Engagement kickoff with certified lead auditors, Red Team operatives, and compliance counsel.
                       </p>
@@ -363,7 +368,8 @@ export default function Contact() {
                     <button
                       onClick={() => {
                         setSubmitted(false);
-                        setRecaptchaChecked(false);
+                        setCaptchaVerified(false);
+                        setCaptchaResetTrigger((prev) => prev + 1);
                       }}
                       className="mt-8 inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/10 px-6 py-2.5 font-mono text-xs font-bold uppercase tracking-wider text-white transition-colors hover:bg-white/20 cursor-pointer"
                     >
@@ -507,10 +513,10 @@ export default function Contact() {
                               key={line.id}
                               className={`rounded-xl border transition-all duration-200 overflow-hidden ${
                                 isOpen
-                                  ? "border-violet-500/50 bg-[#080417] sm:col-span-2"
+                                  ? "border-[#B4FF00]/80 bg-[#080417] sm:col-span-2 shadow-[0_0_20px_rgba(180,255,0,0.15)]"
                                   : hasSelection
-                                  ? "border-violet-500/40 bg-[#0e0724]"
-                                  : "border-white/10 bg-[#0e0724] hover:border-white/20 hover:bg-[#120930]"
+                                  ? "border-[#B4FF00]/50 bg-[#0e0724] shadow-[0_0_15px_rgba(180,255,0,0.12)]"
+                                  : "border-white/10 bg-[#0e0724] hover:border-[#B4FF00]/50 hover:bg-[#120930]"
                               }`}
                             >
                               {/* Row header */}
@@ -527,18 +533,18 @@ export default function Contact() {
                                   {/* Active indicator dot */}
                                   <span
                                     className={`block h-1.5 w-1.5 rounded-full flex-shrink-0 transition-colors duration-200 ${
-                                      hasSelection ? "bg-violet-400" : "bg-white/20"
+                                      hasSelection ? "bg-[#B4FF00] shadow-[0_0_8px_rgba(180,255,0,0.8)]" : "bg-white/20"
                                     }`}
                                   />
                                   <span
                                     className={`text-xs sm:text-sm font-medium tracking-tight truncate transition-colors duration-150 ${
-                                      hasSelection || isOpen ? "text-white" : "text-slate-300"
+                                      hasSelection || isOpen ? "text-white font-bold" : "text-slate-300"
                                     }`}
                                   >
                                     {line.label}
                                   </span>
                                   {hasSelection && (
-                                    <span className="font-mono text-[10px] text-violet-400 tabular-nums shrink-0">
+                                    <span className="font-mono text-[10px] text-[#B4FF00] font-bold tabular-nums shrink-0">
                                       ({selectedCount})
                                     </span>
                                   )}
@@ -547,7 +553,7 @@ export default function Contact() {
                                   size={13}
                                   weight="bold"
                                   className={`text-slate-500 flex-shrink-0 ml-2 transition-transform duration-200 ${
-                                    isOpen ? "rotate-180 text-slate-300" : ""
+                                    isOpen ? "rotate-180 text-[#B4FF00]" : ""
                                   }`}
                                 />
                               </button>
@@ -566,18 +572,18 @@ export default function Contact() {
                                           onClick={() => toggleSubService(sub)}
                                           className={`group flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-[11px] font-medium transition-all duration-150 cursor-pointer text-left border ${
                                             isChecked
-                                              ? "border-violet-500/50 bg-violet-500/10 text-white"
-                                              : "border-white/[0.07] bg-white/[0.02] text-slate-400 hover:border-white/15 hover:text-slate-200"
+                                              ? "border-[#B4FF00]/70 bg-lime-500/10 text-white"
+                                              : "border-white/[0.07] bg-white/[0.02] text-slate-400 hover:border-[#B4FF00]/40 hover:text-slate-200"
                                           }`}
                                         >
                                           <span
                                             className={`flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-sm border transition-all ${
                                               isChecked
-                                                ? "border-violet-400 bg-violet-500"
-                                                : "border-white/20"
+                                                ? "border-[#B4FF00] bg-[#B4FF00]"
+                                                : "border-white/20 group-hover:border-[#B4FF00]/60"
                                             }`}
                                           >
-                                            {isChecked && <Check size={9} weight="bold" className="text-white" />}
+                                            {isChecked && <Check size={9} weight="bold" className="text-slate-950" />}
                                           </span>
                                           <span className="leading-snug">{sub}</span>
                                         </button>
@@ -591,7 +597,7 @@ export default function Contact() {
                                     placeholder="Add specific requirements or scope details..."
                                     value={formData.serviceNotes[line.id] ?? ""}
                                     onChange={(e) => setServiceNote(line.id, e.target.value)}
-                                    className="w-full rounded-lg border border-white/[0.08] bg-transparent px-3.5 py-2.5 text-[11px] text-slate-200 placeholder:text-slate-600 outline-none transition-all focus:border-violet-500/40 focus:ring-1 focus:ring-violet-500/20"
+                                    className="w-full rounded-lg border border-white/[0.08] bg-transparent px-3.5 py-2.5 text-[11px] text-slate-200 placeholder:text-slate-600 outline-none transition-all focus:border-[#B4FF00]/70 focus:ring-1 focus:ring-[#B4FF00]/30"
                                   />
                                 </div>
                               )}
@@ -646,50 +652,22 @@ export default function Contact() {
                       </div>
                     </div>
 
-                    {/* RECAPTCHA BOX */}
-                    <div>
-                      <div
-                        onClick={() => {
-                          const nextVal = !recaptchaChecked;
-                          setRecaptchaChecked(nextVal);
-                          if (nextVal && errors.recaptcha) {
-                            setErrors((prev) => ({ ...prev, recaptcha: "" }));
-                          }
-                        }}
-                        className={`rounded-xl border p-3 sm:p-3.5 flex items-center justify-between shadow-inner transition-colors cursor-pointer select-none ${
-                          errors.recaptcha ? "border-rose-500/70 bg-rose-950/20" : "border-white/15 bg-[#0b051e] hover:border-sky-400/50"
-                        }`}
-                      >
-                        <div className="flex items-center gap-3">
-                          <div
-                            className={`flex h-6 w-6 shrink-0 items-center justify-center rounded border transition-all ${
-                              recaptchaChecked
-                                ? "border-emerald-400 bg-emerald-500 text-white"
-                                : "border-slate-500 bg-[#0e0724]"
-                            }`}
-                          >
-                            {recaptchaChecked && (
-                              <svg className="h-4 w-4 fill-none stroke-current stroke-3" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                              </svg>
-                            )}
-                          </div>
-                          <span className="text-xs sm:text-[13px] font-medium text-slate-200">
-                            I&rsquo;m not a robot
-                          </span>
-                        </div>
-
-                        <div className="flex flex-col items-center justify-center text-[8.5px] text-slate-400">
-                          <svg className="h-7 w-7 text-sky-400" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z" />
-                          </svg>
-                          <span className="font-mono text-[8px] uppercase tracking-wider text-slate-400">reCAPTCHA</span>
-                        </div>
-                      </div>
-                      {errors.recaptcha && (
-                        <p className="mt-1.5 text-[11px] font-medium text-rose-400">{errors.recaptcha}</p>
-                      )}
-                    </div>
+                    {/* VISUAL DEFENSE SECURITY CAPTCHA */}
+                    <SecurityCaptcha
+                      onVerify={(isValid) => {
+                        setCaptchaVerified(isValid);
+                        if (isValid && errors.captcha) {
+                          setErrors((prev) => ({ ...prev, captcha: "" }));
+                        }
+                      }}
+                      error={errors.captcha}
+                      onClearError={() => {
+                        if (errors.captcha) {
+                          setErrors((prev) => ({ ...prev, captcha: "" }));
+                        }
+                      }}
+                      resetTrigger={captchaResetTrigger}
+                    />
 
                     {/* DPDP ACT 2023 PROCESSING NOTICE */}
                     <DpdpNotice />

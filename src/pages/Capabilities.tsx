@@ -416,14 +416,14 @@ export default function Capabilities() {
   const navigate = useNavigate();
 
   const cleanHash = hash ? hash.replace("#", "") : "";
-  const initialService = SERVICES_DEEP_DIVE[cleanHash] ? cleanHash : "grc";
+  const initialService = SERVICES_DEEP_DIVE[cleanHash] ? cleanHash : "all";
 
   const [activeServiceId, setActiveServiceId] = useState<string>(initialService);
 
   useEffect(() => {
     if (cleanHash && SERVICES_DEEP_DIVE[cleanHash]) {
       setActiveServiceId(cleanHash);
-    } else if (cleanHash === "all" || cleanHash === "services-grid") {
+    } else if (!cleanHash || cleanHash === "all" || cleanHash === "services-grid") {
       setActiveServiceId("all");
     }
   }, [cleanHash]);
@@ -490,13 +490,13 @@ export default function Capabilities() {
           {/* Interactive Service Switcher Tab Pills Bar */}
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-4 lg:mb-5 pb-2 border-b border-slate-200/80 dark:border-white/10">
             {[
+              { id: "all", label: "All 6 Overview", icon: <Target size={15} weight="bold" /> },
               { id: "offensive", label: "Offensive Security", icon: <Crosshair size={15} weight="bold" /> },
               { id: "defensive", label: "Defensive Security", icon: <ShieldCheck size={15} weight="bold" /> },
               { id: "grc", label: "GRC Solutions", icon: <Scales size={15} weight="bold" /> },
               { id: "dpdp", label: "DPDP Consulting", icon: <LockKey size={15} weight="bold" /> },
               { id: "training", label: "Training & MRA", icon: <GraduationCap size={15} weight="bold" /> },
               { id: "ai", label: "AI Audits", icon: <Cpu size={15} weight="bold" /> },
-              { id: "all", label: "All 6 Overview", icon: <Target size={15} weight="bold" /> },
             ].map((tab) => {
               const isActive = activeServiceId === tab.id;
               return (
@@ -526,14 +526,14 @@ export default function Capabilities() {
               {activeService.subServices.map((sub, idx) => (
                 <div
                   key={sub.title}
-                  className="group relative flex flex-col justify-between rounded-2xl border border-violet-900/50 bg-gradient-to-b from-[#1e1342] via-[#170e36] to-[#12082b] p-3.5 sm:p-4 lg:p-4 text-white shadow-xl transition-all duration-300 hover:border-[#B4FF00]/80 hover:shadow-[0_12px_32px_rgba(180,255,0,0.2)] hover:-translate-y-1"
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-lime-500/30 bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95 p-4 lg:p-4.5 text-white shadow-xl transition-all duration-300 hover:border-[#B4FF00] hover:shadow-[0_18px_44px_rgba(180,255,0,0.38)] hover:-translate-y-1.5"
                 >
                   {/* Top Green Ray */}
-                  <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
 
                   <div>
                     <div className="flex items-center justify-between gap-1.5">
-                      <span className="rounded-full border border-violet-400/30 bg-violet-500/15 px-2 py-0.5 font-mono text-[9.5px] font-semibold text-violet-200">
+                      <span className="rounded-full border border-[#B4FF00] bg-[#B4FF00] px-2.5 py-0.5 font-mono text-[9.5px] font-bold text-slate-950 shadow-[0_0_12px_rgba(180,255,0,0.35)]">
                         {sub.badge}
                       </span>
                     </div>
@@ -548,7 +548,7 @@ export default function Capabilities() {
 
                     {/* Deliverables List */}
                     <div className="mt-2.5 pt-2 border-t border-white/10">
-                      <div className="font-mono text-[9.5px] font-bold uppercase tracking-wider text-violet-300 mb-1.5">
+                      <div className="font-mono text-[9.5px] font-bold uppercase tracking-wider text-lime-300 mb-1.5">
                         Key Deliverables
                       </div>
                       <ul className="space-y-1 text-[11px] text-[#e2d9f3]">
@@ -563,12 +563,12 @@ export default function Capabilities() {
                   </div>
 
                   <div className="mt-3 pt-2 border-t border-white/10 flex items-center justify-between">
-                    <span className="font-mono text-[9.5px] uppercase tracking-wider text-violet-300 font-semibold group-hover:text-[#B4FF00] transition-colors">
+                    <span className="font-mono text-[9.5px] uppercase tracking-wider text-lime-300 font-semibold group-hover:text-[#B4FF00] transition-colors">
                       Audit Ready
                     </span>
                     <Link
                       to="/contact"
-                      className="inline-flex items-center gap-1 text-[11px] font-bold text-[#c4b5fd] group-hover:text-[#B4FF00] group-hover:translate-x-0.5 transition-all"
+                      className="inline-flex items-center gap-1 text-[11px] font-bold text-[#B4FF00] group-hover:translate-x-0.5 transition-all"
                     >
                       <span>Request Scope</span>
                       <ArrowRight size={11} weight="bold" />
@@ -588,13 +588,13 @@ export default function Capabilities() {
                 <article
                   key={c.id}
                   onClick={() => handleTabChange(c.id)}
-                  className="group relative flex flex-col justify-between rounded-2xl border border-violet-900/50 bg-gradient-to-b from-[#1e1342] via-[#170e36] to-[#12082b] p-3.5 sm:p-4 lg:p-4 text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#B4FF00]/80 hover:shadow-[0_12px_32px_rgba(180,255,0,0.2)] cursor-pointer overflow-hidden"
+                  className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-lime-500/30 bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95 p-4 lg:p-4.5 text-white shadow-xl transition-all duration-300 hover:-translate-y-1.5 hover:border-[#B4FF00] hover:shadow-[0_18px_44px_rgba(180,255,0,0.38)] cursor-pointer"
                 >
-                  <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
 
                   <div>
                     <div className="flex items-center justify-between">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-violet-500/20 text-[#c4b5fd] group-hover:bg-[#B4FF00] group-hover:text-[#0c061e] transition-colors shadow-xs">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-lime-400/40 bg-lime-500/15 text-[#B4FF00] group-hover:bg-[#B4FF00] group-hover:text-slate-950 transition-colors shadow-xs">
                         {SERVICE_ICONS[c.id] || <ShieldCheck size={18} weight="duotone" />}
                       </div>
                     </div>
@@ -608,7 +608,7 @@ export default function Capabilities() {
                     </p>
 
                     <div className="mt-2.5 border-t border-white/10 pt-2">
-                      <div className="font-mono text-[9.5px] font-bold uppercase tracking-wider text-violet-300 mb-1">
+                      <div className="font-mono text-[9.5px] font-bold uppercase tracking-wider text-lime-300 mb-1">
                         Core Offerings
                       </div>
                       <ul className="space-y-1 text-[11px] text-[#e2d9f3]">
@@ -623,7 +623,7 @@ export default function Capabilities() {
                   </div>
 
                   <div className="mt-3 border-t border-white/10 pt-2 flex items-center justify-between">
-                    <span className="font-mono text-[10px] font-semibold text-violet-300">
+                    <span className="font-mono text-[10px] font-semibold text-lime-300">
                       {c.subServices.length} Offerings
                     </span>
                     <span className="inline-flex items-center gap-1 font-mono text-[10.5px] font-bold text-[#B4FF00] group-hover:translate-x-0.5 transition-transform">

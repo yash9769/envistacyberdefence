@@ -97,9 +97,12 @@ export default function IndustriesDropdown({
               key={ind.name}
               to={`/industries#${ind.slug}`}
               onClick={onClose}
-              className="group flex flex-col rounded-xl p-3 transition-colors hover:bg-slate-50 dark:hover:bg-white/5 border border-transparent hover:border-slate-200/60 dark:hover:border-white/10"
+              className="group relative flex flex-col overflow-hidden rounded-xl p-3 transition-all hover:bg-slate-50 dark:hover:bg-lime-500/10 border border-transparent hover:border-[#B4FF00] hover:shadow-[0_4px_20px_rgba(180,255,0,0.15)]"
             >
-              <h4 className="font-display text-[13.5px] font-bold leading-snug text-[#0d1020] transition-colors group-hover:text-[#6d28d9] dark:text-white dark:group-hover:text-[#c4b5fd]">
+              {/* Top Glowing Hairline */}
+              <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
+
+              <h4 className="font-display text-[13.5px] font-bold leading-snug text-[#0d1020] transition-colors group-hover:text-lime-800 dark:text-white dark:group-hover:text-[#B4FF00]">
                 {ind.name}
               </h4>
               <p className="mt-1 text-[11.5px] leading-snug text-slate-500 dark:text-slate-400 line-clamp-2">

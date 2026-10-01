@@ -429,8 +429,8 @@ export default function About() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3 lg:gap-10">
             {/* 1. Who We Are */}
             <Reveal delay={100}>
-              <div className="group relative flex flex-col h-full overflow-hidden rounded-2xl border border-violet-900/50 bg-gradient-to-b from-[#1e1342] via-[#170e36] to-[#12082b] p-6 sm:p-8 text-white shadow-xl transition-all duration-300 hover:border-[#B4FF00]/80 hover:shadow-[0_14px_36px_rgba(180,255,0,0.22)] hover:-translate-y-1 cursor-pointer">
-                <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="group relative flex flex-col h-full overflow-hidden rounded-2xl border border-lime-500/30 bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95 p-6 sm:p-8 text-white shadow-[0_12px_36px_rgba(180,255,0,0.14)] transition-all duration-300 hover:border-[#B4FF00] hover:shadow-[0_20px_48px_rgba(180,255,0,0.38)] hover:-translate-y-1.5 cursor-pointer">
+                <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
                 <WhoWeAreIcon />
                 <h3 className="mt-6 font-display text-xl sm:text-2xl font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-[#B4FF00]">
                   Who We Are
@@ -446,8 +446,8 @@ export default function About() {
 
             {/* 2. Our Vision */}
             <Reveal delay={200}>
-              <div className="group relative flex flex-col h-full overflow-hidden rounded-2xl border border-violet-900/50 bg-gradient-to-b from-[#1e1342] via-[#170e36] to-[#12082b] p-6 sm:p-8 text-white shadow-xl transition-all duration-300 hover:border-[#B4FF00]/80 hover:shadow-[0_14px_36px_rgba(180,255,0,0.22)] hover:-translate-y-1 cursor-pointer">
-                <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="group relative flex flex-col h-full overflow-hidden rounded-2xl border border-lime-500/30 bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95 p-6 sm:p-8 text-white shadow-[0_12px_36px_rgba(180,255,0,0.14)] transition-all duration-300 hover:border-[#B4FF00] hover:shadow-[0_20px_48px_rgba(180,255,0,0.38)] hover:-translate-y-1.5 cursor-pointer">
+                <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
                 <OurVisionIcon />
                 <h3 className="mt-6 font-display text-xl sm:text-2xl font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-[#B4FF00]">
                   Our Vision
@@ -463,8 +463,8 @@ export default function About() {
 
             {/* 3. Our Mission */}
             <Reveal delay={300}>
-              <div className="group relative flex flex-col h-full overflow-hidden rounded-2xl border border-violet-900/50 bg-gradient-to-b from-[#1e1342] via-[#170e36] to-[#12082b] p-6 sm:p-8 text-white shadow-xl transition-all duration-300 hover:border-[#B4FF00]/80 hover:shadow-[0_14px_36px_rgba(180,255,0,0.22)] hover:-translate-y-1 cursor-pointer">
-                <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="group relative flex flex-col h-full overflow-hidden rounded-2xl border border-lime-500/30 bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95 p-6 sm:p-8 text-white shadow-[0_12px_36px_rgba(180,255,0,0.14)] transition-all duration-300 hover:border-[#B4FF00] hover:shadow-[0_20px_48px_rgba(180,255,0,0.38)] hover:-translate-y-1.5 cursor-pointer">
+                <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
                 <OurMissionIcon />
                 <h3 className="mt-6 font-display text-xl sm:text-2xl font-bold tracking-tight text-white transition-colors duration-200 group-hover:text-[#B4FF00]">
                   Our Mission
@@ -539,8 +539,11 @@ export default function About() {
               },
             ].map((srv, idx) => (
               <Reveal key={srv.title} delay={idx * 80}>
-                <div className="group relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-violet-900/50 bg-gradient-to-b from-[#1e1342] via-[#170e36] to-[#12082b] p-6 text-white shadow-xl transition-all duration-300 hover:border-[#B4FF00]/80 hover:shadow-[0_14px_36px_rgba(180,255,0,0.22)] hover:-translate-y-1 cursor-pointer">
-                  <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <Link
+                  to="/capabilities"
+                  className="group relative flex flex-col justify-between h-full overflow-hidden rounded-2xl border border-lime-500/30 bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95 p-6 text-white shadow-[0_12px_36px_rgba(180,255,0,0.14)] transition-all duration-300 hover:border-[#B4FF00] hover:shadow-[0_20px_48px_rgba(180,255,0,0.38)] hover:-translate-y-1.5 cursor-pointer"
+                >
+                  <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-100" />
                   <div>
                     <h3 className="font-display text-lg font-bold text-white group-hover:text-[#B4FF00] transition-colors">
                       {srv.title}
@@ -549,16 +552,11 @@ export default function About() {
                       {srv.desc}
                     </p>
                   </div>
-                  <div className="mt-5 pt-4 border-t border-white/10">
-                    <Link
-                      to="/capabilities"
-                      className="text-xs font-bold text-[#c4b5fd] group-hover:text-[#B4FF00] transition-colors inline-flex items-center gap-1"
-                    >
-                      <span>Explore capability</span>
-                      <span>&rarr;</span>
-                    </Link>
+                  <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-bold text-[#B4FF00]">
+                    <span>Explore capability</span>
+                    <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
                   </div>
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>
@@ -649,12 +647,7 @@ export default function About() {
                 {LEADERSHIP_DATA.filter((m) => m.category === "directors").map((member, i) => (
                   <div key={member.name} className="w-full max-w-xl">
                     <Reveal delay={i * 120}>
-                    <div className="group relative flex h-full flex-col items-center rounded-2xl border border-white/15 bg-white/[0.05] p-7 text-center shadow-xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/60 hover:bg-white/[0.08] hover:shadow-[0_16px_36px_rgba(124,58,237,0.3)]">
-                      {/* Category Pill */}
-                      <span className="mb-4 rounded-full border border-violet-400/40 bg-violet-950/60 px-3 py-0.5 text-[10.5px] font-mono font-semibold uppercase tracking-wider text-[#d8b4fe]">
-                        Founder
-                      </span>
-
+                      <div className="group relative flex h-full flex-col items-center rounded-2xl border border-white/15 bg-white/[0.05] p-7 text-center shadow-xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/60 hover:bg-white/[0.08] hover:shadow-[0_16px_36px_rgba(124,58,237,0.3)]">
                       {/* Photo */}
                       <div className="relative mb-5">
                         <img

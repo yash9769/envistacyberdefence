@@ -85,18 +85,24 @@ function WhatWeDo() {
                   <Reveal delay={(i % 3) * 70} className="h-full">
                     <Link
                       to={`/capabilities#${s.id}`}
-                      className="group flex h-full flex-col justify-between rounded-2xl border border-violet-500/25 bg-[#170c38]/85 p-6 backdrop-blur-md shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-violet-400/60 hover:bg-[#1f1049] hover:shadow-[0_12px_36px_rgba(124,58,237,0.3)] cursor-pointer"
+                      className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-lime-500/30 bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95 p-6 backdrop-blur-xl shadow-[0_12px_36px_rgba(180,255,0,0.14)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#B4FF00] hover:shadow-[0_20px_48px_rgba(180,255,0,0.38)] cursor-pointer"
                     >
+                      {/* Top Glowing Hairline */}
+                      <div
+                        aria-hidden="true"
+                        className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-70 transition-opacity duration-300 group-hover:opacity-100"
+                      />
+
                       <div>
                         <div className="flex items-center justify-between">
                           <span
                             aria-hidden="true"
-                            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-violet-400/30 bg-violet-600/20 text-violet-300 transition-all duration-300 group-hover:scale-105 group-hover:bg-violet-600/40 group-hover:text-white"
+                            className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-lime-400/40 bg-lime-500/15 text-[#B4FF00] shadow-[0_0_20px_rgba(180,255,0,0.25)] transition-all duration-300 group-hover:scale-105 group-hover:bg-[#B4FF00] group-hover:text-slate-950"
                           >
                             <Icon size={20} weight="bold" />
                           </span>
                         </div>
-                        <h3 className="mt-4 font-display text-base font-bold tracking-tight text-white group-hover:text-violet-200 transition-colors">
+                        <h3 className="mt-4 font-display text-base font-bold tracking-tight text-white group-hover:text-[#B4FF00] transition-colors">
                           {s.title}
                         </h3>
                         <ul className="mt-3 space-y-1.5 text-[13px] leading-snug text-[#d8cefa]">
@@ -106,11 +112,11 @@ function WhatWeDo() {
                         </ul>
                       </div>
 
-                      <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-violet-300 font-semibold group-hover:text-white transition-colors">
+                      <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-[#B4FF00] font-semibold group-hover:text-white transition-colors">
                         <span>Explore</span>
                         <span
                           aria-hidden="true"
-                          className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-violet-400/30 bg-violet-950/60 text-violet-300 transition-all duration-300 group-hover:border-violet-300 group-hover:bg-violet-600 group-hover:text-white group-hover:translate-x-1"
+                          className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-lime-400/40 bg-lime-950/60 text-[#B4FF00] transition-all duration-300 group-hover:border-[#B4FF00] group-hover:bg-[#B4FF00] group-hover:text-slate-950 group-hover:translate-x-1"
                         >
                           <ArrowRight size={13} weight="bold" />
                         </span>
@@ -129,44 +135,44 @@ function WhatWeDo() {
 
 const APPROACH_CARD_THEMES = [
   {
-    // Discover — Electric Sky Blue
-    border: "border-sky-500/35 hover:border-sky-400/80",
-    bg: "bg-gradient-to-b from-[#0c1a3b]/90 via-[#0e1633]/85 to-[#0b0c26]/90",
-    glow: "shadow-[0_12px_36px_rgba(2,132,199,0.18)] hover:shadow-[0_18px_44px_rgba(56,189,248,0.35)]",
-    topLine: "bg-gradient-to-r from-transparent via-sky-400 to-transparent",
-    iconBox: "border-sky-400/40 bg-sky-500/15 text-sky-300 shadow-[0_0_20px_rgba(56,189,248,0.25)] group-hover:bg-sky-500 group-hover:text-slate-950",
+    // Discover — Neon Cyber Lime
+    border: "border-lime-500/35 hover:border-[#B4FF00]",
+    bg: "bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95",
+    glow: "shadow-[0_12px_36px_rgba(180,255,0,0.15)] hover:shadow-[0_20px_48px_rgba(180,255,0,0.38)]",
+    topLine: "bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent",
+    iconBox: "border-lime-400/40 bg-lime-500/15 text-[#B4FF00] shadow-[0_0_20px_rgba(180,255,0,0.25)] group-hover:bg-[#B4FF00] group-hover:text-slate-950",
     tag: "Reconnaissance",
-    titleHover: "group-hover:text-sky-200",
+    titleHover: "group-hover:text-[#B4FF00]",
   },
   {
-    // Plan — Royal Violet
-    border: "border-violet-500/35 hover:border-violet-400/80",
-    bg: "bg-gradient-to-b from-[#1d0d44]/90 via-[#170b36]/80 to-[#0d0724]/90",
-    glow: "shadow-[0_12px_36px_rgba(139,92,246,0.18)] hover:shadow-[0_18px_44px_rgba(168,85,247,0.35)]",
-    topLine: "bg-gradient-to-r from-transparent via-violet-400 to-transparent",
-    iconBox: "border-violet-400/40 bg-violet-500/15 text-violet-300 shadow-[0_0_20px_rgba(168,85,247,0.25)] group-hover:bg-violet-500 group-hover:text-slate-950",
+    // Plan — Neon Cyber Lime
+    border: "border-lime-500/35 hover:border-[#B4FF00]",
+    bg: "bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95",
+    glow: "shadow-[0_12px_36px_rgba(180,255,0,0.15)] hover:shadow-[0_20px_48px_rgba(180,255,0,0.38)]",
+    topLine: "bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent",
+    iconBox: "border-lime-400/40 bg-lime-500/15 text-[#B4FF00] shadow-[0_0_20px_rgba(180,255,0,0.25)] group-hover:bg-[#B4FF00] group-hover:text-slate-950",
     tag: "Strategy & Architecture",
-    titleHover: "group-hover:text-violet-200",
+    titleHover: "group-hover:text-[#B4FF00]",
   },
   {
-    // Implement — Rose Orchid
-    border: "border-pink-500/35 hover:border-pink-400/80",
-    bg: "bg-gradient-to-b from-[#2e0d38]/90 via-[#23092c]/80 to-[#14061c]/90",
-    glow: "shadow-[0_12px_36px_rgba(236,72,153,0.18)] hover:shadow-[0_18px_44px_rgba(244,114,182,0.35)]",
-    topLine: "bg-gradient-to-r from-transparent via-pink-400 to-transparent",
-    iconBox: "border-pink-400/40 bg-pink-500/15 text-pink-300 shadow-[0_0_20px_rgba(244,114,182,0.25)] group-hover:bg-pink-500 group-hover:text-slate-950",
+    // Implement — Neon Cyber Lime
+    border: "border-lime-500/35 hover:border-[#B4FF00]",
+    bg: "bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95",
+    glow: "shadow-[0_12px_36px_rgba(180,255,0,0.15)] hover:shadow-[0_20px_48px_rgba(180,255,0,0.38)]",
+    topLine: "bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent",
+    iconBox: "border-lime-400/40 bg-lime-500/15 text-[#B4FF00] shadow-[0_0_20px_rgba(180,255,0,0.25)] group-hover:bg-[#B4FF00] group-hover:text-slate-950",
     tag: "Precision Deployment",
-    titleHover: "group-hover:text-pink-200",
+    titleHover: "group-hover:text-[#B4FF00]",
   },
   {
     // Optimize — Neon Cyber Lime
-    border: "border-lime-500/35 hover:border-lime-400/80",
-    bg: "bg-gradient-to-b from-[#132617]/90 via-[#0e1d17]/80 to-[#071318]/90",
-    glow: "shadow-[0_12px_36px_rgba(180,255,0,0.15)] hover:shadow-[0_18px_44px_rgba(180,255,0,0.35)]",
+    border: "border-lime-500/35 hover:border-[#B4FF00]",
+    bg: "bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95",
+    glow: "shadow-[0_12px_36px_rgba(180,255,0,0.15)] hover:shadow-[0_20px_48px_rgba(180,255,0,0.38)]",
     topLine: "bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent",
     iconBox: "border-lime-400/40 bg-lime-500/15 text-[#B4FF00] shadow-[0_0_20px_rgba(180,255,0,0.25)] group-hover:bg-[#B4FF00] group-hover:text-slate-950",
     tag: "Continuous Resilience",
-    titleHover: "group-hover:text-lime-200",
+    titleHover: "group-hover:text-[#B4FF00]",
   },
 ];
 
@@ -216,8 +222,9 @@ function OurApproach() {
             const theme = APPROACH_CARD_THEMES[i];
             return (
               <Reveal key={s.t} delay={i * 80} className="h-full">
-                <div
-                  className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl sm:rounded-3xl border p-6 sm:p-7 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 ${theme.border} ${theme.bg} ${theme.glow}`}
+                <Link
+                  to="/methodology"
+                  className={`group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl sm:rounded-3xl border p-6 sm:p-7 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 cursor-pointer ${theme.border} ${theme.bg} ${theme.glow}`}
                 >
                   {/* Glowing top accent hairline */}
                   <div
@@ -251,17 +258,17 @@ function OurApproach() {
 
                   {/* Bottom Phase Label */}
                   <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-                    <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-400 group-hover:text-slate-200 transition-colors">
+                    <span className="font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-400 group-hover:text-[#B4FF00] transition-colors">
                       {theme.tag}
                     </span>
                     <span
                       aria-hidden="true"
-                      className="text-xs text-slate-500 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-white"
+                      className="text-xs text-slate-500 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-[#B4FF00]"
                     >
                       →
                     </span>
                   </div>
-                </div>
+                </Link>
               </Reveal>
             );
           })}
@@ -369,40 +376,40 @@ function RealImpact() {
 /* ---------------------------------------------------------------- */
 const INSIGHT_CARD_THEMES = [
   {
-    // Card 1: Threat Intelligence — Electric Sky Blue & Deep Navy
-    border: "border-sky-500/40 hover:border-sky-400",
-    bg: "bg-gradient-to-b from-[#0c1a3b] via-[#091530] to-[#060e22]",
-    glow: "shadow-[0_12px_36px_rgba(2,132,199,0.18)] hover:shadow-[0_18px_44px_rgba(56,189,248,0.35)]",
-    topLine: "bg-gradient-to-r from-transparent via-sky-400 to-transparent",
-    tag: "text-sky-300 border-sky-400/35 bg-sky-950/70",
-    title: "text-white group-hover:text-sky-200",
-    date: "text-sky-300/80",
-    btn: "border-sky-400/35 bg-sky-950/70 text-sky-300 group-hover:bg-sky-500 group-hover:text-slate-950 group-hover:border-sky-400",
-    footerBorder: "border-sky-500/20",
-  },
-  {
-    // Card 2: Compliance — Royal Violet & Amethyst
-    border: "border-violet-500/40 hover:border-violet-400",
-    bg: "bg-gradient-to-b from-[#220d47] via-[#180935] to-[#0f0524]",
-    glow: "shadow-[0_12px_36px_rgba(139,92,246,0.18)] hover:shadow-[0_18px_44px_rgba(168,85,247,0.35)]",
-    topLine: "bg-gradient-to-r from-transparent via-violet-400 to-transparent",
-    tag: "text-violet-300 border-violet-400/35 bg-violet-950/70",
-    title: "text-white group-hover:text-violet-200",
-    date: "text-violet-300/80",
-    btn: "border-violet-400/35 bg-violet-950/70 text-violet-300 group-hover:bg-violet-500 group-hover:text-slate-950 group-hover:border-violet-400",
-    footerBorder: "border-violet-500/20",
-  },
-  {
-    // Card 3: AI Security — Cyber Emerald & Neon Lime
-    border: "border-emerald-500/40 hover:border-emerald-400",
-    bg: "bg-gradient-to-b from-[#0a2518] via-[#071b11] to-[#03110a]",
-    glow: "shadow-[0_12px_36px_rgba(16,185,129,0.18)] hover:shadow-[0_18px_44px_rgba(180,255,0,0.35)]",
+    // Card 1: Threat Intelligence — High-Contrast Electric Cyber Lime
+    border: "border-2 border-[#B4FF00]/50 hover:border-[#B4FF00]",
+    bg: "bg-gradient-to-b from-[#140a2f] via-[#0e0724] to-[#080316]",
+    glow: "shadow-[0_14px_40px_rgba(180,255,0,0.18)] hover:shadow-[0_22px_54px_rgba(180,255,0,0.42)]",
     topLine: "bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent",
-    tag: "text-emerald-300 border-emerald-400/35 bg-emerald-950/70",
-    title: "text-white group-hover:text-emerald-200",
-    date: "text-emerald-300/80",
-    btn: "border-emerald-400/35 bg-emerald-950/70 text-emerald-300 group-hover:bg-[#B4FF00] group-hover:text-slate-950 group-hover:border-[#B4FF00]",
-    footerBorder: "border-emerald-500/20",
+    tag: "bg-[#B4FF00] text-slate-950 font-bold shadow-[0_0_16px_rgba(180,255,0,0.4)] border border-[#B4FF00]",
+    title: "text-white group-hover:text-[#B4FF00]",
+    date: "text-slate-300 font-mono",
+    btn: "bg-[#B4FF00] text-slate-950 shadow-[0_0_18px_rgba(180,255,0,0.45)] group-hover:scale-110 group-hover:shadow-[0_0_26px_rgba(180,255,0,0.7)] border-transparent",
+    footerBorder: "border-white/10",
+  },
+  {
+    // Card 2: Compliance — High-Contrast Electric Cyber Lime
+    border: "border-2 border-[#B4FF00]/50 hover:border-[#B4FF00]",
+    bg: "bg-gradient-to-b from-[#140a2f] via-[#0e0724] to-[#080316]",
+    glow: "shadow-[0_14px_40px_rgba(180,255,0,0.18)] hover:shadow-[0_22px_54px_rgba(180,255,0,0.42)]",
+    topLine: "bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent",
+    tag: "bg-[#B4FF00] text-slate-950 font-bold shadow-[0_0_16px_rgba(180,255,0,0.4)] border border-[#B4FF00]",
+    title: "text-white group-hover:text-[#B4FF00]",
+    date: "text-slate-300 font-mono",
+    btn: "bg-[#B4FF00] text-slate-950 shadow-[0_0_18px_rgba(180,255,0,0.45)] group-hover:scale-110 group-hover:shadow-[0_0_26px_rgba(180,255,0,0.7)] border-transparent",
+    footerBorder: "border-white/10",
+  },
+  {
+    // Card 3: AI Security — High-Contrast Electric Cyber Lime
+    border: "border-2 border-[#B4FF00]/50 hover:border-[#B4FF00]",
+    bg: "bg-gradient-to-b from-[#140a2f] via-[#0e0724] to-[#080316]",
+    glow: "shadow-[0_14px_40px_rgba(180,255,0,0.18)] hover:shadow-[0_22px_54px_rgba(180,255,0,0.42)]",
+    topLine: "bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent",
+    tag: "bg-[#B4FF00] text-slate-950 font-bold shadow-[0_0_16px_rgba(180,255,0,0.4)] border border-[#B4FF00]",
+    title: "text-white group-hover:text-[#B4FF00]",
+    date: "text-slate-300 font-mono",
+    btn: "bg-[#B4FF00] text-slate-950 shadow-[0_0_18px_rgba(180,255,0,0.45)] group-hover:scale-110 group-hover:shadow-[0_0_26px_rgba(180,255,0,0.7)] border-transparent",
+    footerBorder: "border-white/10",
   },
 ];
 

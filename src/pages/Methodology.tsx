@@ -287,12 +287,12 @@ export default function Methodology() {
               ].map((badge) => (
                 <div
                   key={badge.top}
-                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center backdrop-blur-md transition-all hover:border-violet-400/40 hover:bg-white/[0.07]"
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-center backdrop-blur-md transition-all hover:border-[#B4FF00] hover:shadow-[0_0_25px_rgba(180,255,0,0.25)] hover:bg-white/[0.07] cursor-pointer"
                 >
                   <div className="font-display text-lg sm:text-xl font-black text-white">
                     {badge.top}
                   </div>
-                  <div className="mt-1 font-mono text-[10.5px] uppercase tracking-wider text-[#c4b5fd]">
+                  <div className="mt-1 font-mono text-[10.5px] uppercase tracking-wider text-[#d8cefa]">
                     {badge.bottom}
                   </div>
                 </div>
@@ -445,24 +445,26 @@ export default function Methodology() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {CORE_PILLARS.map((pillar, idx) => (
               <Reveal key={pillar.category} delay={idx * 100}>
-                <div
-                  className={`group relative flex flex-col justify-between rounded-3xl border ${pillar.border} bg-white/[0.04] p-6 sm:p-8 backdrop-blur-xl shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/[0.07] hover:shadow-[0_20px_40px_rgba(124,58,237,0.25)]`}
+                <Link
+                  to="/capabilities"
+                  className="group relative flex flex-col justify-between h-full overflow-hidden rounded-3xl border border-lime-500/30 bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95 p-6 sm:p-8 backdrop-blur-xl shadow-[0_12px_36px_rgba(180,255,0,0.14)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#B4FF00] hover:shadow-[0_20px_48px_rgba(180,255,0,0.38)] cursor-pointer"
                 >
+                  {/* Top Glowing Hairline */}
+                  <div className="absolute inset-x-0 top-0 h-[2.5px] bg-gradient-to-r from-transparent via-[#B4FF00] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
                   <div>
                     {/* Header with Icon & Category Badge */}
                     <div className="flex items-center justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/15 bg-white/[0.05] shadow-inner">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-lime-400/40 bg-lime-500/15 text-[#B4FF00] shadow-[0_0_20px_rgba(180,255,0,0.2)] transition-all duration-300 group-hover:scale-105 group-hover:bg-[#B4FF00] group-hover:text-slate-950">
                         {pillar.icon}
                       </div>
-                      <span
-                        className={`rounded-full border px-3 py-1 font-mono text-[10.5px] font-bold uppercase tracking-wider ${pillar.tagColor}`}
-                      >
+                      <span className="rounded-full border border-lime-400/35 bg-lime-950/70 px-3 py-1 font-mono text-[10.5px] font-bold uppercase tracking-wider text-[#B4FF00]">
                         {pillar.category}
                       </span>
                     </div>
 
                     {/* Pillar Title & Tagline */}
-                    <h3 className="mt-6 font-display text-xl sm:text-2xl font-extrabold text-white group-hover:text-violet-200 transition-colors">
+                    <h3 className="mt-6 font-display text-xl sm:text-2xl font-extrabold text-white group-hover:text-[#B4FF00] transition-colors">
                       {pillar.title}
                     </h3>
                     <p className="mt-2 text-xs sm:text-sm text-[#d8cefa] leading-relaxed">
@@ -473,7 +475,7 @@ export default function Methodology() {
                     <ul className="mt-6 space-y-2.5 border-t border-white/10 pt-5">
                       {pillar.items.map((item, i) => (
                         <li key={i} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-200">
-                          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400" />
+                          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#B4FF00]" />
                           <span>{item}</span>
                         </li>
                       ))}
@@ -481,16 +483,11 @@ export default function Methodology() {
                   </div>
 
                   {/* Learn More Link */}
-                  <div className="mt-8 pt-4">
-                    <Link
-                      to="/capabilities"
-                      className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-violet-300 hover:text-white transition-colors"
-                    >
-                      <span>Explore {pillar.category} Capabilities</span>
-                      <span>&rarr;</span>
-                    </Link>
+                  <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-bold uppercase tracking-wider text-[#B4FF00] group-hover:text-white transition-colors">
+                    <span>Explore {pillar.category} Capabilities</span>
+                    <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
                   </div>
-                </div>
+                </Link>
               </Reveal>
             ))}
           </div>
