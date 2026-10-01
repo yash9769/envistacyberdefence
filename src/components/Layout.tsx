@@ -5,13 +5,10 @@ import {
   CaretDown,
   EnvelopeSimple,
   Globe,
-  LinkedinLogo,
   List,
   ShieldCheck,
   Sparkle,
   X,
-  XLogo,
-  YoutubeLogo,
 } from "@phosphor-icons/react";
 import Logo from "./Logo";
 import { Btn } from "./ui";
@@ -63,12 +60,6 @@ function ScrollToTop() {
   }, [pathname, hash]);
   return null;
 }
-
-const SOCIALS: [string, typeof LinkedinLogo][] = [
-  ["LinkedIn", LinkedinLogo],
-  ["X", XLogo],
-  ["YouTube", YoutubeLogo],
-];
 
 export default function Layout() {
   const [menu, setMenu] = useState(false);

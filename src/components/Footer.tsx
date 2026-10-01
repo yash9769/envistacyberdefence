@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router";
-import { LinkedinLogo, XLogo, YoutubeLogo } from "@phosphor-icons/react";
+import { LinkedinLogo } from "@phosphor-icons/react";
 import logoDarkUrl from "../imports/envista-logo-dark.png";
 
 interface FooterLink {
@@ -67,16 +67,6 @@ const SOCIAL_LINKS = [
     name: "LinkedIn",
     icon: LinkedinLogo,
     href: "https://www.linkedin.com/company/envista-cyber-defence/",
-  },
-  {
-    name: "X",
-    icon: XLogo,
-    href: "https://x.com",
-  },
-  {
-    name: "YouTube",
-    icon: YoutubeLogo,
-    href: "https://youtube.com",
   },
 ];
 
