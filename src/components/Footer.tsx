@@ -17,12 +17,12 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Services",
     links: [
-      { label: "Offensive Security", href: "/capabilities" },
-      { label: "Defensive Security", href: "/capabilities" },
-      { label: "GRC & Compliance", href: "/capabilities" },
-      { label: "DPDP Readiness", href: "/capabilities" },
-      { label: "AI Security", href: "/capabilities" },
-      { label: "Security Awareness", href: "/capabilities" },
+      { label: "Offensive Security", href: "/capabilities#offensive" },
+      { label: "Defensive Security", href: "/capabilities#defensive" },
+      { label: "GRC & Compliance", href: "/capabilities#grc" },
+      { label: "DPDP Readiness", href: "/capabilities#dpdp" },
+      { label: "AI Security", href: "/capabilities#ai" },
+      { label: "Security Awareness", href: "/capabilities#training" },
     ],
   },
   {
@@ -137,6 +137,11 @@ export default function Footer() {
                       ) : (
                         <Link
                           to={link.href}
+                          onClick={() => {
+                            if (link.href.startsWith("/")) {
+                              window.scrollTo({ top: 0, behavior: "smooth" });
+                            }
+                          }}
                           className="text-[13px] text-slate-400 transition-colors duration-150 hover:text-white"
                         >
                           {link.label}

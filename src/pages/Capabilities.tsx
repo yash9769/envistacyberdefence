@@ -423,8 +423,10 @@ export default function Capabilities() {
   useEffect(() => {
     if (cleanHash && SERVICES_DEEP_DIVE[cleanHash]) {
       setActiveServiceId(cleanHash);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else if (!cleanHash || cleanHash === "all" || cleanHash === "services-grid") {
       setActiveServiceId("all");
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   }, [cleanHash]);
 
