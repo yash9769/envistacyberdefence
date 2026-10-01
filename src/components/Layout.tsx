@@ -365,70 +365,111 @@ export default function Layout() {
           onMouseLeave={handleIndustriesLeave}
         />
 
-        {/* Backdrop Dim Overlay when any mega menu or mobile menu is open */}
-        {(isAnyDropdownOpen || menu) && (
+        {/* Desktop Backdrop Dim Overlay when any mega menu is open */}
+        {isAnyDropdownOpen && (
           <div
-            className="fixed inset-0 z-40 bg-slate-950/40 backdrop-blur-xs transition-opacity duration-300 dark:bg-black/60 cursor-pointer pointer-events-auto"
-            onClick={() => {
-              handleHeaderLeave();
-              setMenu(false);
-            }}
+            className="hidden lg:block fixed inset-0 top-[65px] z-40 bg-slate-950/20 backdrop-blur-xs transition-opacity duration-300 dark:bg-black/50 cursor-pointer pointer-events-auto"
+            onClick={handleHeaderLeave}
             aria-hidden="true"
           />
         )}
+      </header>
 
-        {/* Mobile Navigation Drawer */}
+      {/* ========================================================================= */}
+      {/* MOBILE NAVIGATION DRAWER & BACKDROP (HIGH Z-INDEX OVERLAY)                 */}
+      {/* ========================================================================= */}
+      <AnimatePresence>
         {menu && (
-          <div
-            id="mobile-nav"
-            className="pointer-events-auto relative mt-2 max-h-[82vh] overflow-y-auto rounded-2xl border px-5 py-6 lg:hidden bg-white shadow-2xl backdrop-blur-2xl border-slate-200/90 dark:bg-[#0c0e1e] dark:border-white/15 animate-fade-in"
-          >
-            {/* Accordion Menus */}
-            <MobileSolutionsAccordion onItemClick={() => setMenu(false)} />
-            <MobileServicesAccordion onItemClick={() => setMenu(false)} />
-            <MobileIndustriesAccordion onItemClick={() => setMenu(false)} />
+          <div className="fixed inset-0 z-[100] lg:hidden flex flex-col justify-start">
+            {/* 1. Backdrop Dim Overlay (Tapping closes menu) */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="absolute inset-0 bg-slate-950/65 backdrop-blur-sm cursor-pointer"
+              onClick={() => setMenu(false)}
+              aria-hidden="true"
+            />
 
-            {/* Standalone Nav Links */}
-            <div className="mt-3 space-y-1 border-t border-slate-200/80 pt-3 dark:border-white/10">
-              {NAV.filter(
-                ([label]) =>
-                  label !== "Platform Capabilities" &&
-                  label !== "Services" &&
-                  label !== "Industries" &&
-                  label !== "Solutions"
-              ).map(([label, href]) => (
-                <NavLink
-                  key={label}
-                  to={href}
+            {/* 2. Mobile Drawer Panel (Above backdrop, fully clickable) */}
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -16, scale: 0.98 }}
+              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+              id="mobile-nav"
+              className="relative z-10 mx-3 sm:mx-6 mt-3 max-h-[88vh] overflow-y-auto rounded-3xl border border-slate-200/90 bg-white p-5 shadow-2xl dark:bg-[#0c0e1e] dark:border-white/15 dark:text-white"
+            >
+              {/* Drawer Top Header Row: Logo & Close Button */}
+              <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 dark:border-white/10">
+                <Link
+                  to="/"
                   onClick={() => setMenu(false)}
-                  className={({ isActive }) =>
-                    `flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors cursor-pointer ${
-                      isActive
-                        ? "bg-violet-600/10 text-violet-700 font-semibold dark:bg-violet-500/20 dark:text-[#c4b5fd]"
-                        : "text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
-                    }`
-                  }
+                  className="flex items-center cursor-pointer"
+                  aria-label="Envista Cyber Defence"
                 >
-                  <span>{label}</span>
-                  <span className="text-slate-400">→</span>
-                </NavLink>
-              ))}
-            </div>
+                  <Logo className="h-7 w-auto object-contain" />
+                </Link>
+                <button
+                  type="button"
+                  onClick={() => setMenu(false)}
+                  className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:bg-slate-100 dark:border-white/15 dark:bg-white/5 dark:text-white cursor-pointer active:scale-95 transition-transform"
+                  aria-label="Close menu"
+                >
+                  <X size={18} weight="bold" />
+                </button>
+              </div>
 
-            {/* Mobile Drawer Bottom CTA */}
-            <div className="mt-5 pt-4 border-t border-slate-200/80 dark:border-white/10">
-              <Link
-                to="/contact"
-                onClick={() => setMenu(false)}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-3 text-center text-sm font-semibold text-white shadow-md shadow-violet-600/30 transition-all hover:brightness-110 active:scale-[0.98] cursor-pointer"
-              >
-                <span>Talk to an Expert</span>
-                <span>→</span>
-              </Link>
-            </div>
+              {/* Accordion Menus (Solutions, Services, Industries) */}
+              <div className="mt-2">
+                <MobileSolutionsAccordion onItemClick={() => setMenu(false)} />
+                <MobileServicesAccordion onItemClick={() => setMenu(false)} />
+                <MobileIndustriesAccordion onItemClick={() => setMenu(false)} />
+              </div>
+
+              {/* Standalone Nav Links (About, Case Studies, Insights, Contact) */}
+              <div className="mt-3 space-y-1 border-t border-slate-200/80 pt-3 dark:border-white/10">
+                {NAV.filter(
+                  ([label]) =>
+                    label !== "Platform Capabilities" &&
+                    label !== "Services" &&
+                    label !== "Industries" &&
+                    label !== "Solutions"
+                ).map(([label, href]) => (
+                  <NavLink
+                    key={label}
+                    to={href}
+                    onClick={() => setMenu(false)}
+                    className={({ isActive }) =>
+                      `flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors cursor-pointer ${
+                        isActive
+                          ? "bg-violet-600/10 text-violet-700 font-semibold dark:bg-violet-500/20 dark:text-[#c4b5fd]"
+                          : "text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
+                      }`
+                    }
+                  >
+                    <span>{label}</span>
+                    <span className="text-slate-400">→</span>
+                  </NavLink>
+                ))}
+              </div>
+
+              {/* Mobile Drawer Bottom CTA */}
+              <div className="mt-5 pt-4 border-t border-slate-200/80 dark:border-white/10">
+                <Link
+                  to="/contact"
+                  onClick={() => setMenu(false)}
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-3 text-center text-sm font-semibold text-white shadow-md shadow-violet-600/30 transition-all hover:brightness-110 active:scale-[0.98] cursor-pointer"
+                >
+                  <span>Talk to an Expert</span>
+                  <span>→</span>
+                </Link>
+              </div>
+            </motion.div>
           </div>
         )}
-      </header>
+      </AnimatePresence>
 
       <AnimatePresence mode="wait" initial={false}>
         <motion.main
