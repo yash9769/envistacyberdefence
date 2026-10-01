@@ -365,11 +365,14 @@ export default function Layout() {
           onMouseLeave={handleIndustriesLeave}
         />
 
-        {/* Backdrop Dim Overlay when any mega menu is open */}
-        {isAnyDropdownOpen && (
+        {/* Backdrop Dim Overlay when any mega menu or mobile menu is open */}
+        {(isAnyDropdownOpen || menu) && (
           <div
-            className="fixed inset-0 top-[65px] z-40 bg-slate-950/15 transition-opacity duration-300 dark:bg-black/50 cursor-pointer"
-            onClick={handleHeaderLeave}
+            className="fixed inset-0 z-40 bg-slate-950/40 backdrop-blur-xs transition-opacity duration-300 dark:bg-black/60 cursor-pointer pointer-events-auto"
+            onClick={() => {
+              handleHeaderLeave();
+              setMenu(false);
+            }}
             aria-hidden="true"
           />
         )}
@@ -378,7 +381,7 @@ export default function Layout() {
         {menu && (
           <div
             id="mobile-nav"
-            className="max-h-[85vh] overflow-y-auto border-t px-5 py-6 lg:hidden bg-white/98 shadow-2xl backdrop-blur-2xl border-slate-200/80 dark:bg-[#0c0e1e]/98 dark:border-white/10 animate-fade-in"
+            className="pointer-events-auto relative mt-2 max-h-[82vh] overflow-y-auto rounded-2xl border px-5 py-6 lg:hidden bg-white shadow-2xl backdrop-blur-2xl border-slate-200/90 dark:bg-[#0c0e1e] dark:border-white/15 animate-fade-in"
           >
             {/* Accordion Menus */}
             <MobileSolutionsAccordion onItemClick={() => setMenu(false)} />
@@ -399,7 +402,7 @@ export default function Layout() {
                   to={href}
                   onClick={() => setMenu(false)}
                   className={({ isActive }) =>
-                    `flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors ${
+                    `flex items-center justify-between rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors cursor-pointer ${
                       isActive
                         ? "bg-violet-600/10 text-violet-700 font-semibold dark:bg-violet-500/20 dark:text-[#c4b5fd]"
                         : "text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-white/5 dark:hover:text-white"
@@ -417,7 +420,7 @@ export default function Layout() {
               <Link
                 to="/contact"
                 onClick={() => setMenu(false)}
-                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-3 text-center text-sm font-semibold text-white shadow-md shadow-violet-600/30 transition-all hover:brightness-110 active:scale-[0.98]"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-3 text-center text-sm font-semibold text-white shadow-md shadow-violet-600/30 transition-all hover:brightness-110 active:scale-[0.98] cursor-pointer"
               >
                 <span>Talk to an Expert</span>
                 <span>→</span>
