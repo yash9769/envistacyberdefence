@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { Kicker, Reveal, RevealText } from "../components/ui";
+import { Reveal, RevealText } from "../components/ui";
 import { COMPLIANCE } from "../data";
 import { CtaBand } from "./Home";
 import AboutHeroShield from "../components/about/AboutHeroShield";
@@ -417,8 +417,7 @@ export default function About() {
       >
         <div className={WRAP}>
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <Kicker tone="light">Who We Are</Kicker>
-            <h2 className="mt-3 font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0d1020] dark:text-white">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-[#0d1020] dark:text-white">
               Who We Are and What We Offer
             </h2>
             <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">

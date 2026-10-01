@@ -130,9 +130,9 @@ function Shield3DAbout() {
             <meshPhysicalMaterial
               map={brandTexture}
               color="#ffffff" // Neutral base so authentic brand gradient renders with full fidelity
-              emissive="#240338"
-              emissiveIntensity={0.18}
-              metalness={0.92} // High-luster machined alloy
+              emissive="#3b0764"
+              emissiveIntensity={0.25}
+              metalness={0.90} // High-luster machined alloy
               roughness={0.14} // Glossy specular shine
               clearcoat={1.0} // High-gloss studio lacquer
               clearcoatRoughness={0.06}
@@ -182,16 +182,43 @@ function AboutLightingSystem() {
 export default function AboutHeroShield({ className = "" }: { className?: string }) {
   return (
     <div className={`relative mx-auto aspect-[16/10] w-full max-w-[580px] sm:max-w-[640px] md:max-w-[700px] flex items-center justify-center ${className}`}>
-      {/* Ambient radial glow centered behind the shield */}
+      {/* ========================================================================= */}
+      {/* RADIANT LIGHT WHITE / OFF-WHITE GRADIENT HALO BEHIND REVOLVING SHIELD       */}
+      {/* ========================================================================= */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 -top-10 flex items-center justify-center"
+        className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-visible select-none"
       >
-        <div className="h-[360px] w-[360px] sm:h-[420px] sm:w-[420px] rounded-full bg-gradient-to-tr from-purple-700/40 via-violet-500/30 to-fuchsia-600/25 blur-[90px]" />
+        {/* 1. Luminous Pure White / Off-White Core Halo (Direct high-contrast back-glow) */}
+        <div
+          className="absolute h-[210px] w-[210px] sm:h-[280px] sm:w-[280px] rounded-full opacity-95 blur-[32px]"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.98) 0%, rgba(250, 250, 255, 0.85) 30%, rgba(240, 242, 254, 0.5) 55%, transparent 75%)",
+          }}
+        />
+
+        {/* 2. Soft Off-White & Pale Platinum Extended Bloom */}
+        <div
+          className="absolute h-[330px] w-[330px] sm:h-[420px] sm:w-[420px] rounded-full opacity-70 blur-[60px]"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.65) 0%, rgba(245, 243, 255, 0.42) 35%, rgba(237, 233, 254, 0.2) 60%, transparent 80%)",
+          }}
+        />
+
+        {/* 3. Outer Brand Royal Purple Atmospheric Soft Depth */}
+        <div
+          className="absolute h-[430px] w-[430px] sm:h-[520px] sm:w-[520px] rounded-full opacity-35 blur-[95px]"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.4) 0%, rgba(91, 33, 182, 0.2) 45%, transparent 75%)",
+          }}
+        />
       </div>
 
       {/* 3D WebGL Canvas */}
-      <div className="relative h-full w-full">
+      <div className="relative h-full w-full z-[1]">
         <WebGLErrorBoundary>
           <Canvas
             camera={{ position: [0, 0, 9.2], fov: 40 }}
