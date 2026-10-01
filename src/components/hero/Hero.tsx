@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { ArrowRight } from "@phosphor-icons/react";
 import HeroMetrics from "./HeroMetrics";
 import HeroVisual from "./HeroVisual";
+import LightPillar from "../LightPillar";
 import { gsap, useGSAP } from "../../components/motion";
 
 export default function Hero() {
@@ -35,10 +36,30 @@ export default function Hero() {
         color: "#ffffff",
       }}
     >
+      {/* React Bits Ambient Light Pillar — Silky Volumetric Ethereal Glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden select-none opacity-50 blur-[6px]"
+      >
+        <LightPillar
+          topColor="#4c1d95"
+          bottomColor="#c084fc"
+          intensity={0.65}
+          rotationSpeed={0.16}
+          glowAmount={0.008}
+          pillarWidth={4.5}
+          pillarHeight={0.35}
+          noiseIntensity={0.02}
+          pillarRotation={0}
+          interactive={false}
+          mixBlendMode="screen"
+        />
+      </div>
+
       {/* Top-Left Subtle Dot Grid Pattern with Soft Tint */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-[2%] top-[10%] hidden h-[120px] w-[120px] opacity-15 lg:block"
+        className="pointer-events-none absolute left-[2%] top-[10%] hidden h-[120px] w-[120px] opacity-15 lg:block z-0"
         style={{
           backgroundImage: "radial-gradient(rgba(192, 132, 252, 0.3) 1.5px, transparent 1.5px)",
           backgroundSize: "16px 16px",
@@ -48,14 +69,14 @@ export default function Hero() {
       {/* Atmospheric Brand Purple & Deep Navy Ambient Glow */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute right-[2%] top-[6%] h-[550px] w-[550px] lg:h-[700px] lg:w-[700px] rounded-full opacity-45 blur-[120px]"
+        className="pointer-events-none absolute right-[2%] top-[6%] h-[550px] w-[550px] lg:h-[700px] lg:w-[700px] rounded-full opacity-45 blur-[120px] z-0"
         style={{
           background:
             "radial-gradient(circle at 50% 50%, rgba(147, 51, 234, 0.3) 0%, rgba(91, 33, 182, 0.18) 40%, rgba(15, 23, 42, 0.1) 70%, transparent 85%)",
         }}
       />
 
-      <div className="relative mx-auto w-full max-w-[1400px] px-5 pt-16 pb-4 sm:px-6 sm:pt-18 md:pt-12 md:pb-4 lg:px-10 lg:pt-14 lg:pb-6">
+      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-5 pt-16 pb-4 sm:px-6 sm:pt-18 md:pt-12 md:pb-4 lg:px-10 lg:pt-14 lg:pb-6">
         <div
           className={[
             "grid grid-cols-1 gap-6 md:grid-cols-[minmax(0,55fr)_minmax(0,45fr)] md:items-center md:gap-6 lg:gap-8 xl:gap-10",

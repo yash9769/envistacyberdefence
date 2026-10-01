@@ -1,0 +1,31 @@
+.light-pillar-fallback {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: transparent;
+  font-size: 14px;
+}
+
+.light-pillar-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  /* Smooth feathered radial vignette to seamlessly blend into dark background */
+  mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, black 25%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 65% at 50% 50%, black 25%, transparent 75%);
+}
+
+.light-pillar-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
