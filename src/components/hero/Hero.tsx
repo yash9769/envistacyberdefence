@@ -36,21 +36,21 @@ export default function Hero() {
         color: "#ffffff",
       }}
     >
-      {/* React Bits Ambient Light Pillar — Silky Volumetric Ethereal Glow */}
+      {/* Right-Side Diagonal Light Pillar — Ethereal Volumetric Spotlight on 3D Shield */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-hidden select-none opacity-50 blur-[6px]"
+        className="pointer-events-none absolute right-[-4%] sm:right-[1%] md:right-[3%] lg:right-[6%] xl:right-[8%] top-[42%] -translate-y-1/2 w-[540px] h-[540px] sm:w-[620px] sm:h-[620px] lg:w-[720px] lg:h-[720px] z-0 flex items-center justify-center overflow-hidden select-none opacity-65 blur-[5px]"
       >
         <LightPillar
-          topColor="#4c1d95"
-          bottomColor="#c084fc"
-          intensity={0.65}
-          rotationSpeed={0.16}
-          glowAmount={0.008}
-          pillarWidth={4.5}
-          pillarHeight={0.35}
+          topColor="#6d28d9"
+          bottomColor="#e879f9"
+          intensity={0.8}
+          rotationSpeed={0.2}
+          glowAmount={0.007}
+          pillarWidth={3.8}
+          pillarHeight={0.38}
           noiseIntensity={0.02}
-          pillarRotation={0}
+          pillarRotation={-28}
           interactive={false}
           mixBlendMode="screen"
         />
