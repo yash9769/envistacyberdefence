@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router";
-import { Reveal, RevealText } from "../components/ui";
+import { Kicker, Reveal, RevealText } from "../components/ui";
 import { COMPLIANCE } from "../data";
 import { CtaBand } from "./Home";
 import AboutHeroShield from "../components/about/AboutHeroShield";
