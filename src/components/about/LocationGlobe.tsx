@@ -38,7 +38,7 @@ const OFFICE_DATA: OfficeLocation[] = [
     regionBadge: "Maharashtra, India",
     cityName: "Mumbai",
     phone: "1800 120 1022",
-    email: "connect@jhsassociates.in",
+    email: "connect@envistacyberdefence.com",
     badgeAlign: "left",
     mapCoord: { x: CITY_COORDS.mumbai.pctX, y: CITY_COORDS.mumbai.pctY },
     subOffices: [
@@ -192,7 +192,7 @@ const OFFICE_DATA: OfficeLocation[] = [
     regionBadge: "Telangana",
     cityName: "Hyderabad",
     phone: "+91 40 4012 8888",
-    email: "connect@jhsassociates.in",
+    email: "connect@envistacyberdefence.com",
     badgeAlign: "right",
     mapCoord: { x: CITY_COORDS.hyderabad.pctX, y: CITY_COORDS.hyderabad.pctY },
     subOffices: [
