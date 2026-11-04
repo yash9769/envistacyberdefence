@@ -1,6 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import { Link, NavLink, Outlet, useLocation } from "react-router";
-import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useRef, useState } from "react"
+
+import { Link, NavLink, Outlet, useLocation } from "react-router"
+
+import { AnimatePresence, motion } from "motion/react"
+
 import {
   CaretDown,
   EnvelopeSimple,
@@ -9,38 +12,60 @@ import {
   ShieldCheck,
   Sparkle,
   X,
-} from "@phosphor-icons/react";
-import Logo from "./Logo";
-import { Btn } from "./ui";
-import { Magnetic } from "./motion";
-import { NAV, CONTACT } from "../data";
-import { useTheme } from "./ThemeToggle";
-import markUrl from "../imports/envista-mark.png";
+} from "@phosphor-icons/react"
+
+import Logo from "./Logo"
+
+import { Btn } from "./ui"
+
+import { Magnetic } from "./motion"
+
+import { NAV, CONTACT } from "../data"
+
+import { useTheme } from "./ThemeToggle"
+
+import markUrl from "../imports/envista-mark.png"
+
 import ServicesDropdown, {
   MobileServicesAccordion,
   ServicesDropdownTrigger,
-} from "./ServicesDropdown";
+} from "./ServicesDropdown"
+
 import IndustriesDropdown, {
   IndustriesDropdownTrigger,
   MobileIndustriesAccordion,
-} from "./IndustriesDropdown";
+} from "./IndustriesDropdown"
+
 import SolutionsDropdown, {
   MobileSolutionsAccordion,
   SolutionsDropdownTrigger,
-} from "./SolutionsDropdown";
-import Footer from "./Footer";
-import CookieConsent from "./CookieConsent";
+} from "./SolutionsDropdown"
+
+import Footer from "./Footer"
+
+import CookieConsent from "./CookieConsent"
 
 /* The flattened lockup PNG sets "Cyber Defence" in near-black — invisible on
    the dark footer/header. This recomposes the mark with vibrant gradient text on dark mode. */
+
 function LogoOnDark({ className = "h-8" }: { className?: string }) {
   return (
     <span className={`inline-flex items-center gap-2.5 ${className}`}>
-      <img src={markUrl} alt="Envista" className="h-full w-auto" draggable={false} />
+      <img
+        src={markUrl}
+        alt="Envista"
+        className="h-full w-auto"
+        draggable={false}
+      />
       <span className="flex flex-col leading-none">
         <span
           className="font-display text-[1.35em] font-bold tracking-[-0.01em]"
-          style={{ backgroundImage: "linear-gradient(120deg,#c084fc,#818cf8)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}
+          style={{
+            backgroundImage: "linear-gradient(120deg,#c084fc,#818cf8)",
+            WebkitBackgroundClip: "text",
+            backgroundClip: "text",
+            color: "transparent",
+          }}
         >
           Envista
         </span>
@@ -49,148 +74,206 @@ function LogoOnDark({ className = "h-8" }: { className?: string }) {
         </span>
       </span>
     </span>
-  );
+  )
 }
 
 function ScrollToTop() {
-  const { pathname, hash } = useLocation();
+  const { pathname, hash } = useLocation()
+
   useEffect(() => {
-    if (hash) return;
-    window.scrollTo(0, 0);
-  }, [pathname, hash]);
-  return null;
+    if (hash) return
+
+    window.scrollTo(0, 0)
+  }, [pathname, hash])
+
+  return null
 }
 
 export default function Layout() {
-  const [menu, setMenu] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [industriesOpen, setIndustriesOpen] = useState(false);
-  const [solutionsOpen, setSolutionsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [menu, setMenu] = useState(false)
 
-  const headerRef = useRef<HTMLElement>(null);
-  const closeTimeoutRef = useRef<number | null>(null);
-  const indTimeoutRef = useRef<number | null>(null);
-  const solTimeoutRef = useRef<number | null>(null);
-  const { pathname } = useLocation();
-  const { isDark } = useTheme();
+  const [servicesOpen, setServicesOpen] = useState(false)
+
+  const [industriesOpen, setIndustriesOpen] = useState(false)
+
+  const [solutionsOpen, setSolutionsOpen] = useState(false)
+
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  const headerRef = useRef<HTMLElement>(null)
+
+  const closeTimeoutRef = useRef<number | null>(null)
+
+  const indTimeoutRef = useRef<number | null>(null)
+
+  const solTimeoutRef = useRef<number | null>(null)
+
+  const { pathname } = useLocation()
+
+  const { isDark } = useTheme()
 
   // Track scroll position for dynamic glass elevation
+
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 15);
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+      setIsScrolled(window.scrollY > 15)
+    }
+
+    handleScroll()
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   // Lock body scroll when mobile menu is open
+
   useEffect(() => {
     if (menu) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "hidden"
     } else {
-      document.body.style.overflow = "";
+      document.body.style.overflow = ""
     }
+
     return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menu]);
+      document.body.style.overflow = ""
+    }
+  }, [menu])
 
   // Close dropdowns on outside click or tap
+
   useEffect(() => {
-    const isAnyOpen = servicesOpen || industriesOpen || solutionsOpen;
-    if (!isAnyOpen) return;
+    const isAnyOpen = servicesOpen || industriesOpen || solutionsOpen
+
+    if (!isAnyOpen) return
 
     const handleOutsideInteraction = (e: MouseEvent | TouchEvent) => {
       if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
-        setServicesOpen(false);
-        setIndustriesOpen(false);
-        setSolutionsOpen(false);
-      }
-    };
+        setServicesOpen(false)
 
-    document.addEventListener("mousedown", handleOutsideInteraction);
-    document.addEventListener("touchstart", handleOutsideInteraction);
+        setIndustriesOpen(false)
+
+        setSolutionsOpen(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleOutsideInteraction)
+
+    document.addEventListener("touchstart", handleOutsideInteraction)
+
     return () => {
-      document.removeEventListener("mousedown", handleOutsideInteraction);
-      document.removeEventListener("touchstart", handleOutsideInteraction);
-    };
-  }, [servicesOpen, industriesOpen, solutionsOpen]);
+      document.removeEventListener("mousedown", handleOutsideInteraction)
+
+      document.removeEventListener("touchstart", handleOutsideInteraction)
+    }
+  }, [servicesOpen, industriesOpen, solutionsOpen])
 
   const clearAllCloseTimeouts = () => {
     if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
+      clearTimeout(closeTimeoutRef.current)
+
+      closeTimeoutRef.current = null
     }
+
     if (indTimeoutRef.current) {
-      clearTimeout(indTimeoutRef.current);
-      indTimeoutRef.current = null;
+      clearTimeout(indTimeoutRef.current)
+
+      indTimeoutRef.current = null
     }
+
     if (solTimeoutRef.current) {
-      clearTimeout(solTimeoutRef.current);
-      solTimeoutRef.current = null;
+      clearTimeout(solTimeoutRef.current)
+
+      solTimeoutRef.current = null
     }
-  };
+  }
 
   const handleServicesEnter = () => {
-    clearAllCloseTimeouts();
-    setIndustriesOpen(false);
-    setSolutionsOpen(false);
-    setServicesOpen(true);
-  };
+    clearAllCloseTimeouts()
+
+    setIndustriesOpen(false)
+
+    setSolutionsOpen(false)
+
+    setServicesOpen(true)
+  }
 
   const handleServicesLeave = () => {
-    clearAllCloseTimeouts();
+    clearAllCloseTimeouts()
+
     closeTimeoutRef.current = window.setTimeout(() => {
-      setServicesOpen(false);
-    }, 280);
-  };
+      setServicesOpen(false)
+    }, 280)
+  }
 
   const handleIndustriesEnter = () => {
-    clearAllCloseTimeouts();
-    setServicesOpen(false);
-    setSolutionsOpen(false);
-    setIndustriesOpen(true);
-  };
+    clearAllCloseTimeouts()
+
+    setServicesOpen(false)
+
+    setSolutionsOpen(false)
+
+    setIndustriesOpen(true)
+  }
 
   const handleIndustriesLeave = () => {
-    clearAllCloseTimeouts();
+    clearAllCloseTimeouts()
+
     indTimeoutRef.current = window.setTimeout(() => {
-      setIndustriesOpen(false);
-    }, 280);
-  };
+      setIndustriesOpen(false)
+    }, 280)
+  }
 
   const handleSolutionsEnter = () => {
-    clearAllCloseTimeouts();
-    setServicesOpen(false);
-    setIndustriesOpen(false);
-    setSolutionsOpen(true);
-  };
+    clearAllCloseTimeouts()
+
+    setServicesOpen(false)
+
+    setIndustriesOpen(false)
+
+    setSolutionsOpen(true)
+  }
 
   const handleSolutionsLeave = () => {
-    clearAllCloseTimeouts();
+    clearAllCloseTimeouts()
+
     solTimeoutRef.current = window.setTimeout(() => {
-      setSolutionsOpen(false);
-    }, 280);
-  };
+      setSolutionsOpen(false)
+    }, 280)
+  }
 
   const handleHeaderLeave = () => {
-    clearAllCloseTimeouts();
-    const timeout = 280;
-    closeTimeoutRef.current = window.setTimeout(() => setServicesOpen(false), timeout);
-    indTimeoutRef.current = window.setTimeout(() => setIndustriesOpen(false), timeout);
-    solTimeoutRef.current = window.setTimeout(() => setSolutionsOpen(false), timeout);
-  };
+    clearAllCloseTimeouts()
+
+    const timeout = 280
+
+    closeTimeoutRef.current = window.setTimeout(
+      () => setServicesOpen(false),
+      timeout,
+    )
+
+    indTimeoutRef.current = window.setTimeout(
+      () => setIndustriesOpen(false),
+      timeout,
+    )
+
+    solTimeoutRef.current = window.setTimeout(
+      () => setSolutionsOpen(false),
+      timeout,
+    )
+  }
 
   useEffect(() => {
-    setServicesOpen(false);
-    setIndustriesOpen(false);
-    setSolutionsOpen(false);
-    setMenu(false);
-  }, [pathname]);
+    setServicesOpen(false)
 
-  const isAnyDropdownOpen = servicesOpen || industriesOpen || solutionsOpen;
+    setIndustriesOpen(false)
+
+    setSolutionsOpen(false)
+
+    setMenu(false)
+  }, [pathname])
+
+  const isAnyDropdownOpen = servicesOpen || industriesOpen || solutionsOpen
 
   return (
     <div className="min-h-screen flex flex-col overflow-x-clip bg-white text-slate-900 antialiased dark:bg-[#090a10] dark:text-slate-100 transition-colors duration-300">
@@ -230,16 +313,24 @@ export default function Layout() {
             className="relative hidden items-center gap-0.5 xl:gap-1 lg:flex"
           >
             {/* Invisible hover bridge to prevent menu closure */}
-            <div className="absolute left-0 right-0 top-full h-6" aria-hidden="true" />
+            <div
+              className="absolute left-0 right-0 top-full h-6"
+              aria-hidden="true"
+            />
 
             {/* Solutions */}
-            <div className="relative flex items-center" onMouseEnter={handleSolutionsEnter}>
+            <div
+              className="relative flex items-center"
+              onMouseEnter={handleSolutionsEnter}
+            >
               <SolutionsDropdownTrigger
                 isOpen={solutionsOpen}
                 onClick={() => {
-                  setServicesOpen(false);
-                  setIndustriesOpen(false);
-                  setSolutionsOpen((prev) => !prev);
+                  setServicesOpen(false)
+
+                  setIndustriesOpen(false)
+
+                  setSolutionsOpen((prev) => !prev)
                 }}
                 onMouseEnter={handleSolutionsEnter}
                 onMouseLeave={handleSolutionsLeave}
@@ -247,13 +338,18 @@ export default function Layout() {
             </div>
 
             {/* Services */}
-            <div className="relative flex items-center" onMouseEnter={handleServicesEnter}>
+            <div
+              className="relative flex items-center"
+              onMouseEnter={handleServicesEnter}
+            >
               <ServicesDropdownTrigger
                 isOpen={servicesOpen}
                 onClick={() => {
-                  setIndustriesOpen(false);
-                  setSolutionsOpen(false);
-                  setServicesOpen((prev) => !prev);
+                  setIndustriesOpen(false)
+
+                  setSolutionsOpen(false)
+
+                  setServicesOpen((prev) => !prev)
                 }}
                 onMouseEnter={handleServicesEnter}
                 onMouseLeave={handleServicesLeave}
@@ -261,13 +357,18 @@ export default function Layout() {
             </div>
 
             {/* Industries */}
-            <div className="relative flex items-center" onMouseEnter={handleIndustriesEnter}>
+            <div
+              className="relative flex items-center"
+              onMouseEnter={handleIndustriesEnter}
+            >
               <IndustriesDropdownTrigger
                 isOpen={industriesOpen}
                 onClick={() => {
-                  setServicesOpen(false);
-                  setSolutionsOpen(false);
-                  setIndustriesOpen((prev) => !prev);
+                  setServicesOpen(false)
+
+                  setSolutionsOpen(false)
+
+                  setIndustriesOpen((prev) => !prev)
                 }}
                 onMouseEnter={handleIndustriesEnter}
                 onMouseLeave={handleIndustriesLeave}
@@ -303,6 +404,21 @@ export default function Layout() {
             >
               <span>Insights</span>
             </NavLink>
+
+            {/* Blog */}
+            <NavLink
+              to="/blog"
+              onMouseEnter={handleHeaderLeave}
+              className={({ isActive }) =>
+                `group relative inline-flex items-center gap-1 rounded-full px-3 py-1.5 text-[13.5px] font-medium transition-all duration-200 cursor-pointer ${
+                  isActive
+                    ? "bg-violet-600/10 text-violet-700 font-semibold ring-1 ring-violet-500/25"
+                    : "text-slate-700 hover:bg-slate-100 hover:text-slate-950"
+                }`
+              }
+            >
+              <span>Blog</span>
+            </NavLink>
           </nav>
 
           {/* RIGHT: Action Button ('Contact Us') */}
@@ -327,7 +443,11 @@ export default function Layout() {
               }`}
               onClick={() => setMenu((m) => !m)}
             >
-              {menu ? <X size={18} weight="bold" /> : <List size={18} weight="bold" />}
+              {menu ? (
+                <X size={18} weight="bold" />
+              ) : (
+                <List size={18} weight="bold" />
+              )}
             </button>
           </div>
         </div>
@@ -426,7 +546,7 @@ export default function Layout() {
                     label !== "Platform Capabilities" &&
                     label !== "Services" &&
                     label !== "Industries" &&
-                    label !== "Solutions"
+                    label !== "Solutions",
                 ).map(([label, href]) => (
                   <NavLink
                     key={label}
@@ -480,5 +600,5 @@ export default function Layout() {
       <Footer />
       <CookieConsent />
     </div>
-  );
+  )
 }

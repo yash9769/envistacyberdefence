@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" fill="none">
+  <!-- TBi Dynamic Monogram -->
+  <g id="tbi-emblem">
+    <!-- Stylized Compass / Dynamic Path -->
+    <path d="M12 40C8 36 6 30 6 24C6 14 14 6 24 6C29 6 34 8 38 12L32 18C30 15 27 14 24 14C18 14 14 18 14 24C14 27 15 30 18 32L12 40Z" fill="#0A2540" />
+    <path d="M26 12L42 28L36 34L20 18L26 12Z" fill="#E63946" />
+    <circle cx="34" cy="18" r="4" fill="#E63946" />
+    
+    <!-- Bold TBi Letters -->
+    <text x="52" y="32" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-weight="900" font-size="28" fill="#0A2540" letter-spacing="-0.02em">TB</text>
+    <text x="92" y="32" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-weight="900" font-size="28" fill="#E63946" letter-spacing="-0.02em">i</text>
+  </g>
+  <!-- Full Brand Subtext -->
+  <text x="52" y="47" font-family="'Inter', 'Segoe UI', system-ui, sans-serif" font-weight="700" font-size="10.5" fill="#1D3557" letter-spacing="0.16em">TRAIL BLAZER TOURS</text>
+</svg>
+

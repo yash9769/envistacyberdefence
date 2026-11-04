@@ -13,6 +13,7 @@ import {
   Target,
 } from "@phosphor-icons/react";
 import Hero from "../components/hero/Hero";
+import ClientLogos from "../components/ClientLogos";
 import { Btn, Eyebrow, Reveal, RevealText } from "../components/ui";
 import { CountUp } from "../components/motion";
 import {
@@ -350,16 +351,16 @@ function RealImpact() {
 
             {/* Bottom row: 4 Generously Spaced Proof Points with Consistent Column Dividers */}
             <div className="mt-10 sm:mt-12 pt-8 sm:pt-10 border-t border-white/15">
-              <dl className="grid grid-cols-2 gap-y-8 gap-x-6 sm:grid-cols-4 sm:gap-0 sm:divide-x sm:divide-white/15 w-full">
+              <dl className="grid grid-cols-2 gap-y-10 gap-x-8 sm:grid-cols-4 sm:gap-6 lg:gap-10 xl:gap-14 w-full">
                 {IMPACT_STATS.map((s) => (
                   <div
                     key={s.label}
-                    className="flex flex-col justify-start sm:px-6 lg:px-8 first:sm:pl-0 last:sm:pr-0"
+                    className="flex flex-col justify-start"
                   >
                     <dt className="font-display text-[32px] sm:text-[38px] lg:text-[44px] font-extrabold leading-none tracking-tight text-white drop-shadow-[0_2px_12px_rgba(168,85,247,0.35)]">
                       <CountUp to={s.v} suffix={s.suffix} />
                     </dt>
-                    <dd className="mt-2.5 text-[12.5px] sm:text-[13px] font-medium leading-snug text-[#d8cefa] max-w-[190px]">
+                    <dd className="mt-2.5 text-[13px] sm:text-[13.5px] font-medium leading-relaxed text-[#d8cefa]">
                       {s.label}
                     </dd>
                   </div>
@@ -534,6 +535,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <ClientLogos />
       <WhatWeDo />
       <OurApproach />
       <RealImpact />

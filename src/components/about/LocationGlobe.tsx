@@ -38,7 +38,7 @@ const OFFICE_DATA: OfficeLocation[] = [
     regionBadge: "Maharashtra, India",
     cityName: "Mumbai",
     phone: "1800 120 1022",
-    email: "connect@jhsassociates.in",
+    email: "connect@envistacyberdefence.com",
     badgeAlign: "left",
     mapCoord: { x: CITY_COORDS.mumbai.pctX, y: CITY_COORDS.mumbai.pctY },
     subOffices: [
