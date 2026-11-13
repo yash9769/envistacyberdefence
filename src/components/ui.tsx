@@ -101,7 +101,7 @@ export function RevealText({
 }
 
 /* Small-caps section label used throughout the reference layout. */
-export function Eyebrow({ children, tone = "dark" }: { children: ReactNode; tone?: "dark" | "light" }) {
+export function Eyebrow({ children, tone = "dark" }: { children: ReactNode; tone?: "dark" | "light" | "accent" }) {
   return (
     <div
       className={`font-mono text-[11px] uppercase tracking-[0.22em] ${
@@ -120,7 +120,7 @@ export function Kicker({
 }: {
   n?: string;
   children: ReactNode;
-  tone?: "dark" | "light";
+  tone?: "dark" | "light" | "accent";
 }) {
   return (
     <div className="flex items-center gap-2 font-mono text-[11px] tracking-[0.28em] text-purple-bright">

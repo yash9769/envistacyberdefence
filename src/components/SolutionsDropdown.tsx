@@ -103,7 +103,7 @@ export default function SolutionsDropdown({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* 1. DPDP Compliance & Privacy */}
           <a
-            href="https://dpdp.envistacyberdefence.ai"
+            href="https://dpdp.envistacyberdefence.ai/"
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}
@@ -210,7 +210,7 @@ export function MobileSolutionsAccordion({ onItemClick }: { onItemClick: () => v
           <div className="grid grid-cols-1 gap-3 pl-2 border-l-2 border-violet-500/30">
             {/* DPDP */}
             <a
-              href="https://dpdp.envistacyberdefence.ai"
+              href="https://dpdp.envistacyberdefence.ai/"
               target="_blank"
               rel="noopener noreferrer"
               onClick={onItemClick}

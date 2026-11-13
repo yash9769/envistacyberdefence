@@ -1,20 +1,24 @@
-import { createBrowserRouter, useRouteError } from "react-router";
-import Layout from "./components/Layout";
-import Home from "./pages/Home";
-import Capabilities from "./pages/Capabilities";
-import Methodology from "./pages/Methodology";
-import About from "./pages/About";
-import Insights from "./pages/Insights";
-import Industries from "./pages/Industries";
-import CaseStudies from "./pages/CaseStudies";
-import Faq from "./pages/Faq";
-import Contact from "./pages/Contact";
-import BrmDwm from "./pages/BrmDwm";
-import { Kicker, Btn } from "./components/ui";
+import { createBrowserRouter, useRouteError } from "react-router"
+import Layout from "./components/Layout"
+import Home from "./pages/Home"
+import Capabilities from "./pages/Capabilities"
+import Methodology from "./pages/Methodology"
+import About from "./pages/About"
+import Insights from "./pages/Insights"
+import Industries from "./pages/Industries"
+import CaseStudies from "./pages/CaseStudies"
+import Faq from "./pages/Faq"
+import Contact from "./pages/Contact"
+import BrmDwm from "./pages/BrmDwm"
+import Blog from "./pages/Blog"
+import BlogPost from "./pages/BlogPost"
+import OffensiveServiceDetail from "./pages/OffensiveServiceDetail"
+import ServiceDetail from "./pages/ServiceDetail"
+import { Kicker, Btn } from "./components/ui"
 
 function RootErrorBoundary() {
-  const error = useRouteError();
-  console.error("Application error:", error);
+  const error = useRouteError()
+  console.error("Application error:", error)
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[#07090e] px-6 text-center text-white">
@@ -35,18 +39,24 @@ function RootErrorBoundary() {
         </button>
       </div>
     </div>
-  );
+  )
 }
 
 function NotFound() {
   return (
     <section className="mx-auto flex min-h-[70vh] max-w-[1320px] flex-col justify-center px-6 lg:px-10">
       <Kicker>Not found</Kicker>
-      <h1 className="mt-6 font-display text-6xl font-extrabold tracking-[-0.03em]">This page slipped past.</h1>
-      <p className="mt-6 max-w-md text-muted">The address you followed isn't part of the Envista site.</p>
-      <div className="mt-8"><Btn to="/">Back to home</Btn></div>
+      <h1 className="mt-6 font-display text-6xl font-extrabold tracking-[-0.03em]">
+        This page slipped past.
+      </h1>
+      <p className="mt-6 max-w-md text-muted">
+        The address you followed isn't part of the Envista site.
+      </p>
+      <div className="mt-8">
+        <Btn to="/">Back to home</Btn>
+      </div>
     </section>
-  );
+  )
 }
 
 export const router = createBrowserRouter([
@@ -59,10 +69,21 @@ export const router = createBrowserRouter([
       { path: "capabilities", Component: Capabilities },
       { path: "platform", Component: Capabilities },
       { path: "platform-capabilities", Component: Capabilities },
+      { path: "services", Component: Capabilities },
+      { path: "services/:category", Component: Capabilities },
+      { path: "services/:category/:slug", Component: ServiceDetail },
+      { path: "services/offensive/:slug", Component: ServiceDetail },
+      { path: "offensive/:slug", Component: ServiceDetail },
+      { path: "capabilities/:category/:slug", Component: ServiceDetail },
+      { path: "capabilities/offensive/:slug", Component: ServiceDetail },
       { path: "methodology", Component: Methodology },
       { path: "about", Component: About },
       { path: "about-us", Component: About },
       { path: "insights", Component: Insights },
+      { path: "blog", Component: Blog },
+      { path: "blog/:slug", Component: BlogPost },
+      { path: "blogs", Component: Blog },
+      { path: "blogs/:slug", Component: BlogPost },
       { path: "industries", Component: Industries },
       { path: "case-studies", Component: CaseStudies },
       { path: "faq", Component: Faq },
@@ -73,4 +94,4 @@ export const router = createBrowserRouter([
       { path: "*", Component: NotFound },
     ],
   },
-]);
+])

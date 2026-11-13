@@ -1,16 +1,16 @@
-import React from "react";
-import { Link } from "react-router";
-import { LinkedinLogo } from "@phosphor-icons/react";
-import logoDarkUrl from "../imports/envista-logo-dark.png";
+import React from "react"
+import { Link } from "react-router"
+import { LinkedinLogo } from "@phosphor-icons/react"
+import logoDarkUrl from "../imports/envista-logo-dark.png"
 
 interface FooterLink {
-  label: string;
-  href: string;
+  label: string
+  href: string
 }
 
 interface FooterColumn {
-  title: string;
-  links: FooterLink[];
+  title: string
+  links: FooterLink[]
 }
 
 const FOOTER_COLUMNS: FooterColumn[] = [
@@ -39,6 +39,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Resources",
     links: [
+      { label: "Blog", href: "/blog" },
       { label: "Case Studies", href: "/case-studies" },
       { label: "Insights", href: "/insights" },
     ],
@@ -60,7 +61,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "Responsible Disclosure", href: "/faq" },
     ],
   },
-];
+]
 
 const SOCIAL_LINKS = [
   {
@@ -68,7 +69,7 @@ const SOCIAL_LINKS = [
     icon: LinkedinLogo,
     href: "https://www.linkedin.com/company/envista-cyber-defence/",
   },
-];
+]
 
 export default function Footer() {
   return (
@@ -88,7 +89,10 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10 lg:gap-8 pb-12">
           {/* Left Brand Identity: Authentic Envista Cyber Defence Logo (Dark Mode) */}
           <div className="shrink-0 max-w-sm space-y-4">
-            <Link to="/" className="inline-block transition-opacity hover:opacity-90">
+            <Link
+              to="/"
+              className="inline-block transition-opacity hover:opacity-90"
+            >
               <img
                 src={logoDarkUrl}
                 alt="Envista Cyber Defence"
@@ -99,7 +103,8 @@ export default function Footer() {
               />
             </Link>
             <p className="text-[13px] leading-relaxed text-slate-400 max-w-[320px]">
-              Sovereign, adversary-grade cybersecurity architecture, defensive intelligence, and enterprise resilience across India and the GCC.
+              Sovereign, adversary-grade cybersecurity architecture, defensive
+              intelligence, and enterprise resilience across India and the GCC.
             </p>
           </div>
 
@@ -117,8 +122,10 @@ export default function Footer() {
                         <button
                           type="button"
                           onClick={(e) => {
-                            e.preventDefault();
-                            window.dispatchEvent(new Event("open-cookie-settings"));
+                            e.preventDefault()
+                            window.dispatchEvent(
+                              new Event("open-cookie-settings"),
+                            )
                           }}
                           className="text-[13px] text-slate-400 transition-colors duration-150 hover:text-white cursor-pointer text-left"
                         >
@@ -127,11 +134,6 @@ export default function Footer() {
                       ) : (
                         <Link
                           to={link.href}
-                          onClick={() => {
-                            if (link.href.startsWith("/")) {
-                              window.scrollTo({ top: 0, behavior: "smooth" });
-                            }
-                          }}
                           className="text-[13px] text-slate-400 transition-colors duration-150 hover:text-white"
                         >
                           {link.label}
@@ -164,7 +166,8 @@ export default function Footer() {
         {/* Bottom Bar: Copyright on left, Slogan on right */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs text-slate-400">
           <div>
-            © {new Date().getFullYear()} Envista Cyber Defence. All rights reserved.
+            © {new Date().getFullYear()} Envista Cyber Defence. All rights
+            reserved.
           </div>
           <div className="text-slate-400 font-normal tracking-wide">
             Security beyond the surface.
@@ -172,5 +175,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }

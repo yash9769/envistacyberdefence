@@ -13,6 +13,7 @@ import {
   Target,
 } from "@phosphor-icons/react";
 import Hero from "../components/hero/Hero";
+import ClientLogos from "../components/ClientLogos";
 import { Btn, Eyebrow, Reveal, RevealText } from "../components/ui";
 import { CountUp } from "../components/motion";
 import {
@@ -41,7 +42,7 @@ const STEP_ICON = [MagnifyingGlass, ClipboardText, Gear, ChartBar];
 /* ---------------------------------------------------------------- */
 function WhatWeDo() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#0b051e] via-[#140833] to-[#0e0625] text-white py-20 lg:py-28 border-t border-b border-violet-500/20">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#0b051e] via-[#140833] to-[#0e0625] text-white py-12 lg:py-0 lg:min-h-screen lg:flex lg:items-center lg:pt-20 lg:pb-6 border-t border-b border-violet-500/20">
       {/* Soft atmospheric violet glow */}
       <div
         aria-hidden="true"
@@ -52,11 +53,11 @@ function WhatWeDo() {
         className="pointer-events-none absolute -bottom-32 right-1/4 h-96 w-96 rounded-full bg-purple-600/15 blur-[120px]"
       />
 
-      <div className={`${WRAP} relative z-10`}>
-        <div className="grid grid-cols-1 gap-12 lg:grid-cols-[38fr_62fr] lg:gap-10">
+      <div className="mx-auto w-full max-w-[1340px] px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[31fr_69fr] lg:gap-8 xl:gap-10 lg:items-center">
           <div>
             <Eyebrow tone="dark">What we do</Eyebrow>
-            <h2 className="mt-5 display-lg text-white">
+            <h2 className="mt-3 display-lg text-white">
               <RevealText text="From risk" stagger={70} />
               <span className="block">
                 <span className="bg-gradient-to-r from-violet-300 via-purple-200 to-indigo-200 bg-clip-text text-transparent">
@@ -65,11 +66,11 @@ function WhatWeDo() {
               </span>
             </h2>
             <Reveal delay={160}>
-              <p className="lead mt-6 text-[#d8cefa]">
+              <p className="lead mt-4 text-[#d8cefa]">
                 End-to-end cybersecurity services designed to reduce risk, ensure compliance and
                 keep your business ahead of evolving threats.
               </p>
-              <div className="mt-7">
+              <div className="mt-5">
                 <Btn to="/capabilities" variant="solid">
                   Explore All Services
                 </Btn>
@@ -77,7 +78,7 @@ function WhatWeDo() {
             </Reveal>
           </div>
 
-          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 lg:gap-3">
             {HOME_SERVICES.map((s, i) => {
               const Icon = SERVICE_ICON[s.icon];
               return (
@@ -85,7 +86,7 @@ function WhatWeDo() {
                   <Reveal delay={(i % 3) * 70} className="h-full">
                     <Link
                       to={`/capabilities#${s.id}`}
-                      className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-lime-500/30 bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95 p-6 backdrop-blur-xl shadow-[0_12px_36px_rgba(180,255,0,0.14)] transition-all duration-300 hover:-translate-y-1.5 hover:border-[#B4FF00] hover:shadow-[0_20px_48px_rgba(180,255,0,0.38)] cursor-pointer"
+                      className="group relative flex h-full flex-col justify-between overflow-hidden rounded-2xl border border-lime-500/30 bg-gradient-to-b from-[#140a2f]/95 via-[#0e0724]/90 to-[#070314]/95 p-3.5 xl:p-4 backdrop-blur-xl shadow-[0_12px_36px_rgba(180,255,0,0.14)] transition-all duration-300 hover:-translate-y-1 hover:border-[#B4FF00] hover:shadow-[0_16px_40px_rgba(180,255,0,0.35)] cursor-pointer"
                     >
                       {/* Top Glowing Hairline */}
                       <div
@@ -97,28 +98,28 @@ function WhatWeDo() {
                         <div className="flex items-center justify-between">
                           <span
                             aria-hidden="true"
-                            className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-lime-400/40 bg-lime-500/15 text-[#B4FF00] shadow-[0_0_20px_rgba(180,255,0,0.25)] transition-all duration-300 group-hover:scale-105 group-hover:bg-[#B4FF00] group-hover:text-slate-950"
+                            className="inline-flex h-8 w-8 items-center justify-center rounded-xl border border-lime-400/40 bg-lime-500/15 text-[#B4FF00] shadow-[0_0_16px_rgba(180,255,0,0.22)] transition-all duration-300 group-hover:scale-105 group-hover:bg-[#B4FF00] group-hover:text-slate-950"
                           >
-                            <Icon size={20} weight="bold" />
+                            <Icon size={16} weight="bold" />
                           </span>
                         </div>
-                        <h3 className="mt-4 font-display text-base font-bold tracking-tight text-white group-hover:text-[#B4FF00] transition-colors">
+                        <h3 className="mt-2.5 font-display text-[15px] font-bold tracking-tight text-white group-hover:text-[#B4FF00] transition-colors leading-snug">
                           {s.title}
                         </h3>
-                        <ul className="mt-3 space-y-1.5 text-[13px] leading-snug text-[#d8cefa]">
+                        <ul className="mt-1.5 space-y-1 text-[11.5px] xl:text-[12px] leading-[1.35] text-[#d8cefa]">
                           {s.points.map((p) => (
                             <li key={p}>• {p}</li>
                           ))}
                         </ul>
                       </div>
 
-                      <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-[#B4FF00] font-semibold group-hover:text-white transition-colors">
+                      <div className="mt-3 pt-2 border-t border-white/10 flex items-center justify-between text-[11.5px] text-[#B4FF00] font-semibold group-hover:text-white transition-colors">
                         <span>Explore</span>
                         <span
                           aria-hidden="true"
-                          className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-lime-400/40 bg-lime-950/60 text-[#B4FF00] transition-all duration-300 group-hover:border-[#B4FF00] group-hover:bg-[#B4FF00] group-hover:text-slate-950 group-hover:translate-x-1"
+                          className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-lime-400/40 bg-lime-950/60 text-[#B4FF00] transition-all duration-300 group-hover:border-[#B4FF00] group-hover:bg-[#B4FF00] group-hover:text-slate-950 group-hover:translate-x-1"
                         >
-                          <ArrowRight size={13} weight="bold" />
+                          <ArrowRight size={11} weight="bold" />
                         </span>
                       </div>
                     </Link>
@@ -350,16 +351,16 @@ function RealImpact() {
 
             {/* Bottom row: 4 Generously Spaced Proof Points with Consistent Column Dividers */}
             <div className="mt-10 sm:mt-12 pt-8 sm:pt-10 border-t border-white/15">
-              <dl className="grid grid-cols-2 gap-y-8 gap-x-6 sm:grid-cols-4 sm:gap-0 sm:divide-x sm:divide-white/15 w-full">
+              <dl className="grid grid-cols-2 gap-y-10 gap-x-8 sm:grid-cols-4 sm:gap-6 lg:gap-10 xl:gap-14 w-full">
                 {IMPACT_STATS.map((s) => (
                   <div
                     key={s.label}
-                    className="flex flex-col justify-start sm:px-6 lg:px-8 first:sm:pl-0 last:sm:pr-0"
+                    className="flex flex-col justify-start"
                   >
                     <dt className="font-display text-[32px] sm:text-[38px] lg:text-[44px] font-extrabold leading-none tracking-tight text-white drop-shadow-[0_2px_12px_rgba(168,85,247,0.35)]">
                       <CountUp to={s.v} suffix={s.suffix} />
                     </dt>
-                    <dd className="mt-2.5 text-[12.5px] sm:text-[13px] font-medium leading-snug text-[#d8cefa] max-w-[190px]">
+                    <dd className="mt-2.5 text-[13px] sm:text-[13.5px] font-medium leading-relaxed text-[#d8cefa]">
                       {s.label}
                     </dd>
                   </div>
@@ -534,6 +535,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <ClientLogos />
       <WhatWeDo />
       <OurApproach />
       <RealImpact />
