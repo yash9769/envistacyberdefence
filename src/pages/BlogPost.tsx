@@ -52,7 +52,7 @@ export default function BlogPost() {
     }
 
     // Scroll to top when slug changes
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, [post]);
 
   const handleCopyLink = () => {

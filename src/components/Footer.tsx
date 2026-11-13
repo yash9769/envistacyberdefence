@@ -134,11 +134,6 @@ export default function Footer() {
                       ) : (
                         <Link
                           to={link.href}
-                          onClick={() => {
-                            if (link.href.startsWith("/")) {
-                              window.scrollTo({ top: 0, behavior: "smooth" })
-                            }
-                          }}
                           className="text-[13px] text-slate-400 transition-colors duration-150 hover:text-white"
                         >
                           {link.label}

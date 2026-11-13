@@ -103,7 +103,7 @@ export default function SolutionsDropdown({
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* 1. DPDP Compliance & Privacy */}
           <a
-            href="https://envistadpdp.com"
+            href="https://dpdp.envistacyberdefence.ai/"
             target="_blank"
             rel="noopener noreferrer"
             onClick={onClose}
@@ -134,7 +134,7 @@ export default function SolutionsDropdown({
 
             <div className="mt-6 pt-4 border-t border-slate-200/70 dark:border-white/10 flex items-center justify-between">
               <span className="font-mono text-[12px] font-bold uppercase tracking-wider text-lime-700 dark:text-[#B4FF00] group-hover:underline inline-flex items-center gap-1.5">
-                <span>Visit envistadpdp.com</span>
+                <span>Visit dpdp.envistacyberdefence.ai</span>
                 <ArrowSquareOut size={14} weight="bold" />
               </span>
               <span className="font-mono text-[11px] text-slate-400 dark:text-slate-500">
@@ -210,7 +210,7 @@ export function MobileSolutionsAccordion({ onItemClick }: { onItemClick: () => v
           <div className="grid grid-cols-1 gap-3 pl-2 border-l-2 border-violet-500/30">
             {/* DPDP */}
             <a
-              href="https://envistadpdp.com"
+              href="https://dpdp.envistacyberdefence.ai/"
               target="_blank"
               rel="noopener noreferrer"
               onClick={onItemClick}
@@ -221,7 +221,7 @@ export function MobileSolutionsAccordion({ onItemClick }: { onItemClick: () => v
                 <ArrowSquareOut size={13} />
               </div>
               <div className="mt-1 text-[11px] text-slate-600 dark:text-slate-400">
-                Visit envistadpdp.com portal →
+                Visit dpdp.envistacyberdefence.ai portal →
               </div>
             </a>
 

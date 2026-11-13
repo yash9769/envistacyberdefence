@@ -8,11 +8,17 @@ import { gsap, ScrollTrigger } from './lib/gsap'
 
 function Root() {
   useEffect(() => {
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual'
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     })
+
+    ;(window as unknown as { __lenis?: Lenis }).__lenis = lenis
 
     // Keep GSAP ScrollTrigger in sync with Lenis scroll position
     lenis.on('scroll', ScrollTrigger.update)
@@ -21,6 +27,7 @@ function Root() {
     gsap.ticker.lagSmoothing(0)
 
     return () => {
+      delete (window as unknown as { __lenis?: Lenis }).__lenis
       gsap.ticker.remove(tick)
       lenis.destroy()
     }

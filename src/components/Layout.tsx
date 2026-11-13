@@ -81,9 +81,30 @@ function ScrollToTop() {
   const { pathname, hash } = useLocation()
 
   useEffect(() => {
-    if (hash) return
+    const scrollToStart = () => {
+      const lenis = (
+        window as unknown as {
+          __lenis?: {
+            scrollTo: (
+              target: number,
+              opts?: { immediate?: boolean; force?: boolean }
+            ) => void
+          }
+        }
+      ).__lenis
 
-    window.scrollTo(0, 0)
+      if (lenis) {
+        lenis.scrollTo(0, { immediate: true, force: true })
+      }
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior })
+      document.documentElement.scrollTop = 0
+      document.body.scrollTop = 0
+    }
+
+    scrollToStart()
+    // Re-apply after layout paint so async route renders never retain prior offset
+    const raf = requestAnimationFrame(scrollToStart)
+    return () => cancelAnimationFrame(raf)
   }, [pathname, hash])
 
   return null
