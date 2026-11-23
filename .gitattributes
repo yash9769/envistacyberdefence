@@ -115,5 +115,9 @@
 *.mat                filter=lfs diff=lfs merge=lfs -text
 src/imports/Envista_Cyber_Defence_Logo-Gradient__1_.png !text !filter !merge !diff
 
+# Small, individually-issued certificate PDFs — committed as plain blobs
+# rather than through Git LFS (keeps them pushable from any environment).
+public/certificates/*.pdf !text !filter !merge !diff
+
 # Shell scripts run on Linux — never CRLF
 *.sh text eol=lf

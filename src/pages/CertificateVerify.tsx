@@ -6,6 +6,7 @@ import {
   ArrowRight,
   ShieldCheck,
   SealCheck,
+  DownloadSimple,
 } from "@phosphor-icons/react";
 import { Btn } from "../components/ui";
 import { findCertificate, type Certificate } from "../data/certificates";
@@ -89,6 +90,19 @@ function ResultPanel({ state, id, cert }: { state: LookupState; id: string; cert
             </dd>
           </div>
         </dl>
+
+        {cert.downloadUrl && (
+          <a
+            href={cert.downloadUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            download
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#B4FF00] px-5 py-2.5 text-[13px] font-semibold text-[#0d1020] transition hover:brightness-110"
+          >
+            <DownloadSimple size={16} weight="bold" />
+            Download certificate
+          </a>
+        )}
       </div>
     );
   }

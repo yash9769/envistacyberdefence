@@ -12,6 +12,9 @@ export type Certificate = {
   ongoing?: boolean;
   issueDate: string;
   status: CertificateStatus;
+  /* Path to the signed PDF under public/, e.g. "/certificates/ID.pdf".
+     Omit until the PDF is actually in place. */
+  downloadUrl?: string;
 };
 
 /* Each intern certificate's QR code encodes a URL in the form
@@ -37,6 +40,7 @@ export const CERTIFICATES: Certificate[] = [
     ongoing: true,
     issueDate: "2026-11-23",
     status: "valid",
+    downloadUrl: "/certificates/ECD-INT-2026-0002.pdf",
   },
 ];
 
