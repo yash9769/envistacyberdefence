@@ -14,6 +14,7 @@ import Blog from "./pages/Blog"
 import BlogPost from "./pages/BlogPost"
 import OffensiveServiceDetail from "./pages/OffensiveServiceDetail"
 import ServiceDetail from "./pages/ServiceDetail"
+import CertificateVerify from "./pages/CertificateVerify"
 import { Kicker, Btn } from "./components/ui"
 
 function RootErrorBoundary() {
@@ -91,6 +92,8 @@ export const router = createBrowserRouter([
       { path: "contact-us", Component: Contact },
       { path: "solutions/brm-dwm", Component: BrmDwm },
       { path: "brm-dwm", Component: BrmDwm },
+      { path: "verify", Component: CertificateVerify },
+      { path: "verify/:certificateId", Component: CertificateVerify },
       { path: "*", Component: NotFound },
     ],
   },
