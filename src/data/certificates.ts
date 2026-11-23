@@ -6,7 +6,10 @@ export type Certificate = {
   program: string;
   department: string;
   startDate: string;
+  /* Expected/planned end date. When `ongoing` is true, the internship has
+     not actually concluded yet and the UI shows "Present" instead. */
   endDate: string;
+  ongoing?: boolean;
   issueDate: string;
   status: CertificateStatus;
 };
@@ -22,6 +25,17 @@ export const CERTIFICATES: Certificate[] = [
     startDate: "2026-06-01",
     endDate: "2026-08-31",
     issueDate: "2026-09-01",
+    status: "valid",
+  },
+  {
+    id: "ECD-INT-2026-0002",
+    internName: "Yashodhan Rajapkar",
+    program: "Offensive Security Intern",
+    department: "Offensive Security",
+    startDate: "2026-07-01",
+    endDate: "2026-11-23",
+    ongoing: true,
+    issueDate: "2026-11-23",
     status: "valid",
   },
 ];

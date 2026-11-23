@@ -75,7 +75,7 @@ function ResultPanel({ state, id, cert }: { state: LookupState; id: string; cert
           <div>
             <dt className="font-mono text-[11px] uppercase tracking-wider text-slate-400">Duration</dt>
             <dd className="mt-1 text-sm font-medium text-white">
-              {formatDate(cert.startDate)} – {formatDate(cert.endDate)}
+              {formatDate(cert.startDate)} – {cert.ongoing ? "Present" : formatDate(cert.endDate)}
             </dd>
           </div>
           <div>
@@ -84,7 +84,9 @@ function ResultPanel({ state, id, cert }: { state: LookupState; id: string; cert
           </div>
           <div>
             <dt className="font-mono text-[11px] uppercase tracking-wider text-slate-400">Type</dt>
-            <dd className="mt-1 text-sm font-medium text-white">Certificate of Internship</dd>
+            <dd className="mt-1 text-sm font-medium text-white">
+              {cert.ongoing ? "Certificate of Internship (Ongoing)" : "Certificate of Internship"}
+            </dd>
           </div>
         </dl>
       </div>
