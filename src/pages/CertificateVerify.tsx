@@ -8,12 +8,12 @@ import {
   SealCheck,
 } from "@phosphor-icons/react";
 import { Btn } from "../components/ui";
-import { CERTIFICATES, findCertificate, type Certificate } from "../data/certificates";
+import { findCertificate, type Certificate } from "../data/certificates";
 
 const WRAP = "mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8";
 
-/* Only letters, numbers, dashes and slashes are valid in a certificate ID —
-   mirrors the printed format, same filtering the evoastra reference uses. */
+/* Only letters, numbers, dashes and slashes are valid in a certificate ID,
+   mirroring the printed format (same filtering the evoastra reference uses). */
 function normalizeId(raw: string) {
   return raw.toUpperCase().replace(/[^A-Z0-9/-]/g, "");
 }
@@ -97,7 +97,7 @@ function ResultPanel({ state, id, cert }: { state: LookupState; id: string; cert
         <XCircle size={26} weight="fill" className="mx-auto text-red-400" />
         <h3 className="mt-3 font-display text-lg font-bold text-white">Not found</h3>
         <p className="mt-2 text-sm text-slate-300">
-          No certificate matches <span className="font-mono">{id}</span>. Check the ID for typos — it's printed
+          No certificate matches <span className="font-mono">{id}</span>. Check the ID for typos, it's printed
           on the certificate, or contact{" "}
           <a href="mailto:connect@envistacyberdefence.com" className="text-[#B4FF00] hover:underline">
             connect@envistacyberdefence.com
@@ -111,7 +111,7 @@ function ResultPanel({ state, id, cert }: { state: LookupState; id: string; cert
   return null;
 }
 
-/* Purely decorative — not the real certificate, just a visual echo of its
+/* Purely decorative (not the real certificate), just a visual echo of its
    shape so the page doesn't look like a bare form. */
 function CertificateMockup() {
   return (
@@ -134,10 +134,6 @@ function CertificateMockup() {
           <SealCheck size={20} weight="fill" className="text-white" />
         </div>
       </div>
-      <div className="mt-4 inline-flex items-center gap-1.5 rounded-full border border-lime-400/30 bg-lime-500/10 px-3 py-1.5 font-mono text-[11px] font-semibold text-[#B4FF00]">
-        <CheckCircle size={13} weight="fill" />
-        {CERTIFICATES.length} certificate{CERTIFICATES.length === 1 ? "" : "s"} on record
-      </div>
     </div>
   );
 }
@@ -149,7 +145,7 @@ export default function CertificateVerify() {
   const [state, setState] = useState<LookupState>("idle");
   const [resolved, setResolved] = useState<{ id: string; cert?: Certificate } | null>(null);
 
-  /* Auto-verifies on load when the URL already carries an ID — this is what
+  /* Auto-verifies on load when the URL already carries an ID. This is what
      makes a QR code on a printed certificate work: it points straight at
      /verify/<id> and the result appears with no extra interaction. */
   useEffect(() => {
